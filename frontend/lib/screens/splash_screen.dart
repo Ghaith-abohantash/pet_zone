@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(height: screenHeight * 0.01),
             Text(
               'Pet Zone',
-              style: GoogleFonts.poppins(
+                style: GoogleFonts.poppins(
                 fontSize: screenWidth * 0.07,
                 fontWeight: FontWeight.bold,
                 color: const Color(0xFF5E2A6F),

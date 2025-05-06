@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/splash_screen.dart';
-import '../screens/home_screen.dart';
-import '../screens/welcome page_screen.dart';
+import '../screens/home_doctor_screen.dart';
+import '../screens/welcome_screen.dart';
 
 class AppRoutes {
   static const String splash = '/';
@@ -13,7 +13,7 @@ class AppRoutes {
       case splash:
         return MaterialPageRoute(builder: (_) => const SplashScreen());
       case home:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => const HomeDoctorScreen());
       case welcomePage:
         return MaterialPageRoute(builder: (_) => const WelcomePage());
       default:
