@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../routes/routes.dart';
+
 class HomeDoctorScreen extends StatelessWidget {
   const HomeDoctorScreen({super.key});
 
@@ -46,7 +48,7 @@ class HomeDoctorScreen extends StatelessWidget {
           crossAxisSpacing: 16,
           children: [
             _buildGridItem('assets/images/Profile.png', 'Profile'),
-            _buildGridItem('assets/images/Appointment.png', 'Appointment'),
+            InkWell(child: _buildGridItem('assets/images/Appointment.png', 'Appointment'),onTap: (){Navigator.pushNamed(context, AppRoutes.appointmentScreen);},),
             _buildGridItem('assets/images/Settings.png', 'Settings'),
             _buildGridItem('assets/images/AnimalShop.png', 'Animal Shop'),
           ],
@@ -59,29 +61,21 @@ class HomeDoctorScreen extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          child: InkWell(
-            onTap: () {
-              print('Tapped on image of $label');
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Image.asset(
-                imagePath,
-                fit: BoxFit.contain,
-              ),
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.contain,
             ),
           ),
         ),
         const SizedBox(height: 8),
-        InkWell(
-          onTap: () {},
-          child: Text(
-            label,
-            style: GoogleFonts.poppins(
-              fontSize: 16,
-              fontWeight: FontWeight.w600,
-              color: Color(0xFF5E2A6F),
-            ),
+        Text(
+          label,
+          style: GoogleFonts.poppins(
+            fontSize: 16,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF5E2A6F),
           ),
         ),
       ],
