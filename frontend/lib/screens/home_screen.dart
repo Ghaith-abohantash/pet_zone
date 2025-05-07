@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0XFFFFFFFF),
-      appBar: const CustomAppBar(title: "Home Page"),
+      appBar: const CustomAppBar(title: "Pet Zone"),
       body: Container(
         margin: EdgeInsets.only(left: 24, right: 24, bottom: 24),
         child: Column(

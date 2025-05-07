@@ -17,7 +17,6 @@ class MyApp extends StatelessWidget {
       title: 'Pet Zone App',
       theme: ThemeData(
         textTheme: GoogleFonts.poppinsTextTheme(),
-        //to do
       ),
       home: HomePage(),
     );
