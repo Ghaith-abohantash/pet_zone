@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(),
         //to do
       ),
-      home: BuyPets(),
+      home: HomePage(),
     );
   }
 }
