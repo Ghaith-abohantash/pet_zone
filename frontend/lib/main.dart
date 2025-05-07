@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petzone_project/screens/buy_pets_screen.dart';
 import 'package:petzone_project/screens/home_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(),
         //to do
       ),
-      home: HomePage(),
+      home: BuyPets(),
     );
   }
 }

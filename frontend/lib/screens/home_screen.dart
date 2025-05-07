@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../widgets/app_bar.dart';
 import '../widgets/buttom_nav.dart';
@@ -8,7 +7,6 @@ import '../widgets/buttom_nav.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
-// Method to handle tab selection
 
 
   @override
@@ -100,7 +98,6 @@ class _HomePageState extends State<HomePage> {
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            // ← يحط النص عاليسار، والأيقونة عاليمين
                             children: [
                               Text(
                                 "Masmosa Cat",
@@ -124,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: const EdgeInsets.only(
                         left: 0,
-                      ), // نفس بداية الصورة
+                      ),
                       child: Text(
                         "\$2000",
                         style: TextStyle(
