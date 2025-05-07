@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({Key? key}) : super(key: key);
+  final String title;
+
+  const CustomAppBar({Key? key, required this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: const Padding(
-        padding: EdgeInsets.only(left: 8),
+      title: Padding(
+        padding: const EdgeInsets.only(left: 8),
         child: Text(
-          'Pet Zone',
-          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          title,
+          style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
         ),
       ),
       backgroundColor: const Color(0xFFFFFFFF),
