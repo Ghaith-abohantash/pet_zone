@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/app_bar.dart';
+import '../widgets/buttom_nav.dart';
+
 class NotificationPage extends StatefulWidget {
   const NotificationPage({super.key});
 
@@ -16,27 +19,21 @@ class _NotificationPageState extends State<NotificationPage> {
     });
     print("All buttons marked as read");
   }
-
+  int _selectedIndex = 3;
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        actions: [
-          TextButton(
-            onPressed: markAllAsRead,
-            child: const Text(
-              "Mark All As Red",
-              style: TextStyle(color: Color(0xFF7A7A7A)),
-            ),
-          ),
-        ],
-      ),
+      appBar: const CustomAppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            children: List.generate(6, (index) {
+            children: List.generate(5, (index) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 16),
                 child: ElevatedButton(
@@ -87,6 +84,24 @@ class _NotificationPageState extends State<NotificationPage> {
           ),
         ),
       ),
-    );
+      bottomNavigationBar: BottomNav(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
+      ),    );
+
   }
 }
+
+// //
+// appBar: AppBar(
+// automaticallyImplyLeading: false,
+// actions: [
+// TextButton(
+// onPressed: markAllAsRead,
+// child: const Text(
+// "Mark All As Red",
+// style: TextStyle(color: Color(0xFF7A7A7A)),
+// ),
+// ),
+// ],
+// ),
