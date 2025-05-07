@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(),
         //to do
       ),
-      home: LogInPage(),
+      home: NotificationPage(),
     );
   }
 }

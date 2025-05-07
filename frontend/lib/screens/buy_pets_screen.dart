@@ -33,7 +33,7 @@ class _BuyPetsState extends State<BuyPets> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0XFFFFFFFF),
-      appBar: const CustomAppBar(),
+      appBar: const CustomAppBar(title:"Pets Shop"),
       body: Padding(
         padding: const EdgeInsets.only(left:24,right:24,bottom:24),
         child: Column(

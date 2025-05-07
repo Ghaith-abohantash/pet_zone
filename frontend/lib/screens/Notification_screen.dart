@@ -28,12 +28,12 @@ class _NotificationPageState extends State<NotificationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: const CustomAppBar(title: "Notification",),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
-            children: List.generate(5, (index) {
+            children: List.generate(6, (index) {
               return Padding(
                 padding: const EdgeInsets.only(bottom: 16),
                 child: ElevatedButton(
