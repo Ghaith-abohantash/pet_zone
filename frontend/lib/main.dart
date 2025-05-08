@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:petzone_project/screens/Notification_screen.dart';
+import 'package:petzone_project/screens/user_notification_screen.dart';
 import 'package:petzone_project/screens/buy_pets_screen.dart';
+import 'package:petzone_project/screens/favorite_screen.dart';
 import 'package:petzone_project/screens/home_screen.dart';
+import 'package:petzone_project/screens/doctor_account_screen.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:petzone_project/screens/login_screen.dart';
 
@@ -21,7 +24,7 @@ class MyApp extends StatelessWidget {
         textTheme: GoogleFonts.poppinsTextTheme(),
         //to do
       ),
-      home: NotificationPage(),
+      home: UserNotificationPage(),
     );
   }
 }
