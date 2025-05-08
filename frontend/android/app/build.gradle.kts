@@ -42,3 +42,8 @@ android {
 flutter {
     source = "../.."
 }
+configurations.all {
+    resolutionStrategy {
+        force("androidx.annotation:annotation:1.6.0")
+    }
+}
