@@ -1,31 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:petzone_project/screens/user_notification_screen.dart';
-import 'package:petzone_project/screens/buy_pets_screen.dart';
-import 'package:petzone_project/screens/favorite_screen.dart';
-import 'package:petzone_project/screens/home_screen.dart';
-import 'package:petzone_project/screens/doctor_account_screen.dart';
-
-import 'package:google_fonts/google_fonts.dart';
-import 'package:petzone_project/screens/login_screen.dart';
-
+import 'routes/routes.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pet Zone App',
-      theme: ThemeData(
-        textTheme: GoogleFonts.poppinsTextTheme(),
-        //to do
-      ),
-      home: UserNotificationPage(),
+      title: 'Test',
+      debugShowCheckedModeBanner: false,
+
+      initialRoute: AppRoutes.splash,
+
+      onGenerateRoute: AppRoutes.generateRoute,
     );
   }
 }
-
