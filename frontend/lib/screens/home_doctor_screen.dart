@@ -48,7 +48,7 @@ class HomeDoctorScreen extends StatelessWidget {
           crossAxisSpacing: 16,
           children: [
             _buildGridItem('assets/images/Profile.png', 'Profile'),
-            InkWell(child: _buildGridItem('assets/images/Appointment.png', 'Appointment'),onTap: (){Navigator.pushNamed(context, AppRoutes.appointmentScreen);},),
+            InkWell(child: _buildGridItem('assets/images/Appointment.png', 'Appointment'),onTap: (){Navigator.pushNamed(context, AppRoutes.veterinariannotificationscreen);},),
             _buildGridItem('assets/images/Settings.png', 'Settings'),
             _buildGridItem('assets/images/AnimalShop.png', 'Animal Shop'),
           ],
