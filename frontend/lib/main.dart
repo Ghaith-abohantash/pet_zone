@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:petzone_project/screens/adopt_pet_details_screen.dart';
 import 'routes/routes.dart';
 import 'package:petzone_project/screens/sale_pet_deatails_screen.dart';
 

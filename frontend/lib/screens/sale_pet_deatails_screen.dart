@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../widgets/buttom_nav.dart';
 
 class SaleDetailsPage extends StatefulWidget {
@@ -10,6 +11,7 @@ class SaleDetailsPage extends StatefulWidget {
 
 class _SaleDetailsPage extends State<SaleDetailsPage> {
   int _selectedIndex = 2;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -28,13 +30,12 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_sharp),
+          icon: const Icon(Icons.arrow_back_ios_new_sharp),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(
@@ -43,8 +44,22 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
         ),
         centerTitle: true,
         actions: [
-          IconButton(icon: Icon(Icons.shopping_cart_rounded), onPressed: () {}),
-          IconButton(icon: Icon(Icons.message), onPressed: () {}),
+          IconButton(
+            icon: SvgPicture.asset(
+              'assets/images/icon-park-solid_shopping.svg',
+              width: 24,
+              height: 24,
+            ),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: SvgPicture.asset(
+              'assets/images/ant-design_message-filled.svg',
+              width: 24,
+              height: 24,
+            ),
+            onPressed: () {},
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -57,7 +72,7 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
                 width: 354,
                 margin: const EdgeInsets.only(top: 20),
                 child: Image.asset(
-                  'assets/images/sale_details.png',
+                  "assets/images/sale_details.png",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -158,12 +173,12 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF5E2A6F),
+                    backgroundColor: const Color(0xFF5E2A6F),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(9),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     "Buy Now",
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
@@ -171,7 +186,6 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
               ),
             ),
             const SizedBox(height: 20),
-
           ],
         ),
       ),

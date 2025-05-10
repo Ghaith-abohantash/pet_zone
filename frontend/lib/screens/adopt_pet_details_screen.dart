@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../widgets/buttom_nav.dart';
 
 class AdoptDetailsPage extends StatefulWidget {
@@ -10,6 +11,7 @@ class AdoptDetailsPage extends StatefulWidget {
 
 class _AdoptDetailsPage extends State<AdoptDetailsPage> {
   int _selectedIndex = 2;
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -28,13 +30,12 @@ class _AdoptDetailsPage extends State<AdoptDetailsPage> {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_sharp),
+          icon: const Icon(Icons.arrow_back_ios_new_sharp),
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: const Text(
@@ -43,8 +44,22 @@ class _AdoptDetailsPage extends State<AdoptDetailsPage> {
         ),
         centerTitle: true,
         actions: [
-          IconButton(icon: Icon(Icons.shopping_cart_rounded), onPressed: () {}),
-          IconButton(icon: Icon(Icons.message), onPressed: () {}),
+          IconButton(
+            icon: SvgPicture.asset(
+              'assets/images/icon-park-solid_shopping.svg',
+              height: 24,
+              width: 24,
+            ),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: SvgPicture.asset(
+              'assets/images/ant-design_message-filled.svg',
+              height: 24,
+              width: 24,
+            ),
+            onPressed: () {},
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -72,7 +87,6 @@ class _AdoptDetailsPage extends State<AdoptDetailsPage> {
                     "Mizo",
                     style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
                   ),
-
                 ],
               ),
             ),
@@ -155,12 +169,12 @@ class _AdoptDetailsPage extends State<AdoptDetailsPage> {
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF5E2A6F),
+                    backgroundColor: const Color(0xFF5E2A6F),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(9),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     "Adopt Now",
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
@@ -168,7 +182,6 @@ class _AdoptDetailsPage extends State<AdoptDetailsPage> {
               ),
             ),
             const SizedBox(height: 20),
-
           ],
         ),
       ),
