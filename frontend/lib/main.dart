@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petzone_project/routes/app_routes.dart';
 import 'routes/routes.dart';
 
 void main() {
@@ -14,9 +15,9 @@ class MyApp extends StatelessWidget {
       title: 'Test',
       debugShowCheckedModeBanner: false,
 
-      initialRoute: AppRoutes.splash,
+      initialRoute: AppRoutess.empty,
 
-      onGenerateRoute: AppRoutes.generateRoute,
+      onGenerateRoute: AppRoutess.onGenerateRoute,
     );
   }
 }
