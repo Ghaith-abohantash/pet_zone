@@ -7,6 +7,7 @@ class DoctorAccountPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFFFFFFFF),
       appBar: const DoctorAppBar(title: "Doctor Account"),
       body: SafeArea(
         child: Column(

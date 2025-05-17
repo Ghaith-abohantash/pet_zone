@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class DoctorAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -11,28 +10,19 @@ class DoctorAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: const Color(0xFFFFFFFF),
       leading: IconButton(
-        icon: const Icon(Icons.arrow_back_ios_sharp, color: Colors.black),
-        onPressed: () {print("back button is work");},
+        icon: const Icon(Icons.arrow_back_ios_sharp, color: Color(0xFF5E2A6F)),
+        onPressed: () {
+          Navigator.pop(context);
+        },
       ),
+      centerTitle: true,
       title: Text(
         title,
         style: const TextStyle(
           fontSize: 24,
-          fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
       ),
-      actions: [
-        IconButton(
-          onPressed: () {
-            print("message icon is work");
-          },
-          icon: SvgPicture.asset(
-            'assets/images/ant-design_message-filled.svg',
-          ),
-        ),
-        const SizedBox(width: 8),
-      ],
       elevation: 0,
     );
   }
