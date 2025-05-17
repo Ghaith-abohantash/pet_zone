@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<<<<<<< HEAD
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="io.flutter.plugins.flutter_plugin_android_lifecycle" >
 
     <uses-sdk android:minSdkVersion="21" />
 
+=======
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="io.flutter.plugins.flutter_plugin_android_lifecycle" >
+
+    <uses-sdk android:minSdkVersion="21" />
+
+>>>>>>> 6dcb8f3998a19b1eb956f610300d59d327f3d97d
 </manifest>

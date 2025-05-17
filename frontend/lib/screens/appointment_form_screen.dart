@@ -155,7 +155,7 @@ class _AppointmentFormScreenState extends State<AppointmentFormScreen> {
                       ? () {
                     Navigator.pushNamed(
                       context,
-                      AppRoutes.confirm,
+                      AppRoutess.confirm,
                       arguments: {
                         'doctor': selectedDoctor!,
                         'date': selectedDate!.toString().split(' ')[0],

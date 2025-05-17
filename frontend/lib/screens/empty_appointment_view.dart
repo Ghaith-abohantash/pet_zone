@@ -18,8 +18,13 @@ class _EmptyAppointmentViewState extends State<EmptyAppointmentView>
     _tabController = TabController(length: 3, vsync: this);
 
     _tabController.addListener(() {
-      if (!_tabController.indexIsChanging && _tabController.index == 0) {
-        Navigator.pushNamed(context, AppRoutes.upcoming);
+      if (!_tabController.indexIsChanging) {
+        if (_tabController.index == 0) {
+          Navigator.pushNamed(context, AppRoutess.upcoming);
+        } else if (_tabController.index == 2) {
+          Navigator.pushNamed(context, AppRoutess.cancelled);
+        }
+        // Note: Tab index 1 (Past) is left empty for now.
       }
     });
   }
@@ -36,6 +41,10 @@ class _EmptyAppointmentViewState extends State<EmptyAppointmentView>
       appBar: AppBar(
         title: const Text('Book Appointment'),
         centerTitle: true,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () => Navigator.pop(context),
+        ),
         bottom: TabBar(
           controller: _tabController,
           tabs: const [
@@ -58,17 +67,16 @@ class _EmptyAppointmentViewState extends State<EmptyAppointmentView>
         mainAxisSize: MainAxisSize.min,
         children: [
           Image.asset(
-            'assets/images/add_appointment_icon.png',
+            'assets/images/icc.png',
             width: 120,
             height: 120,
-            color: Colors.deepPurple,
           ),
           const SizedBox(height: 24),
           SizedBox(
             width: 200,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context, AppRoutes.appointmentForm);
+                Navigator.pushNamed(context,AppRoutess .appointmentForm);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepPurple,

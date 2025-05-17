@@ -36,7 +36,7 @@ class ConfirmAppointmentScreen extends StatelessWidget {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, AppRoutes.personalInfo);
+                  Navigator.pushNamed(context, AppRoutess.personalInfo);
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.purple,
