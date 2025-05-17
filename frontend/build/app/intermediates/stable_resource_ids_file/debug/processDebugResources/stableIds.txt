@@ -199,6 +199,7 @@ com.example.petzone_project:attr/fontProviderFetchTimeout = 0x7f03000d
 com.example.petzone_project:color/notification_icon_bg_color = 0x7f040005
 com.example.petzone_project:attr/fontVariationSettings = 0x7f030012
 com.example.petzone_project:id/tag_on_apply_window_listener = 0x7f07004a
+com.example.petzone_project:xml/flutter_image_picker_file_paths = 0x7f0e0000
 com.example.petzone_project:id/edit_text_id = 0x7f070030
 com.example.petzone_project:attr/fontStyle = 0x7f030011
 com.example.petzone_project:string/call_notification_screening_text = 0x7f0b0007

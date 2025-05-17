@@ -639,10 +639,10 @@
                     "from": {
                         "startLines": "3,17",
                         "startColumns": "4,4",
-                        "startOffsets": "176,1064",
+                        "startOffsets": "173,1052",
                         "endLines": "10,19",
                         "endColumns": "12,12",
-                        "endOffsets": "706,1230"
+                        "endOffsets": "696,1216"
                     },
                     "to": {
                         "startLines": "2,10",
@@ -888,10 +888,10 @@
                     "from": {
                         "startLines": "3,17",
                         "startColumns": "4,4",
-                        "startOffsets": "175,1063",
+                        "startOffsets": "172,1051",
                         "endLines": "10,19",
                         "endColumns": "12,12",
-                        "endOffsets": "705,1229"
+                        "endOffsets": "695,1215"
                     },
                     "to": {
                         "startLines": "2,10",
@@ -1002,10 +1002,10 @@
                     "from": {
                         "startLines": "3,18",
                         "startColumns": "4,4",
-                        "startOffsets": "175,1106",
+                        "startOffsets": "172,1094",
                         "endLines": "11,20",
                         "endColumns": "12,12",
-                        "endOffsets": "757,1272"
+                        "endOffsets": "747,1258"
                     },
                     "to": {
                         "startLines": "2,10",
@@ -1296,10 +1296,10 @@
                     "from": {
                         "startLines": "3,18",
                         "startColumns": "4,4",
-                        "startOffsets": "176,1107",
+                        "startOffsets": "173,1095",
                         "endLines": "11,20",
                         "endColumns": "12,12",
-                        "endOffsets": "758,1273"
+                        "endOffsets": "748,1259"
                     },
                     "to": {
                         "startLines": "155,163",
@@ -1308,23 +1308,6 @@
                         "endLines": "162,165",
                         "endColumns": "12,12",
                         "endOffsets": "8341,8510"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Hp\\.gradle\\caches\\8.10.2\\transforms\\13dd610fda78ecd8ad3daad9b8195d7e\\transformed\\jetified-activity-1.8.1\\res\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,97",
-                        "endColumns": "41,59",
-                        "endOffsets": "92,152"
-                    },
-                    "to": {
-                        "startLines": "122,141",
-                        "startColumns": "4,4",
-                        "startOffsets": "5922,6931",
-                        "endColumns": "41,59",
-                        "endOffsets": "5959,6986"
                     }
                 },
                 {
@@ -1395,6 +1378,23 @@
                         "startOffsets": "6991",
                         "endColumns": "53",
                         "endOffsets": "7040"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Hp\\.gradle\\caches\\8.10.2\\transforms\\a70ddd560199940b45ffc1a1c4db7f79\\transformed\\jetified-activity-1.9.3\\res\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,97",
+                        "endColumns": "41,59",
+                        "endOffsets": "92,152"
+                    },
+                    "to": {
+                        "startLines": "122,141",
+                        "startColumns": "4,4",
+                        "startOffsets": "5922,6931",
+                        "endColumns": "41,59",
+                        "endOffsets": "5959,6986"
                     }
                 },
                 {

@@ -30,7 +30,8 @@ class HomeDoctorScreen extends StatelessWidget {
             ),
             color: const Color(0xFF5E2A6F),
             onPressed: () {
-            },
+              
+              },
           ),
           IconButton(
             icon: Icon(Icons.chat, size: 30),
@@ -47,9 +48,9 @@ class HomeDoctorScreen extends StatelessWidget {
           mainAxisSpacing: 16,
           crossAxisSpacing: 16,
           children: [
-            _buildGridItem('assets/images/Profile.png', 'Profile'),
-            InkWell(child: _buildGridItem('assets/images/Appointment.png', 'Appointment'),onTap: (){Navigator.pushNamed(context, AppRoutes.veterinariannotificationscreen);},),
-            _buildGridItem('assets/images/Settings.png', 'Settings'),
+            InkWell(child: _buildGridItem('assets/images/Profile.png', 'Profile'),onTap: (){Navigator.pushNamed(context, AppRoutes.doctorProfilePage);},),
+            InkWell(child: _buildGridItem('assets/images/Appointment.png', 'Appointment'),onTap: (){Navigator.pushNamed(context, AppRoutes.appointmentScreen);},),
+            InkWell(child: _buildGridItem('assets/images/Settings.png', 'Settings'),onTap: (){Navigator.pushNamed(context, AppRoutes.doctorAccountPage);},),
             _buildGridItem('assets/images/AnimalShop.png', 'Animal Shop'),
           ],
         ),

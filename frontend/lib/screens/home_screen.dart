@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/app_bar.dart';
 import '../widgets/buttom_nav.dart';
+import '../routes/routes.dart';
 
 
 
@@ -27,7 +28,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Color(0XFFFFFFFF),
       appBar: const CustomAppBar(title: "Pet Zone"),
       body: Container(
-        margin: EdgeInsets.only(left: 24, right: 24, bottom: 24),
+        margin: EdgeInsets.only(left: 24, right: 24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -37,10 +38,10 @@ class _HomePageState extends State<HomePage> {
               "To maintain your pet's health and happiness, ensure a balanced diet, regular veterinary visits, and routine hygiene. Set aside time for play and exercise, and provide love and attention to help them feel safe and comfortable. ❤️🐾",
               style: TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 19),
+            SizedBox(height: 16),
             GestureDetector(
               onTap: () {
-                print("home image clicked!");
+                // Navigator.pushReplacementNamed(context, AppRoutes.bookappointemt);
               },
               child: Image.asset("assets/images/home-image.png"),
             ),
@@ -60,7 +61,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     TextButton.icon(
                       onPressed: () {
-                        print("See All clicked");
+                        Navigator.pushReplacementNamed(context, AppRoutes.buyPets);
                       },
                       icon: Text(
                         "See All",
