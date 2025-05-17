@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../routes/app_routes.dart';
+import '../routes/routes.dart';
 
 class ConfirmAppointmentScreen extends StatelessWidget {
   final String doctor;
@@ -36,7 +36,7 @@ class ConfirmAppointmentScreen extends StatelessWidget {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, AppRoutess.personalInfo);
+                  Navigator.pushNamed(context, AppRoutes.personalInfo);
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.purple,

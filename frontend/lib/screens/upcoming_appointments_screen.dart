@@ -122,8 +122,19 @@ class _AppointmentsList extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurple,
                   minimumSize: const Size(80, 32),
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
-                child: const Text('Remember me', style: TextStyle(fontSize: 10)),
+                child: const Text(
+                  'Remember me',
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Colors.white, // ✅ الأبيض واضح
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
               const SizedBox(height: 8),
               ElevatedButton(
@@ -131,8 +142,19 @@ class _AppointmentsList extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.grey[300],
                   minimumSize: const Size(80, 32),
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
                 ),
-                child: const Text('Cancel', style: TextStyle(fontSize: 10)),
+                child: const Text(
+                  'Cancel',
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ],
           )
