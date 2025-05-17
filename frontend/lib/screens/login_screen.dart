@@ -115,7 +115,7 @@ class _LogInPageState extends State<LogInPage> {
                   margin: EdgeInsets.only(top: 20),
                   child: ElevatedButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.home);
+                      Navigator.pushReplacementNamed(context, AppRoutes.petZoneHome);
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF5E2A6F),
