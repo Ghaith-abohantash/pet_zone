@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../routes/routes.dart';
 class MessagePage extends StatelessWidget {
   const MessagePage({super.key});
 
@@ -9,7 +9,9 @@ class MessagePage extends StatelessWidget {
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios_new_sharp),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
         title: const Text(
           'Messages',
@@ -34,7 +36,7 @@ class MessagePage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                print("Button is clickable");
+                Navigator.pushReplacementNamed(context, AppRoutes.chatPage);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

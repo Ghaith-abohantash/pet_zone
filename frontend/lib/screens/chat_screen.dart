@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../routes/routes.dart';
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
@@ -46,10 +47,15 @@ class ChatPage extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center, // Align icon and text vertically
               children: [
-                Image.asset(
+                GestureDetector(
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, AppRoutes.doctorProfilePage);
+                  },
+                child:Image.asset(
                   'assets/images/doctor_profile.png',
                   width: 30,
                   height: 30,
+                ),
                 ),
                 const SizedBox(width: 10),
                 Flexible(
