@@ -52,7 +52,7 @@ class WelcomePage extends StatelessWidget {
 
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, AppRoutes.home);
+                    Navigator.pushReplacementNamed(context, AppRoutes.logIn);
 
                   },
                   style: ElevatedButton.styleFrom(

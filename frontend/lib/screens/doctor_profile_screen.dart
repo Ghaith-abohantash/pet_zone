@@ -1,35 +1,17 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/doctor_app_bar.dart';
+
 class DoctorProfilePage extends StatelessWidget {
   const DoctorProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const DoctorAppBar(title: "Doctor Account"),
       body: SafeArea(
         child: Column(
           children: [
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12),
-              child: Row(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Icon(Icons.arrow_back, size: 28),
-                  ),
-                  const SizedBox(width: 8),
-                  Text(
-                    "Doctor Profile",
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-                  ),
-                ],
-              ),
-            ),
-
-
             Expanded(
               child: SingleChildScrollView(
                 child: Padding(
