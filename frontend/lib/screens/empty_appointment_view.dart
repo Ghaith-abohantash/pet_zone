@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../routes/app_routes.dart';
+import '../routes/routes.dart';
 
 class EmptyAppointmentView extends StatefulWidget {
   const EmptyAppointmentView({super.key});
@@ -20,9 +20,9 @@ class _EmptyAppointmentViewState extends State<EmptyAppointmentView>
     _tabController.addListener(() {
       if (!_tabController.indexIsChanging) {
         if (_tabController.index == 0) {
-          Navigator.pushNamed(context, AppRoutess.upcoming);
+          Navigator.pushNamed(context, AppRoutes.upcoming);
         } else if (_tabController.index == 2) {
-          Navigator.pushNamed(context, AppRoutess.cancelled);
+          Navigator.pushNamed(context, AppRoutes.cancelled);
         }
         // Note: Tab index 1 (Past) is left empty for now.
       }
@@ -76,7 +76,7 @@ class _EmptyAppointmentViewState extends State<EmptyAppointmentView>
             width: 200,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.pushNamed(context,AppRoutess .appointmentForm);
+                Navigator.pushNamed(context,AppRoutes .appointmentForm);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.deepPurple,

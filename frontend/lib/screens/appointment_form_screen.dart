@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import '../routes/app_routes.dart';
+import '../routes/routes.dart';
 
 class AppointmentFormScreen extends StatefulWidget {
   const AppointmentFormScreen({super.key});
@@ -155,7 +155,7 @@ class _AppointmentFormScreenState extends State<AppointmentFormScreen> {
                       ? () {
                     Navigator.pushNamed(
                       context,
-                      AppRoutess.confirm,
+                      AppRoutes.confirm,
                       arguments: {
                         'doctor': selectedDoctor!,
                         'date': selectedDate!.toString().split(' ')[0],
