@@ -16,6 +16,7 @@ import '../screens/signup_screen.dart';
 import '../screens/login_screen.dart';
 import '../screens/splash_screen.dart';
 import '../screens/home_doctor_screen.dart';
+import '../screens/user_account_screen.dart';
 import '../screens/user_notification_screen.dart';
 import '../screens/verification_screen.dart';
 import '../screens/welcome_screen.dart';
@@ -46,6 +47,9 @@ class AppRoutes {
   static const String verificationscreen= '/verificationscreen';
   static const String resetpasswordscreen= '/resetpasswordscreen';
   static const String forgetpasswordscreen= '/forgetpasswordscreen';
+  static const String userAccountPage= '/userAccountPage';
+
+
 
 
 
@@ -70,7 +74,9 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_)=> const DoctorProfilePage() );
       case doctorAccountPage:
         return MaterialPageRoute(builder: (_)=> const DoctorAccountPage() );
-      case userNotification:
+      case userAccountPage:
+        return MaterialPageRoute(builder: (_)=> const UserAccountPage() );
+        case userNotification:
         return MaterialPageRoute(builder: (_)=> const UserNotificationPage() );
       case favorite:
         return MaterialPageRoute(builder: (_)=> const FavoritePage() );
