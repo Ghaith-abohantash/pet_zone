@@ -20,7 +20,6 @@ class DoctorAppBar extends StatelessWidget implements PreferredSizeWidget {
         title,
         style: const TextStyle(
           fontSize: 24,
-          fontWeight: FontWeight.bold,
           color: Colors.black,
         ),
       ),

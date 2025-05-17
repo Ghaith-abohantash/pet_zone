@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../routes/routes.dart';
+
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
 
@@ -19,7 +21,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           onPressed: () {
-            print("shopping icon clicked");
+            // Navigator.pushReplacementNamed(context, AppRoutes.carttt);
           },
           icon: SvgPicture.asset(
             'assets/images/icon-park-solid_shopping.svg',
@@ -28,7 +30,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         const SizedBox(width: 20),
         IconButton(
           onPressed: () {
-            print("message icon clicked");
+            Navigator.pushReplacementNamed(context, AppRoutes.messagePage);
           },
           icon: SvgPicture.asset(
             'assets/images/ant-design_message-filled.svg',
