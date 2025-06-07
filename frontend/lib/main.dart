@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'routes/routes.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -14,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Test',
       debugShowCheckedModeBanner: false,
 
-      initialRoute: AppRoutes.empty,
+      initialRoute: AppRoutes.cart,
 
       onGenerateRoute: AppRoutes.generateRoute,
     );
