@@ -37,7 +37,7 @@ class MessagePage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                Navigator.pushReplacementNamed(context, AppRoutes.chatPage);
+                Navigator.pushNamed(context, AppRoutes.chatPage);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -13,8 +13,8 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\debug\AndroidManifest.xml:6:5-66
-15-->C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\debug\AndroidManifest.xml:6:22-64
+15-->D:\dev\pet_zone\frontend\android\app\src\debug\AndroidManifest.xml:6:5-66
+15-->D:\dev\pet_zone\frontend\android\app\src\debug\AndroidManifest.xml:6:22-64
 16    <!--
 17     Required to query activities that can process text, see:
 18         https://developer.android.com/training/package-visibility and
@@ -23,16 +23,16 @@
 21         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
 22    -->
 23    <queries>
-23-->C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:39:5-44:15
+23-->D:\dev\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:39:5-44:15
 24        <intent>
-24-->C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:40:9-43:18
+24-->D:\dev\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:40:9-43:18
 25            <action android:name="android.intent.action.PROCESS_TEXT" />
-25-->C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:41:13-72
-25-->C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:41:21-70
+25-->D:\dev\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:41:13-72
+25-->D:\dev\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:41:21-70
 26
 27            <data android:mimeType="text/plain" />
-27-->C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:42:13-50
-27-->C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:42:19-48
+27-->D:\dev\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:42:13-50
+27-->D:\dev\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:42:19-48
 28        </intent>
 29    </queries>
 30
@@ -97,37 +97,37 @@
 79            android:value="2" />
 80
 81        <service
-81-->[:firebase_auth] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_auth\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:8:9-12:19
+81-->[:firebase_auth] D:\dev\pet_zone\frontend\build\firebase_auth\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:8:9-12:19
 82            android:name="com.google.firebase.components.ComponentDiscoveryService"
-82-->[:firebase_auth] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_auth\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:8:18-89
+82-->[:firebase_auth] D:\dev\pet_zone\frontend\build\firebase_auth\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:8:18-89
 83            android:directBootAware="true"
 83-->[com.google.firebase:firebase-common:20.4.3] C:\Users\Hp\.gradle\caches\8.10.2\transforms\7753fbb9eb20d93e79e4caf23f22802c\transformed\jetified-firebase-common-20.4.3\AndroidManifest.xml:32:13-43
 84            android:exported="false" >
 84-->[com.google.firebase:firebase-auth-ktx:22.3.1] C:\Users\Hp\.gradle\caches\8.10.2\transforms\78478d2c40f2091483d1a93989d1f927\transformed\jetified-firebase-auth-ktx-22.3.1\AndroidManifest.xml:10:13-37
 85            <meta-data
-85-->[:firebase_auth] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_auth\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:13-11:85
+85-->[:firebase_auth] D:\dev\pet_zone\frontend\build\firebase_auth\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:13-11:85
 86                android:name="com.google.firebase.components:io.flutter.plugins.firebase.auth.FlutterFirebaseAuthRegistrar"
-86-->[:firebase_auth] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_auth\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:17-124
+86-->[:firebase_auth] D:\dev\pet_zone\frontend\build\firebase_auth\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:17-124
 87                android:value="com.google.firebase.components.ComponentRegistrar" />
-87-->[:firebase_auth] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_auth\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:17-82
+87-->[:firebase_auth] D:\dev\pet_zone\frontend\build\firebase_auth\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:17-82
 88            <meta-data
-88-->[:cloud_firestore] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\cloud_firestore\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:13-11:85
+88-->[:cloud_firestore] D:\dev\pet_zone\frontend\build\cloud_firestore\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:13-11:85
 89                android:name="com.google.firebase.components:io.flutter.plugins.firebase.firestore.FlutterFirebaseFirestoreRegistrar"
-89-->[:cloud_firestore] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\cloud_firestore\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:17-134
+89-->[:cloud_firestore] D:\dev\pet_zone\frontend\build\cloud_firestore\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:17-134
 90                android:value="com.google.firebase.components.ComponentRegistrar" />
-90-->[:cloud_firestore] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\cloud_firestore\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:17-82
+90-->[:cloud_firestore] D:\dev\pet_zone\frontend\build\cloud_firestore\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:17-82
 91            <meta-data
-91-->[:firebase_storage] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_storage\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:13-11:85
+91-->[:firebase_storage] D:\dev\pet_zone\frontend\build\firebase_storage\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:13-11:85
 92                android:name="com.google.firebase.components:io.flutter.plugins.firebase.storage.FlutterFirebaseAppRegistrar"
-92-->[:firebase_storage] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_storage\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:17-126
+92-->[:firebase_storage] D:\dev\pet_zone\frontend\build\firebase_storage\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:17-126
 93                android:value="com.google.firebase.components.ComponentRegistrar" />
-93-->[:firebase_storage] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_storage\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:17-82
+93-->[:firebase_storage] D:\dev\pet_zone\frontend\build\firebase_storage\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:17-82
 94            <meta-data
-94-->[:firebase_core] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:13-11:85
+94-->[:firebase_core] D:\dev\pet_zone\frontend\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:13-11:85
 95                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
-95-->[:firebase_core] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:17-124
+95-->[:firebase_core] D:\dev\pet_zone\frontend\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:17-124
 96                android:value="com.google.firebase.components.ComponentRegistrar" />
-96-->[:firebase_core] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:17-82
+96-->[:firebase_core] D:\dev\pet_zone\frontend\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:17-82
 97            <meta-data
 97-->[com.google.firebase:firebase-auth-ktx:22.3.1] C:\Users\Hp\.gradle\caches\8.10.2\transforms\78478d2c40f2091483d1a93989d1f927\transformed\jetified-firebase-auth-ktx-22.3.1\AndroidManifest.xml:11:13-13:85
 98                android:name="com.google.firebase.components:com.google.firebase.auth.ktx.FirebaseAuthLegacyRegistrar"
@@ -222,7 +222,7 @@
 142-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\Hp\.gradle\caches\8.10.2\transforms\b45093fdb38786cbfe49c26826c35aaf\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:39:27-75
 143
 144                <data
-144-->C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:42:13-50
+144-->D:\dev\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:42:13-50
 145                    android:host="firebase.auth"
 146                    android:path="/"
 147                    android:scheme="genericidp" />
@@ -254,7 +254,7 @@
 160-->[com.google.firebase:firebase-auth:22.3.1] C:\Users\Hp\.gradle\caches\8.10.2\transforms\b45093fdb38786cbfe49c26826c35aaf\transformed\jetified-firebase-auth-22.3.1\AndroidManifest.xml:39:27-75
 161
 162                <data
-162-->C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:42:13-50
+162-->D:\dev\pet_zone\frontend\android\app\src\main\AndroidManifest.xml:42:13-50
 163                    android:host="firebase.auth"
 164                    android:path="/"
 165                    android:scheme="recaptcha" />
@@ -262,43 +262,43 @@
 167        </activity>
 168
 169        <provider
-169-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:9-17:20
+169-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:9-17:20
 170            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-170-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:13-82
+170-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:13-82
 171            android:authorities="com.example.petzone_project.flutter.image_provider"
-171-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:13-74
+171-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:13-74
 172            android:exported="false"
-172-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:12:13-37
+172-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:12:13-37
 173            android:grantUriPermissions="true" >
-173-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:13:13-47
+173-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:13:13-47
 174            <meta-data
-174-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:14:13-16:75
+174-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:14:13-16:75
 175                android:name="android.support.FILE_PROVIDER_PATHS"
-175-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:15:17-67
+175-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:15:17-67
 176                android:resource="@xml/flutter_image_picker_file_paths" />
-176-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:16:17-72
+176-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:16:17-72
 177        </provider> <!-- Trigger Google Play services to install the backported photo picker module. -->
 178        <service
-178-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:19:9-31:19
+178-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:19:9-31:19
 179            android:name="com.google.android.gms.metadata.ModuleDependencies"
-179-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:20:13-78
+179-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:20:13-78
 180            android:enabled="false"
-180-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:21:13-36
+180-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:21:13-36
 181            android:exported="false" >
-181-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:22:13-37
+181-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:22:13-37
 182            <intent-filter>
-182-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:24:13-26:29
+182-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:24:13-26:29
 183                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
-183-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:25:17-94
-183-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:25:25-91
+183-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:25:17-94
+183-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:25:25-91
 184            </intent-filter>
 185
 186            <meta-data
-186-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:28:13-30:36
+186-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:28:13-30:36
 187                android:name="photopicker_activity:0:required"
-187-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:29:17-63
+187-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:29:17-63
 188                android:value="" />
-188-->[:image_picker_android] C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:30:17-33
+188-->[:image_picker_android] D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:30:17-33
 189        </service>
 190
 191        <provider

@@ -31,6 +31,8 @@ import '../screens/cancelled_appointments_screen.dart';
 import '../screens/empty_cart_screen.dart';
 import '../screens/cart_screen.dart';
 import '../screens/veterinarian_notification_screen.dart';
+import '../screens/payment_screen.dart';
+
 
 import '../screens/adopt_pet_details_screen.dart';
 
@@ -39,6 +41,8 @@ class AppRoutes {
   static const String splash = '/';
   static const String home = '/home';
   static const String welcomePage = '/welcomepage';
+  static const String payment = '/payment';
+
   static const String appointmentScreen= '/appointmentScreen';
   static const String logIn= '/logIn';
   static const String signUp= '/signUp';
@@ -87,6 +91,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_)=> const LogInPage() );
       case signUp:
         return MaterialPageRoute(builder: (_)=> const SignupPage() );
+      case payment:
+        return MaterialPageRoute(builder: (_)=> const PaymentScreen() );
       case doctorProfilePage:
         return MaterialPageRoute(builder: (_)=> const DoctorProfilePage() );
       case doctorAccountPage:

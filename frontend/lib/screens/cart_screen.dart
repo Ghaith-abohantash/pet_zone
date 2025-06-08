@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../routes/routes.dart';
+
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
@@ -97,7 +99,13 @@ class CartScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+
+                  Navigator.pushNamed(
+                      context, AppRoutes.payment);
+
+
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurple,
                   padding: const EdgeInsets.symmetric(vertical: 14),

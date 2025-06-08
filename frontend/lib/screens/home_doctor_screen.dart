@@ -28,7 +28,7 @@ class HomeDoctorScreen extends StatelessWidget {
             icon: const Icon(Icons.chat, size: 30),
             color: Theme.of(context).primaryColor,
             onPressed: () {
-              // chat action
+              Navigator.pushNamed(context, AppRoutes.messagePage);
             },
           ),
         ],
@@ -67,12 +67,16 @@ class HomeDoctorScreen extends StatelessWidget {
                 label: 'Settings',
               ),
             ),
-            const HomeDoctorItems(
+      InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, AppRoutes.animalShopPage);
+        },
+           child :  const HomeDoctorItems(
               imagePath: 'assets/images/AnimalShop.png',
               label: 'Animal Shop',
             ),
-          ],
-        ),
+      ) ],
+       ),
       ),
     );
   }

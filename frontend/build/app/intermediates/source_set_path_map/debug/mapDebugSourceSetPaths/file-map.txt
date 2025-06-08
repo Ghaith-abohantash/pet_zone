@@ -22,19 +22,19 @@ com.example.petzone_project.app-jetified-lifecycle-livedata-core-ktx-2.7.0-20 C:
 com.example.petzone_project.app-jetified-annotation-experimental-1.4.0-21 C:\Users\Hp\.gradle\caches\8.10.2\transforms\f09a22cdd213028a38958888c7d16e20\transformed\jetified-annotation-experimental-1.4.0\res
 com.example.petzone_project.app-browser-1.4.0-22 C:\Users\Hp\.gradle\caches\8.10.2\transforms\f8742dbdd8ad548bbf5dde49a0ea9a7d\transformed\browser-1.4.0\res
 com.example.petzone_project.app-core-runtime-2.2.0-23 C:\Users\Hp\.gradle\caches\8.10.2\transforms\ff849810dfe34a0ab790c402787c149e\transformed\core-runtime-2.2.0\res
-com.example.petzone_project.app-debug-24 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\debug\res
-com.example.petzone_project.app-main-25 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\main\res
-com.example.petzone_project.app-google-services-26 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\generated\res\google-services\debug
-com.example.petzone_project.app-pngs-27 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\generated\res\pngs\debug
-com.example.petzone_project.app-resValues-28 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\generated\res\resValues\debug
-com.example.petzone_project.app-packageDebugResources-29 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.petzone_project.app-packageDebugResources-30 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.petzone_project.app-debug-31 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\intermediates\merged_res\debug\mergeDebugResources
-com.example.petzone_project.app-debug-32 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\cloud_firestore\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-33 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_auth\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-34 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_core\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-35 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_storage\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-36 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\flutter_native_splash\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-37 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-38 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-39 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\path_provider_android\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-24 D:\dev\pet_zone\frontend\android\app\src\debug\res
+com.example.petzone_project.app-main-25 D:\dev\pet_zone\frontend\android\app\src\main\res
+com.example.petzone_project.app-google-services-26 D:\dev\pet_zone\frontend\build\app\generated\res\google-services\debug
+com.example.petzone_project.app-pngs-27 D:\dev\pet_zone\frontend\build\app\generated\res\pngs\debug
+com.example.petzone_project.app-resValues-28 D:\dev\pet_zone\frontend\build\app\generated\res\resValues\debug
+com.example.petzone_project.app-packageDebugResources-29 D:\dev\pet_zone\frontend\build\app\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.petzone_project.app-packageDebugResources-30 D:\dev\pet_zone\frontend\build\app\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.petzone_project.app-debug-31 D:\dev\pet_zone\frontend\build\app\intermediates\merged_res\debug\mergeDebugResources
+com.example.petzone_project.app-debug-32 D:\dev\pet_zone\frontend\build\cloud_firestore\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-33 D:\dev\pet_zone\frontend\build\firebase_auth\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-34 D:\dev\pet_zone\frontend\build\firebase_core\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-35 D:\dev\pet_zone\frontend\build\firebase_storage\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-36 D:\dev\pet_zone\frontend\build\flutter_native_splash\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-37 D:\dev\pet_zone\frontend\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-38 D:\dev\pet_zone\frontend\build\image_picker_android\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-39 D:\dev\pet_zone\frontend\build\path_provider_android\intermediates\packaged_res\debug\packageDebugResources

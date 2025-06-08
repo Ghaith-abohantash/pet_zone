@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../routes/routes.dart';
+
 class PaymentForm extends StatefulWidget {
   const PaymentForm({super.key});
 
@@ -63,7 +65,7 @@ class _PaymentFormState extends State<PaymentForm> {
         content: const Text("Payment processed successfully."),
         actions: [
           TextButton(
-            onPressed: () => Navigator.pop(context),
+            onPressed: () =>  Navigator.pushNamed(context, AppRoutes.petZoneHome),
             child: const Text("OK"),
           )
         ],

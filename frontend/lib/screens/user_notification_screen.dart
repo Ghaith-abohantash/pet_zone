@@ -89,10 +89,7 @@ class UserNotificationPage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNav(
-        selectedIndex: 3,
-        onItemTapped: (index) {},
-      ),
+
     );
   }
 }

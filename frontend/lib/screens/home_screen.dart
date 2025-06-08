@@ -113,6 +113,8 @@ class _HomePageState extends State<HomePage> {
       const EmptyAppointmentView(),
       const BuyPets(),
       const UserNotificationPage(),
+      const UserNotificationPage(),
+
 
     ];
 

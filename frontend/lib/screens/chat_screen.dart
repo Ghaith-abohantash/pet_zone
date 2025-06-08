@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../routes/routes.dart';
+import 'package:flutter/material.dart';
+
+import '../routes/routes.dart';
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
@@ -49,7 +52,7 @@ class ChatPage extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, AppRoutes.doctorProfilePage);
+                    Navigator.pushNamed(context, AppRoutes.doctorProfilePage);
                   },
                 child:Image.asset(
                   'assets/images/doctor_profile.png',
