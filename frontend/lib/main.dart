@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => FavoriteProvider()),
         ChangeNotifierProvider(create: (_) => SalePetProvider()),
         ChangeNotifierProvider(create: (_) => AdoptPetProvider()),
-        ChangeNotifierProvider(create: (_) => HomeProvider()), // <-- ADD THIS LINE
+        ChangeNotifierProvider(create: (_) => HomeProvider()),
       ],
       child: MaterialApp(
         title: 'Test',
