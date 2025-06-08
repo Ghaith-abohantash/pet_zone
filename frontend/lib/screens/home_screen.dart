@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:petzone_project/screens/personal_info_screen.dart';
+import 'package:petzone_project/screens/empty_appointment_view.dart';
+import 'package:petzone_project/screens/upcoming_appointments_screen.dart';
 import 'package:petzone_project/screens/user_notification_screen.dart';
 import 'package:provider/provider.dart';
 import '../providers/home_provider.dart';
 import '../widgets/buttom_nav.dart';
 import '../widgets/app_bar.dart';
 import 'buy_pets_screen.dart';
-import 'empty_appointment_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -53,7 +53,13 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 16),
             GestureDetector(
               onTap: () {
-                print("Tapped!");
+
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const EmptyAppointmentView(),
+                  ),
+                );
               },
               child: Image.asset("assets/images/home-image.png"),
             ),
@@ -110,10 +116,9 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      const EmptyAppointmentView(),
+      const UpcomingAppointmentsScreen(),
       const BuyPets(),
       const UserNotificationPage(),
-
     ];
 
     return Scaffold(
@@ -183,3 +188,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
