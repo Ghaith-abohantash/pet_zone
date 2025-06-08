@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-
 import '../routes/routes.dart';
+import '../widgets/home_doctor_items.dart';
 
 class HomeDoctorScreen extends StatelessWidget {
   const HomeDoctorScreen({super.key});
@@ -9,34 +8,27 @@ class HomeDoctorScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
-
     int crossAxisCount = (screenWidth > 600) ? 3 : 2;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
           'Pet Zone',
-          style: GoogleFonts.poppins(
-            fontSize: 24,
-            color: const Color(0xFF5E2A6F),
-            fontWeight: FontWeight.bold,
-          ),
+          style: Theme.of(context).appBarTheme.titleTextStyle,
         ),
         actions: [
           IconButton(
-            icon: Icon(
-              Icons.notifications,
-              size: 30,
-            ),
-            color: const Color(0xFF5E2A6F),
+            icon: const Icon(Icons.notifications, size: 30),
+            color: Theme.of(context).primaryColor,
             onPressed: () {
-              
-              },
+              Navigator.pushNamed(context, AppRoutes.doctornotification);
+            },
           ),
           IconButton(
-            icon: Icon(Icons.chat, size: 30),
-            color: const Color(0xFF5E2A6F),
+            icon: const Icon(Icons.chat, size: 30),
+            color: Theme.of(context).primaryColor,
             onPressed: () {
+              // chat action
             },
           ),
         ],
@@ -48,38 +40,40 @@ class HomeDoctorScreen extends StatelessWidget {
           mainAxisSpacing: 16,
           crossAxisSpacing: 16,
           children: [
-            InkWell(child: _buildGridItem('assets/images/Profile.png', 'Profile'),onTap: (){Navigator.pushNamed(context, AppRoutes.doctorProfilePage);},),
-            InkWell(child: _buildGridItem('assets/images/Appointment.png', 'Appointment'),onTap: (){Navigator.pushNamed(context, AppRoutes.appointmentScreen);},),
-            InkWell(child: _buildGridItem('assets/images/Settings.png', 'Settings'),onTap: (){Navigator.pushNamed(context, AppRoutes.doctorAccountPage);},),
-            _buildGridItem('assets/images/AnimalShop.png', 'Animal Shop'),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.doctorProfilePage);
+              },
+              child: const HomeDoctorItems(
+                imagePath: 'assets/images/Profile.png',
+                label: 'Profile',
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.appointmentScreen);
+              },
+              child: const HomeDoctorItems(
+                imagePath: 'assets/images/Appointment.png',
+                label: 'Appointment',
+              ),
+            ),
+            InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, AppRoutes.doctorAccountPage);
+              },
+              child: const HomeDoctorItems(
+                imagePath: 'assets/images/Settings.png',
+                label: 'Settings',
+              ),
+            ),
+            const HomeDoctorItems(
+              imagePath: 'assets/images/AnimalShop.png',
+              label: 'Animal Shop',
+            ),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildGridItem(String imagePath, String label) {
-    return Column(
-      children: [
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.all(12.0),
-            child: Image.asset(
-              imagePath,
-              fit: BoxFit.contain,
-            ),
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(
-          label,
-          style: GoogleFonts.poppins(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
-            color: Color(0xFF5E2A6F),
-          ),
-        ),
-      ],
     );
   }
 }

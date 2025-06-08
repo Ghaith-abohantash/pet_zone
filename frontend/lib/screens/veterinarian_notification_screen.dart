@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../viewmodels/notification_view_model.dart';
+import '../models/notification_model.dart';
+import '../widgets/notification_Card.dart';
+import '../providers/auth_provider.dart';
 
 class VeterinarianNotificationScreen extends StatefulWidget {
   const VeterinarianNotificationScreen({super.key});
@@ -11,17 +17,19 @@ class VeterinarianNotificationScreen extends StatefulWidget {
 
 class _VeterinarianNotificationScreenState
     extends State<VeterinarianNotificationScreen> {
-  List<bool> _buttonStates = List.generate(6, (index) => false);
-
-  void markAllAsRead() {
-    setState(() {
-      _buttonStates = List.generate(_buttonStates.length, (index) => true);
-    });
-    print("All buttons marked as read");
-  }
+  final NotificationViewModel viewModel = NotificationViewModel();
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+    final doctorId = authProvider.user?.uid;
+
+    if (doctorId == null) {
+      return const Scaffold(
+        body: Center(child: Text("User not logged in.")),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -31,13 +39,11 @@ class _VeterinarianNotificationScreenState
           children: [
             IconButton(
               icon: const Icon(Icons.arrow_back, color: Colors.black),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              onPressed: () => Navigator.pop(context),
             ),
             const SizedBox(width: 4),
             Text(
-              "Notification",
+              "Notifications",
               style: GoogleFonts.poppins(
                 textStyle: const TextStyle(
                   color: Colors.black,
@@ -49,81 +55,60 @@ class _VeterinarianNotificationScreenState
           ],
         ),
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      body: StreamBuilder<List<NotificationModel>>(
+        stream: viewModel.getNotificationsStream(doctorId),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return const Center(child: Text("Error loading notifications."));
+          }
+          if (!snapshot.hasData) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          final notifications = snapshot.data!;
+          if (notifications.isEmpty) {
+            return const Center(child: Text("No notifications found."));
+          }
+          return Column(
             children: [
               Align(
                 alignment: Alignment.centerRight,
-                child: TextButton(
-                  onPressed: markAllAsRead,
-                  child: const Text(
-                    "Make as seen",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Color(0xFF7A7A7A),
-                      fontWeight: FontWeight.w600,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 16.0, top: 8),
+                  child: TextButton(
+                    onPressed: () async {
+                      await viewModel.markAllAsRead(notifications);
+                      setState(() {});
+                    },
+                    child: const Text(
+                      "Make as seen",
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF7A7A7A),
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                 ),
               ),
-              const SizedBox(height: 12),
-              ...List.generate(6, (index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 16),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.all(20),
-                      backgroundColor: _buttonStates[index]
-                          ? Colors.white
-                          : const Color(0xFFEFEFEF),
-                      foregroundColor: Colors.black,
-                      elevation: 4,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(9),
-                        side: const BorderSide(color: Color(0xFFA7C210)),
-                      ),
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        _buttonStates[index] = true;
-                      });
-                      print("Notification button ${index + 1} is work");
-                    },
-                    child: Row(
-                      children: [
-                        Image.asset(
-                          'assets/images/reminder_icon.png',
-                          width: 60,
-                          height: 60,
-                        ),
-                        const SizedBox(width: 16),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Reminder ${index + 1}",
-                              style: const TextStyle(fontSize: 18),
-                            ),
-                            const Text(
-                              "Your appointment is soon ",
-                              style: TextStyle(
-                                fontSize: 16,
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              }),
+              Expanded(
+                child: ListView.builder(
+                  padding: const EdgeInsets.all(16),
+                  itemCount: notifications.length,
+                  itemBuilder: (context, index) {
+                    final notif = notifications[index];
+                    return NotificationCard(
+                      notification: notif,
+                      onTap: () async {
+                        await viewModel.markNotificationAsSeen(notif.id);
+                        setState(() {});
+                      },
+                    );
+                  },
+                ),
+              ),
             ],
-          ),
-        ),
+          );
+        },
       ),
     );
   }
