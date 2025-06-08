@@ -53,7 +53,7 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 16),
             GestureDetector(
               onTap: () {
-                // عند الضغط على الصورة، ننتقل إلى EmptyAppointmentView
+
                 Navigator.push(
                   context,
                   MaterialPageRoute(
