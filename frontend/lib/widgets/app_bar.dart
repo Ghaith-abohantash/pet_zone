@@ -10,6 +10,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       title: Padding(
         padding: const EdgeInsets.only(left: 8),
         child: Text(
@@ -21,7 +22,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           onPressed: () {
-            // Navigator.pushReplacementNamed(context, AppRoutes.carttt);
+            print("Tapped!");
+            Navigator.pushNamed(context, AppRoutes.cart);
           },
           icon: SvgPicture.asset(
             'assets/images/icon-park-solid_shopping.svg',
@@ -30,7 +32,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         const SizedBox(width: 20),
         IconButton(
           onPressed: () {
-            Navigator.pushReplacementNamed(context, AppRoutes.messagePage);
+            Navigator.pushNamed(context, AppRoutes.messagePage);
           },
           icon: SvgPicture.asset(
             'assets/images/ant-design_message-filled.svg',
