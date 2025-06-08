@@ -1,0 +1,7 @@
+# C/C++ build system timings
+<<<<<<<< HEAD:frontend/build/app/intermediates/cxx/Debug/v4c3j1q6/logs/arm64-v8a/generate_cxx_metadata_1109_timing.txt
+generate_cxx_metadata 23ms
+========
+generate_cxx_metadata 19ms
+>>>>>>>> 1789852270d30572635af1d983081f62e0c66da8:frontend/build/app/intermediates/cxx/Debug/4o1q384x/logs/arm64-v8a/generate_cxx_metadata_222_timing.txt
+

@@ -1,631 +1,107 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../routes/routes.dart';
 import '../widgets/doctor_app_bar.dart';
+import '../viewmodels/animal_shop_viewmodel.dart';
+import '../providers/animal_shop_provider.dart';
 
-class AnimalShopScreen extends StatefulWidget {
+class AnimalShopScreen extends StatelessWidget {
   const AnimalShopScreen({super.key});
 
   @override
-  State<AnimalShopScreen> createState() => _AnimalShopScreenState();
-}
-
-class _AnimalShopScreenState extends State<AnimalShopScreen> {
-  List<bool> _toggleSelected = [true, false];
-
-  int _currentToggleIndex = 0;
-
-  void _onTogglePressed(int index) {
-    setState(() {
-      for (int i = 0; i < _toggleSelected.length; i++) {
-        _toggleSelected[i] = i == index;
-      }
-      _currentToggleIndex = index;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Color(0xFFFFFFFF),
-    appBar: const DoctorAppBar(title: "Animal Shop"),
-      body:Padding(
-        padding: const EdgeInsets.only(left:24,right:24,bottom:24),
-        child: Column(
-          children: [
-            Container(
-              width: 350,
-              height: 50,
-              child: ElevatedButton(
-                onPressed: () {
-                  print("Add new pet is work");
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF5E2A6F),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(9),
+    return AnimalShopProvider(
+      child: Scaffold(
+        appBar: const DoctorAppBar(title: "Animal Shop"),
+        body: Padding(
+          padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
+          child: Consumer<AnimalShopViewModel>(
+            builder: (context, viewModel, child) {
+              return Column(
+                children: [
+                  SizedBox(
+                    width: 350,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                            context, AppRoutes.addAnimalPage);
+                      },
+                      child: const Text("Add New Pet"),
+                    ),
                   ),
-                ),
-                child: Text(
-                  "Add New Pet",
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-              ),
-            ),
-            SizedBox(height: 16),
-            ToggleButtons(
-              isSelected: _toggleSelected,
-              onPressed: _onTogglePressed,
-              borderRadius: BorderRadius.circular(9),
-              selectedColor: Colors.white,
-              fillColor: Color(0xFF5E2A6F),
-              borderColor: Color(0xFFA7C210),
-              selectedBorderColor: Color(0xFFA7C210),
-              borderWidth: 1.5,
-              constraints: BoxConstraints(minWidth: 170, minHeight: 32),
-              children: const [
-                Text(
-                  "Sale",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
-                ),
-                Text(
-                  "Adoption",
-                  style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
-                ),
-              ],
-            ),
-            const SizedBox(height: 24),
-            _currentToggleIndex == 0
-                ? Expanded(child:ListView(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                  const SizedBox(height: 16),
+                  ToggleButtons(
+                    isSelected: [
+                      viewModel.currentToggleIndex == 0,
+                      viewModel.currentToggleIndex == 1
+                    ],
+                    onPressed: viewModel.setToggleIndex,
+                    borderRadius: BorderRadius.circular(9),
+                    selectedColor: Colors.white,
+                    fillColor: Theme.of(context).primaryColor,
+                    borderColor: const Color(0xFFA7C210),
+                    selectedBorderColor: const Color(0xFFA7C210),
+                    borderWidth: 1.5,
+                    constraints: const BoxConstraints(minWidth: 170, minHeight: 32),
+                    children: const [
+                      Text("Sale"),
+                      Text("Adoption"),
+                    ],
+                  ),
+                  const SizedBox(height: 24),
+                  viewModel.isLoading
+                      ? const Center(child: CircularProgressIndicator())
+                      : Expanded(
+                    child: ListView(
                       children: [
-                        Container(
-                          width: 156,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/mizo22.png",
-                                height: 122,
-                                width: 150,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Wrap(
+                          spacing: 25,
+                          runSpacing: 34,
+                          children: viewModel.getFilteredPets().map((pet) {
+                            return SizedBox(
+                              width: 156,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(
-                                    "Masmosa Cat",
-                                    style: TextStyle(fontSize: 15),
+                                  Image.network(
+                                    pet.imageUrl,
+                                    height: 122,
+                                    width: 150,
+                                    fit: BoxFit.cover,
                                   ),
-                                  IconButton(
-                                    onPressed: () {
-                                      print("favorite icon clicked");
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: Color(0xFF5E2A6F),
-                                    ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Expanded(
+                                        child: Text(
+                                          pet.name,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                      IconButton(
+                                        onPressed: () {},
+                                        icon: Icon(
+                                          Icons.favorite_border,
+                                          color: Theme.of(context).primaryColor,
+                                        ),
+                                      ),
+                                    ],
                                   ),
+                                  if (pet.status == 'For Sale' && pet.price != null)
+                                    Text("\$${pet.price!.toStringAsFixed(0)}"),
                                 ],
                               ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 0,
-                          ),
-                          child: Text(
-                            "\$2000",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                            );
+                          }).toList(),
                         ),
                       ],
                     ),
-                    SizedBox(width: 25),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 156,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/persiancat.png",
-                                height: 122,
-                                width: 150,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Persian Cat",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      print("favorite icon clicked");
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: Color(0xFF5E2A6F),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 0),
-                          child: Text(
-                            "\$1200",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 34),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 156,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/mizo22.png",
-                                height: 122,
-                                width: 150,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Masmosa Cat",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      print("favorite icon clicked");
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: Color(0xFF5E2A6F),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 0,
-                          ),
-                          child: Text(
-                            "\$2000",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 25),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 156,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/persiancat.png",
-                                height: 122,
-                                width: 150,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Persian Cat",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      print("favorite icon clicked");
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: Color(0xFF5E2A6F),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 0),
-                          child: Text(
-                            "\$1200",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 34),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 156,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/mizo22.png",
-                                height: 122,
-                                width: 150,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Masmosa Cat",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      print("favorite icon clicked");
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: Color(0xFF5E2A6F),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 0,
-                          ),
-                          child: Text(
-                            "\$2000",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(width: 25),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 156,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/persiancat.png",
-                                height: 122,
-                                width: 150,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Persian Cat",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      print("favorite icon clicked");
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: Color(0xFF5E2A6F),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 0),
-                          child: Text(
-                            "\$1200",
-                            style: TextStyle(
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            )
-            ) : Expanded(child:ListView(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width:156,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/mizo22.png",
-                                height: 122,
-                                width: 150,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Masmosa Cat",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      print("favorite icon clicked");
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: Color(0xFF5E2A6F),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-
-                      ],
-                    ),
-                    SizedBox(width: 25),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 156,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/persiancat.png",
-                                height: 122,
-                                width: 150,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Persian Cat",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      print("favorite icon clicked");
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: Color(0xFF5E2A6F),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 34),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width:156,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/mizo22.png",
-                                height: 122,
-                                width: 150,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Masmosa Cat",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      print("favorite icon clicked");
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: Color(0xFF5E2A6F),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-
-                      ],
-                    ),
-                    SizedBox(width: 25),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 156,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/persiancat.png",
-                                height: 122,
-                                width: 150,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Persian Cat",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      print("favorite icon clicked");
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: Color(0xFF5E2A6F),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-                SizedBox(height: 34),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width:156,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/mizo22.png",
-                                height: 122,
-                                width: 150,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Masmosa Cat",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      print("favorite icon clicked");
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: Color(0xFF5E2A6F),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-
-                      ],
-                    ),
-                    SizedBox(width: 25),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          width: 156,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Image.asset(
-                                "assets/images/persiancat.png",
-                                height: 122,
-                                width: 150,
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    "Persian Cat",
-                                    style: TextStyle(fontSize: 15),
-                                  ),
-                                  IconButton(
-                                    onPressed: () {
-                                      print("favorite icon clicked");
-                                    },
-                                    icon: Icon(
-                                      Icons.favorite_border,
-                                      color: Color(0xFF5E2A6F),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ],
-            )
-            )
-
-          ],
+                  ),
+                ],
+              );
+            },
+          ),
         ),
       ),
     );

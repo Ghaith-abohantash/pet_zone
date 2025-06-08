@@ -1,117 +1,189 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:provider/provider.dart';
+import '../providers/doctor_provider.dart';
 import '../widgets/doctor_app_bar.dart';
 
-class DoctorAccountPage extends StatelessWidget {
+class DoctorAccountPage extends StatefulWidget {
   const DoctorAccountPage({super.key});
+  @override
+  State<DoctorAccountPage> createState() => _DoctorAccountPageState();
+}
+
+class _DoctorAccountPageState extends State<DoctorAccountPage> {
+  late TextEditingController nameController;
+  late TextEditingController emailController;
+  late TextEditingController phoneController;
+  late TextEditingController addressController;
+  late TextEditingController descriptionController;
+
+  File? _imageFile;
+
+  @override
+  void initState() {
+    super.initState();
+
+    final doctor = Provider.of<DoctorProvider>(context, listen: false).doctor;
+
+    nameController = TextEditingController(text: doctor.name);
+    emailController = TextEditingController(text: doctor.email);
+    phoneController = TextEditingController(text: doctor.phoneNumber);
+    addressController = TextEditingController(text: doctor.clinicAddress);
+    descriptionController = TextEditingController(text: doctor.description);
+
+    if (doctor.imagePath != null) {
+      _imageFile = File(doctor.imagePath!);
+    }
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    addressController.dispose();
+    descriptionController.dispose();
+    super.dispose();
+  }
+
+  Future<void> pickImage() async {
+    final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
+    if (picked != null) {
+      setState(() => _imageFile = File(picked.path));
+    }
+  }
+
+  Future<void> saveData() async {
+    await Provider.of<DoctorProvider>(context, listen: false).updateDoctor(
+      name: nameController.text,
+      email: emailController.text,
+      phone: phoneController.text,
+      clinicAddress: addressController.text,
+      description: descriptionController.text,
+      imagePath: _imageFile?.path,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Saved & synced to Firestore')),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFFFFFFF),
-      appBar: const DoctorAppBar(title: "Doctor Account"),
-      body: SafeArea(
-        child: Column(
+      backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Stack(
           children: [
-
-            Expanded(
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-
-                      Center(
-                        child: Container(
-                          height: 200,
-                          width: 200,
-                          margin: EdgeInsets.only(top: 40),
-                          child: Image.asset(
-                            'assets/images/doctor_profile.png',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 28),
-
-                      const SizedBox(height: 24),
-                      Text("Name", style: TextStyle(fontSize: 18)),
-                      const SizedBox(height: 8),
-                      TextField(
-                        decoration: InputDecoration(
-                          hintText: "Noor Kusa",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(9),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-
-                      Text("Email", style: TextStyle(fontSize: 18)),
-                      const SizedBox(height: 8),
-                      TextField(
-                        decoration: InputDecoration(
-                          hintText: "name@example.com",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(9),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-
-
-                      Text("Phone number", style: TextStyle(fontSize: 18)),
-                      const SizedBox(height: 8),
-                      TextField(
-                        decoration: InputDecoration(
-                          hintText: "05988XXXXX",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(9),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-
-
-                      Text("Clinic Address", style: TextStyle(fontSize: 18)),
-                      const SizedBox(height: 8),
-                      TextField(
-                        decoration: InputDecoration(
-                          hintText: "Nablus",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(9),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 24),
-                      Text("Description", style: TextStyle(fontSize: 18)),
-                      const SizedBox(height: 8),
-                      SizedBox(
-                        height: 120,
-                        width: double.infinity,
-                        child: TextField(
-                          maxLines: null,
-                          expands: true,
-                          decoration: InputDecoration(
-                            hintText: "description about doctor",
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(9),
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      const SizedBox(height: 24),
-
-                    ],
-                  ),
-                ),
+            const DoctorAppBar(title: 'Doctor Account'),
+            Positioned(
+              right: 12,
+              top: 8,
+              child: IconButton(
+                icon: const Icon(Icons.save, color: Color(0xFF5E2A6F)),
+                onPressed: saveData,
               ),
             ),
           ],
         ),
       ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
+          child: Column(
+            children: [
+              GestureDetector(
+                onTap: pickImage,
+                child: Stack(
+                  alignment: Alignment.bottomRight,
+                  children: [
+                    CircleAvatar(
+                      radius: 80,
+                      backgroundImage: _imageFile != null
+                          ? FileImage(_imageFile!)
+                          : const AssetImage('assets/images/doctor_profile.png')
+                      as ImageProvider,
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white70,
+                      ),
+                      padding: const EdgeInsets.all(6),
+                      child: const Icon(
+                        Icons.edit,
+                        color: Color(0xFF5E2A6F),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 32),
+              TextField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  labelText: 'Name',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: phoneController,
+                keyboardType: TextInputType.phone,
+                decoration: const InputDecoration(
+                  labelText: 'Phone Number',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: addressController,
+                decoration: const InputDecoration(
+                  labelText: 'Clinic Address',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: descriptionController,
+                maxLines: 3,
+                decoration: const InputDecoration(
+                  labelText: 'Description',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 40),
+              SizedBox(
+                width: 200,  // fixed width
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF5E2A6F),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  onPressed: saveData,
+                  child: const Text(
+                    'Save',
+                    style: TextStyle(fontSize: 18 ,color: Colors.white),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
-
