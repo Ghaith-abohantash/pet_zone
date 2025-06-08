@@ -11,6 +11,7 @@ import 'providers/favorite_provider.dart';
 import 'providers/sale_details_provider.dart';
 import 'providers/adopt_pet_provider.dart';
 import 'providers/home_provider.dart';
+import 'viewmodels/appointment_viewmodel.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => FavoriteProvider()),
         ChangeNotifierProvider(create: (_) => SalePetProvider()),
         ChangeNotifierProvider(create: (_) => AdoptPetProvider()),
-        ChangeNotifierProvider(create: (_) => HomeProvider()), // <-- ADD THIS LINE
+        ChangeNotifierProvider(create: (_) => HomeProvider()),
+        ChangeNotifierProvider(create: (_) => AppointmentViewModel()..fetchDoctors()),
       ],
       child: MaterialApp(
         title: 'Test',

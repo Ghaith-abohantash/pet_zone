@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import '../routes/routes.dart';
 
+
 class ConfirmAppointmentScreen extends StatelessWidget {
   final String doctor;
   final String date;
   final String time;
+  final String doctor_uid;
 
   const ConfirmAppointmentScreen({
     super.key,
     required this.doctor,
     required this.date,
     required this.time,
+    required this.doctor_uid,
   });
 
   @override
@@ -36,7 +39,18 @@ class ConfirmAppointmentScreen extends StatelessWidget {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, AppRoutes.personalInfo);
+                  // Replace this with the next step
+                  Navigator.pushNamed(
+                    context,
+                    AppRoutes.personalInfo,
+                    arguments: {
+                      'doctor_name': doctor,
+                      'date': date,
+                      'time': time,
+                      'doctor_uid':doctor_uid
+                    },
+                  );
+
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.purple,
