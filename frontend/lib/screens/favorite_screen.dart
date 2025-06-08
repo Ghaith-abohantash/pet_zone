@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../models/favorite_model.dart';
+import '../providers/favorite_provider.dart';
 import '../routes/routes.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/buttom_nav.dart';
@@ -26,37 +29,28 @@ class _FavoritePageState extends State<FavoritePage> {
     });
   }
 
-  final List<Map<String, dynamic>> favoriteItems = [
-    {'image': 'assets/images/mizo22.png', 'name': 'Masmosa Cat', 'price': '\$2000'},
-    {'image': 'assets/images/persiancat.png', 'name': 'Persian Cat', 'price': '\$2500'},
-    {'image': 'assets/images/mizo22.png', 'name': 'British Cat', 'price': '\$1800'},
-    {'image': 'assets/images/mizo22.png', 'name': 'Bengal Cat', 'price': '\$2300'},
-    {'image': 'assets/images/mizo22.png', 'name': 'Siamese Cat', 'price': '\$2100'},
-    {'image': 'assets/images/mizo22.png', 'name': 'Maine Coon', 'price': '\$2700'},
-  ];
-
-  Widget buildFavoriteItem(Map<String, dynamic> item, {bool showPrice = true}) {
+  Widget buildFavoriteItem(PetModel pet, {bool showPrice = true}) {
     return Container(
       width: 160,
       margin: const EdgeInsets.only(bottom: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Image.asset(item['image'], height: 122, width: 150, fit: BoxFit.cover),
+          Image.asset(pet.imageAsset, height: 122, width: 150, fit: BoxFit.cover),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(item['name'], style: const TextStyle(fontSize: 15)),
+              Text(pet.name, style: const TextStyle(fontSize: 15)),
               IconButton(
                 onPressed: () {
-                  print("favorite icon clicked for ${item['name']}");
+                  print("favorite icon clicked for ${pet.name}");
                 },
                 icon: const Icon(Icons.favorite, color: Color(0xFF5E2A6F)),
               ),
             ],
           ),
-          if (showPrice)
-            Text(item['price'], style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+          if (showPrice && pet.price != null)
+            Text('\$${pet.price}', style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
         ],
       ),
     );
@@ -64,7 +58,12 @@ class _FavoritePageState extends State<FavoritePage> {
 
   @override
   Widget build(BuildContext context) {
-    // Decide to show price only if Sale is selected (_saleOrAdoptIndex == 0)
+    // Get real data from provider
+    final List<PetModel> favoriteItems = _saleOrAdoptIndex == 0
+        ? Provider.of<FavoriteProvider>(context).saleFavorites
+        : Provider.of<FavoriteProvider>(context).adoptionFavorites;
+
+    // Show price only if Sale is selected
     bool showPrice = _saleOrAdoptIndex == 0;
 
     return Scaffold(

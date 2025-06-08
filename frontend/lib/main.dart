@@ -1,7 +1,19 @@
 import 'package:flutter/material.dart';
-import 'routes/routes.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:petzone_project/utils/app_theme.dart';
+import 'package:provider/provider.dart';
 
-void main() {
+import 'routes/routes.dart';
+import 'providers/auth_provider.dart';
+import 'providers/user_notification_provider.dart';
+import 'providers/doctor_provider.dart';
+import 'providers/favorite_provider.dart';
+import 'providers/sale_details_provider.dart';
+import 'providers/adopt_pet_provider.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -10,13 +22,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Test',
-      debugShowCheckedModeBanner: false,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => UserNotificationProvider()),
+        ChangeNotifierProvider(create: (_) => DoctorProvider()),
+        ChangeNotifierProvider(create: (_) => FavoriteProvider()),
+        ChangeNotifierProvider(create: (_) => SalePetProvider()),
+        ChangeNotifierProvider(create: (_) => AdoptPetProvider()),
 
-      initialRoute: AppRoutes.splash,
-
-      onGenerateRoute: AppRoutes.generateRoute,
+      ],
+      child: MaterialApp(
+        title: 'Test',
+        theme: AppTheme.lightTheme,
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: AppRoutes.generateRoute,
+        initialRoute: AppRoutes.splash,
+      ),
     );
   }
 }
