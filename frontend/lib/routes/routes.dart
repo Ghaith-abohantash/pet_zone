@@ -126,7 +126,7 @@ class AppRoutes {
       case messagePage:
         return MaterialPageRoute(builder: (_)=> const MessagePage() );
       case petsDetailsForm:
-        return MaterialPageRoute(builder: (_)=> const PetsDetailsForm () );
+        return MaterialPageRoute(builder: (_)=> const PetsDetailsForm (doctor_name: '', doctor_uid: '', date: '', time: '', user_name: '', email: '', phone: '',) );
       case verificationscreen:
         return MaterialPageRoute(builder: (_)=> const VerificationScreen () );
       case resetpasswordscreen:
@@ -144,13 +144,13 @@ class AppRoutes {
           builder: (_) => ConfirmAppointmentScreen(
             doctor: args['doctor'],
             date: args['date'],
-            time: args['time'],
+            time: args['time'], doctor_uid: '',
           ),
         );
 
       case personalInfo:
         return MaterialPageRoute(
-          builder: (_) => const PersonalInfoScreen(),
+          builder: (_) => const PersonalInfoScreen(doctor_name: '', date: '', doctor_uid: '', time: '',),
         );
 
       case empty:
