@@ -53,6 +53,7 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 16),
             GestureDetector(
               onTap: () {
+
                 print("Tapped!");
               },
               child: Image.asset("assets/images/home-image.png"),

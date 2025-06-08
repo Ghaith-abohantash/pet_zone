@@ -148,7 +148,7 @@ class AppRoutes {
         final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
           builder: (_) => ConfirmAppointmentScreen(
-            doctor: args['doctor'],
+            doctor_name: args['doctor_name'],
             date: args['date'],
             time: args['time'], doctor_uid: '',
           ),

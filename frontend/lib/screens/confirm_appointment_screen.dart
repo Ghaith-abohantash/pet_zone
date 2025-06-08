@@ -3,14 +3,14 @@ import '../routes/routes.dart';
 
 
 class ConfirmAppointmentScreen extends StatelessWidget {
-  final String doctor;
+  final String doctor_name;
   final String date;
   final String time;
   final String doctor_uid;
 
   const ConfirmAppointmentScreen({
     super.key,
-    required this.doctor,
+    required this.doctor_name,
     required this.date,
     required this.time,
     required this.doctor_uid,
@@ -29,7 +29,7 @@ class ConfirmAppointmentScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Doctor: $doctor", style: const TextStyle(fontSize: 18)),
+            Text("Doctor: $doctor_name", style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 12),
             Text("Date: $date", style: const TextStyle(fontSize: 18)),
             const SizedBox(height: 12),
@@ -44,7 +44,7 @@ class ConfirmAppointmentScreen extends StatelessWidget {
                     context,
                     AppRoutes.personalInfo,
                     arguments: {
-                      'doctor_name': doctor,
+                      'doctor_name': doctor_name,
                       'date': date,
                       'time': time,
                       'doctor_uid':doctor_uid
