@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../routes/routes.dart';
 
 class SignupPage extends StatefulWidget {
@@ -12,6 +14,53 @@ class _SignupPageState extends State<SignupPage> {
   String? selectedRole;
   final List<String> roles = ['Pet Owner', 'Veterinarian'];
   bool _obscurePassword = true;
+
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
+  Future<void> signUp() async {
+    final String name = nameController.text.trim();
+    final String email = emailController.text.trim();
+    final String password = passwordController.text.trim();
+
+    if (name.isEmpty || email.isEmpty || password.isEmpty || selectedRole == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please fill all fields and select a role')),
+      );
+      return;
+    }
+
+    try {
+      // 1. Create user with Firebase Auth
+      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+
+      String uid = userCredential.user!.uid;
+
+      // 2. Save user info to Firestore
+      await FirebaseFirestore.instance.collection('users').doc(uid).set({
+        'uid': uid,
+        'name': name,
+        'email': email,
+        'role': selectedRole,
+        'createdAt': Timestamp.now(),
+      });
+
+      // 3. Navigate based on role
+      if (selectedRole == 'Pet Owner') {
+        Navigator.pushReplacementNamed(context, AppRoutes.petZoneHome);
+      } else if (selectedRole == 'Veterinarian') {
+        Navigator.pushReplacementNamed(context, AppRoutes.home);
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Signup failed: ${e.toString()}')),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,28 +81,27 @@ class _SignupPageState extends State<SignupPage> {
               Text("Name", style: TextStyle(fontSize: 18)),
               SizedBox(height: 8),
               TextField(
+                controller: nameController,
                 decoration: InputDecoration(
                   hintText: "name",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(9),
-                  ),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
                 ),
               ),
               SizedBox(height: 16),
               Text("Email", style: TextStyle(fontSize: 18)),
               SizedBox(height: 8),
               TextField(
+                controller: emailController,
                 decoration: InputDecoration(
                   hintText: "name@example.com",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(9),
-                  ),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
                 ),
               ),
               SizedBox(height: 16),
               Text("Password", style: TextStyle(fontSize: 18)),
               SizedBox(height: 8),
               TextField(
+                controller: passwordController,
                 obscureText: _obscurePassword,
                 decoration: InputDecoration(
                   hintText: "Your password",
@@ -67,9 +115,7 @@ class _SignupPageState extends State<SignupPage> {
                       });
                     },
                   ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(9),
-                  ),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
                   contentPadding: EdgeInsets.symmetric(horizontal: 16),
                 ),
               ),
@@ -91,9 +137,7 @@ class _SignupPageState extends State<SignupPage> {
                   });
                 },
                 decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(9),
-                  ),
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
                   contentPadding: EdgeInsets.symmetric(horizontal: 16),
                 ),
               ),
@@ -104,9 +148,7 @@ class _SignupPageState extends State<SignupPage> {
                   height: 50,
                   margin: EdgeInsets.only(top: 20),
                   child: ElevatedButton(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(context, AppRoutes.home);
-                    },
+                    onPressed: signUp,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xFF5E2A6F),
                       shape: RoundedRectangleBorder(

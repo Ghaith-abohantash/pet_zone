@@ -1,17 +1,17 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.petzone_project.app-mergeDebugResources-24:/values-night-v8/values-night-v8.xml",
+            "outputFile": "com.example.petzone_project.app-mergeDebugResources-29:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Asus\\Desktop\\pet_zone\\frontend\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\lenovo\\Desktop\\pet_zone\\frontend\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,18",
                         "startColumns": "4,4",
-                        "startOffsets": "175,1106",
+                        "startOffsets": "172,1088",
                         "endLines": "11,20",
                         "endColumns": "12,12",
-                        "endOffsets": "757,1272"
+                        "endOffsets": "746,1252"
                     },
                     "to": {
                         "startLines": "2,10",

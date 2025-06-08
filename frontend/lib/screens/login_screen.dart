@@ -98,7 +98,7 @@ class _LogInPageState extends State<LogInPage> {
                   children: [
                     TextButton(
                       onPressed: () {
-                        print("Forget Password is work");
+                        Navigator.pushReplacementNamed(context, AppRoutes.forgetpasswordscreen);
                       },
                       child: Text(
                         "Forget Password?",

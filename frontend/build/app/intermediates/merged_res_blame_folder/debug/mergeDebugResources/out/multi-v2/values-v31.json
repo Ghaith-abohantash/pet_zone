@@ -1,17 +1,17 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.petzone_project.app-mergeDebugResources-24:/values-v31/values-v31.xml",
+            "outputFile": "com.example.petzone_project.app-mergeDebugResources-29:/values-v31/values-v31.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Asus\\Desktop\\pet_zone\\frontend\\android\\app\\src\\main\\res\\values-v31\\styles.xml",
+                    "source": "C:\\Users\\lenovo\\Desktop\\pet_zone\\frontend\\android\\app\\src\\main\\res\\values-v31\\styles.xml",
                     "from": {
                         "startLines": "3,17",
                         "startColumns": "4,4",
-                        "startOffsets": "176,1064",
+                        "startOffsets": "173,1047",
                         "endLines": "10,19",
                         "endColumns": "12,12",
-                        "endOffsets": "706,1230"
+                        "endOffsets": "696,1211"
                     },
                     "to": {
                         "startLines": "2,10",

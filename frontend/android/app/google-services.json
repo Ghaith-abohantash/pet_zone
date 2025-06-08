@@ -1,0 +1,30 @@
+
+{
+  "project_info": {
+    "project_number": "78508292283",
+    "project_id": "pet-zone1",
+    "storage_bucket": "pet-zone1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78508292283:android:ef5f64753a0fb0defd119e",
+        "android_client_info": {
+          "package_name": "com.example.petzone_project"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0xDn1SH1YGK0xsPhSchHCfk1GzzFLZEQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

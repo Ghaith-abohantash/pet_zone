@@ -103,10 +103,7 @@ class _UserNotificationPageState extends State<UserNotificationPage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNav(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
-      ),
+
     );
   }
 }
