@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../routes/app_routes.dart';
+import '../routes/routes.dart';
 
 class EmptyAppointmentView extends StatefulWidget {
   const EmptyAppointmentView({super.key});
@@ -20,9 +20,9 @@ class _EmptyAppointmentViewState extends State<EmptyAppointmentView>
     _tabController.addListener(() {
       if (!_tabController.indexIsChanging) {
         if (_tabController.index == 0) {
-          Navigator.pushNamed(context, AppRoutess.upcoming);
+          Navigator.pushNamed(context, AppRoutes.upcoming);
         } else if (_tabController.index == 2) {
-          Navigator.pushNamed(context, AppRoutess.cancelled);
+          Navigator.pushNamed(context, AppRoutes.cancelled);
         }
         // Note: Tab index 1 (Past) is left empty for now.
       }
@@ -63,36 +63,36 @@ class _EmptyAppointmentViewState extends State<EmptyAppointmentView>
 
   Widget _buildEmptyContent(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Image.asset(
-            'assets/images/icc.png',
-            width: 120,
-            height: 120,
-          ),
-          const SizedBox(height: 24),
-          SizedBox(
-            width: 200,
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pushNamed(context,AppRoutess .appointmentForm);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.deepPurple,
-                padding: const EdgeInsets.symmetric(vertical: 14),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+        child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.asset(
+                'assets/images/icc.png',
+                width: 120,
+                height: 120,
+              ),
+              const SizedBox(height: 24),
+              SizedBox(
+                width: 200,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context,AppRoutes .appointmentForm);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.deepPurple,
+                    padding: const EdgeInsets.symmetric(vertical: 14),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: const Text(
+                    'Add Appointment',
+                    style: TextStyle(color: Colors.white),
+                  ),
                 ),
               ),
-              child: const Text(
-                'Add Appointment',
-                style: TextStyle(color: Colors.white),
-              ),
+            ],
             ),
-          ),
-        ],
-      ),
-    );
-  }
+        );
+    }
 }

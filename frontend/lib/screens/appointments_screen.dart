@@ -1,51 +1,63 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import '../viewmodels/appointment_view_model.dart';
+import '../models/appointment_model.dart';
 import '../widgets/AppointmentCard.dart';
 
 class AppointmentScreen extends StatelessWidget {
-  const AppointmentScreen({super.key});
+  final AppointmentViewModel viewModel = AppointmentViewModel();
+
+  AppointmentScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-          icon: Icon(Icons.arrow_back_ios),
+          onPressed: () => Navigator.of(context).pop(),
+          icon: const Icon(Icons.arrow_back_ios),
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.chat, size: 30),
-            color: const Color(0xFF5E2A6F),
-            onPressed: () {
-            },
+            icon: const Icon(Icons.chat, size: 30),
+            color: theme.primaryColor,
+            onPressed: () {},
           ),
         ],
         title: Text(
           "Appointments",
-          style: GoogleFonts.poppins(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-            color: Color(0xFF5E2A6F),
-          ),
+          style: theme.appBarTheme.titleTextStyle,
         ),
       ),
-      body: GridView.builder(
-        itemCount: 9,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 1,
-          mainAxisExtent: 270,
-        ),
-        itemBuilder: (context, i) {
-          return AppointmentCard(
-            ownerName: i < 1 ? 'laith' : "gaith",
-            petName: i < 1 ? 'cat' : "dog",
-            petPhoto: 'https://petfriendstores.com/cdn/shop/articles/pexels-vadim-b-127027.jpg?v=1714707378&width=1100',
-            date: '21 Mar 2025',
-            time: '11-12 AM',
+      body: StreamBuilder<List<Appointment>>(
+        stream: viewModel.getAppointmentsStream(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return const Center(child: Text("No Appointments Found."));
+          }
 
+          final appointments = snapshot.data!;
+
+          return GridView.builder(
+            itemCount: appointments.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 1,
+              mainAxisExtent: 270,
+            ),
+            itemBuilder: (context, i) {
+              final appointment = appointments[i];
+              return AppointmentCard(
+                ownerName: appointment.ownerName,
+                petName: appointment.petName,
+                petPhoto: appointment.petPhoto,
+                date: appointment.date,
+                time: appointment.time,
+              );
+            },
           );
         },
       ),
