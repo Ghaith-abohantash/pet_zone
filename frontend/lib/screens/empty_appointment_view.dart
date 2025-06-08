@@ -45,17 +45,7 @@ class _EmptyAppointmentViewState extends State<EmptyAppointmentView>
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
-        bottom: TabBar(
-          controller: _tabController,
-          tabs: const [
-            Tab(text: 'Upcoming'),
-            Tab(text: 'Past'),
-            Tab(text: 'Cancelled'),
-          ],
-          labelColor: Colors.deepPurple,
-          unselectedLabelColor: Colors.black,
-          indicatorColor: Colors.deepPurple,
-        ),
+
       ),
       body: _buildEmptyContent(context),
     );

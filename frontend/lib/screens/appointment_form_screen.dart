@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../routes/routes.dart';
+import '../viewmodels/appointment_viewmodel.dart';
+import '../models/doctor.dart';
+import 'package:provider/provider.dart';
+
+
 
 class AppointmentFormScreen extends StatefulWidget {
   const AppointmentFormScreen({super.key});
@@ -10,24 +16,18 @@ class AppointmentFormScreen extends StatefulWidget {
 }
 
 class _AppointmentFormScreenState extends State<AppointmentFormScreen> {
-  String? selectedDoctor;
-  DateTime? selectedDate;
-  String? selectedTime;
-
-  final List<String> doctors = [
-    'Dr.Mohammad – Dog Specialist',
-    'Dr.Mary – Cat Specialist',
-    'Dr.David – Bird Specialist',
-    'Dr.Wesam – General Veterinarian',
-  ];
-
-  final List<String> times = [
-    '8:00', '9:00', '10:00', '11:00',
-    '12:00', '1:00', '2:00', '3:00',
-  ];
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() =>
+        Provider.of<AppointmentViewModel>(context, listen: false)
+            .fetchDoctors());
+  }
 
   @override
   Widget build(BuildContext context) {
+    final vm = Provider.of<AppointmentViewModel>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Book Appointment'),
@@ -42,44 +42,34 @@ class _AppointmentFormScreenState extends State<AppointmentFormScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              const Text(
-                'Select a Veterinarian',
-                style: TextStyle(color: Colors.grey),
-              ),
+              const Text('Select a Veterinarian', style: TextStyle(color: Colors.grey)),
               const SizedBox(height: 8),
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(color: const Color(0xFFCED31B)),
                   borderRadius: BorderRadius.circular(6),
                 ),
-                child: DropdownButtonFormField<String>(
-                  value: selectedDoctor,
+                child: DropdownButtonFormField<Doctor>(
+                  value: vm.selectedDoctor,
                   decoration: const InputDecoration(
                     contentPadding: EdgeInsets.symmetric(horizontal: 12),
                     border: InputBorder.none,
                   ),
                   icon: const Icon(Icons.keyboard_arrow_down),
-                  items: doctors.map((doctor) {
-                    return DropdownMenuItem<String>(
+                  items: vm.doctors.map((doctor) {
+                    return DropdownMenuItem(
                       value: doctor,
-                      child: Text(doctor,
+                      child: Text(doctor.name,
                           style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: Color(0xFF5E2A6F))),
                     );
                   }).toList(),
-                  onChanged: (value) {
-                    setState(() {
-                      selectedDoctor = value;
-                    });
-                  },
+                  onChanged: vm.selectDoctor,
                 ),
               ),
               const SizedBox(height: 24),
-              const Text(
-                'Please choose date and time',
-                style: TextStyle(color: Colors.grey),
-              ),
+              const Text('Please choose date and time', style: TextStyle(color: Colors.grey)),
               const SizedBox(height: 8),
               Container(
                 decoration: BoxDecoration(
@@ -90,14 +80,11 @@ class _AppointmentFormScreenState extends State<AppointmentFormScreen> {
                 child: TableCalendar(
                   firstDay: DateTime.now(),
                   lastDay: DateTime.utc(2030, 12, 31),
-                  focusedDay: selectedDate ?? DateTime.now(),
+                  focusedDay: vm.selectedDate ?? DateTime.now(),
                   selectedDayPredicate: (day) =>
-                      isSameDay(selectedDate, day),
-                  onDaySelected: (selected, _) {
-                    setState(() {
-                      selectedDate = selected;
-                    });
-                  },
+                      isSameDay(vm.selectedDate, day),
+                  onDaySelected: (selected, _) =>
+                      vm.selectDate(selected),
                   calendarStyle: CalendarStyle(
                     todayDecoration: BoxDecoration(
                       color: Colors.purple.withOpacity(0.4),
@@ -111,25 +98,17 @@ class _AppointmentFormScreenState extends State<AppointmentFormScreen> {
                 ),
               ),
               const SizedBox(height: 24),
-              const Text(
-                'Select time',
-                style: TextStyle(color: Colors.grey),
-              ),
+              const Text('Select time', style: TextStyle(color: Colors.grey)),
               const SizedBox(height: 12),
               Wrap(
                 spacing: 12,
                 runSpacing: 12,
-                children: times.map((time) {
-                  final isSelected = time == selectedTime;
+                children: vm.times.map((time) {
+                  final isSelected = time == vm.selectedTime;
                   return GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        selectedTime = time;
-                      });
-                    },
+                    onTap: () => vm.selectTime(time),
                     child: Container(
-                      padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
                       decoration: BoxDecoration(
                         border: Border.all(color: const Color(0xFF5E2A6F)),
                         borderRadius: BorderRadius.circular(8),
@@ -149,25 +128,22 @@ class _AppointmentFormScreenState extends State<AppointmentFormScreen> {
               SizedBox(
                 width: double.infinity,
                 child: TextButton(
-                  onPressed: (selectedDoctor != null &&
-                      selectedDate != null &&
-                      selectedTime != null)
+                  onPressed: vm.canContinue
                       ? () {
                     Navigator.pushNamed(
                       context,
                       AppRoutes.confirm,
                       arguments: {
-                        'doctor': selectedDoctor!,
-                        'date': selectedDate!.toString().split(' ')[0],
-                        'time': selectedTime!,
+                        'doctor_name': vm.selectedDoctor!.name,
+                        'doctor_uid': vm.selectedDoctor!.uid,
+                        'date': vm.selectedDate!.toString().split(' ')[0],
+                        'time': vm.selectedTime!,
                       },
                     );
                   }
                       : null,
                   style: TextButton.styleFrom(
-                    backgroundColor: (selectedDoctor != null &&
-                        selectedDate != null &&
-                        selectedTime != null)
+                    backgroundColor: vm.canContinue
                         ? const Color(0xFF5E2A6F)
                         : Colors.grey.shade300,
                     padding: const EdgeInsets.symmetric(vertical: 14),

@@ -113,13 +113,13 @@ class _HomePageState extends State<HomePage> {
       const EmptyAppointmentView(),
       const BuyPets(),
       const UserNotificationPage(),
-      const PersonalInfoScreen(),
+
     ];
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: _selectedIndex == 0
-          ? const CustomAppBar(title: "Pet Zone")  // استخدم الـ CustomAppBar هنا فقط في الهوم
+          ? const CustomAppBar(title: "Pet Zone")
           : null,
       body: pages[_selectedIndex],
       bottomNavigationBar: BottomNav(
