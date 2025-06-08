@@ -1,54 +1,61 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-
 import '../providers/doctor_provider.dart';
+import '../widgets/doctor_app_bar.dart';
 
 class DoctorAccountPage extends StatefulWidget {
   const DoctorAccountPage({super.key});
-
   @override
   State<DoctorAccountPage> createState() => _DoctorAccountPageState();
 }
 
 class _DoctorAccountPageState extends State<DoctorAccountPage> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController phoneController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
-  final TextEditingController descriptionController = TextEditingController();
+  late TextEditingController nameController;
+  late TextEditingController emailController;
+  late TextEditingController phoneController;
+  late TextEditingController addressController;
+  late TextEditingController descriptionController;
 
   File? _imageFile;
 
   @override
   void initState() {
     super.initState();
+
     final doctor = Provider.of<DoctorProvider>(context, listen: false).doctor;
 
-    nameController.text = doctor.name;
-    emailController.text = doctor.email;
-    phoneController.text = doctor.phoneNumber;
-    addressController.text = doctor.clinicAddress;
-    descriptionController.text = doctor.description;
+    nameController = TextEditingController(text: doctor.name);
+    emailController = TextEditingController(text: doctor.email);
+    phoneController = TextEditingController(text: doctor.phoneNumber);
+    addressController = TextEditingController(text: doctor.clinicAddress);
+    descriptionController = TextEditingController(text: doctor.description);
+
     if (doctor.imagePath != null) {
       _imageFile = File(doctor.imagePath!);
     }
   }
 
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    addressController.dispose();
+    descriptionController.dispose();
+    super.dispose();
+  }
+
   Future<void> pickImage() async {
-    final picker = ImagePicker();
-    final picked = await picker.pickImage(source: ImageSource.gallery);
+    final picked = await ImagePicker().pickImage(source: ImageSource.gallery);
     if (picked != null) {
-      setState(() {
-        _imageFile = File(picked.path);
-      });
+      setState(() => _imageFile = File(picked.path));
     }
   }
 
-  void saveData() {
-    Provider.of<DoctorProvider>(context, listen: false).updateDoctor(
+  Future<void> saveData() async {
+    await Provider.of<DoctorProvider>(context, listen: false).updateDoctor(
       name: nameController.text,
       email: emailController.text,
       phone: phoneController.text,
@@ -56,9 +63,8 @@ class _DoctorAccountPageState extends State<DoctorAccountPage> {
       description: descriptionController.text,
       imagePath: _imageFile?.path,
     );
-
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Doctor info saved!')),
+      const SnackBar(content: Text('Saved & synced to Firestore')),
     );
   }
 
@@ -66,84 +72,111 @@ class _DoctorAccountPageState extends State<DoctorAccountPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: const Text('Doctor Account'),
-        backgroundColor: const Color(0xFF5E2A6F),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.save),
-            onPressed: saveData,
-          )
-        ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(kToolbarHeight),
+        child: Stack(
+          children: [
+            const DoctorAppBar(title: 'Doctor Account'),
+            Positioned(
+              right: 12,
+              top: 8,
+              child: IconButton(
+                icon: const Icon(Icons.save, color: Color(0xFF5E2A6F)),
+                onPressed: saveData,
+              ),
+            ),
+          ],
+        ),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 40),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
+              GestureDetector(
+                onTap: pickImage,
                 child: Stack(
+                  alignment: Alignment.bottomRight,
                   children: [
                     CircleAvatar(
-                      radius: 100,
+                      radius: 80,
                       backgroundImage: _imageFile != null
                           ? FileImage(_imageFile!)
                           : const AssetImage('assets/images/doctor_profile.png')
                       as ImageProvider,
                     ),
-                    Positioned(
-                      bottom: 10,
-                      right: 10,
-                      child: GestureDetector(
-                        onTap: pickImage,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            shape: BoxShape.circle,
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black26,
-                                blurRadius: 4,
-                              ),
-                            ],
-                          ),
-                          padding: const EdgeInsets.all(6),
-                          child: const Icon(
-                            Icons.add_photo_alternate,
-                            size: 28,
-                            color: Color(0xFF5E2A6F),
-                          ),
-                        ),
+                    Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.white70,
+                      ),
+                      padding: const EdgeInsets.all(6),
+                      child: const Icon(
+                        Icons.edit,
+                        color: Color(0xFF5E2A6F),
                       ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(height: 28),
-              _buildTextField("Name", nameController),
+              const SizedBox(height: 32),
+              TextField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  labelText: 'Name',
+                  border: OutlineInputBorder(),
+                ),
+              ),
               const SizedBox(height: 16),
-              _buildTextField("Email", emailController),
+              TextField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: const InputDecoration(
+                  labelText: 'Email',
+                  border: OutlineInputBorder(),
+                ),
+              ),
               const SizedBox(height: 16),
-              _buildTextField("Phone number", phoneController),
+              TextField(
+                controller: phoneController,
+                keyboardType: TextInputType.phone,
+                decoration: const InputDecoration(
+                  labelText: 'Phone Number',
+                  border: OutlineInputBorder(),
+                ),
+              ),
               const SizedBox(height: 16),
-              _buildTextField("Clinic Address", addressController),
-              const SizedBox(height: 24),
-              const Text("Description", style: TextStyle(fontSize: 18)),
-              const SizedBox(height: 8),
+              TextField(
+                controller: addressController,
+                decoration: const InputDecoration(
+                  labelText: 'Clinic Address',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                controller: descriptionController,
+                maxLines: 3,
+                decoration: const InputDecoration(
+                  labelText: 'Description',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(height: 40),
               SizedBox(
-                height: 120,
-                width: double.infinity,
-                child: TextField(
-                  controller: descriptionController,
-                  maxLines: null,
-                  expands: true,
-                  decoration: InputDecoration(
-                    hintText: "Description about doctor",
-                    suffixIcon: const Icon(Icons.edit, color: Color(0xFF5E2A6F)),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(9),
+                width: 200,  // fixed width
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF5E2A6F),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
                     ),
+                  ),
+                  onPressed: saveData,
+                  child: const Text(
+                    'Save',
+                    style: TextStyle(fontSize: 18 ,color: Colors.white),
                   ),
                 ),
               ),
@@ -151,26 +184,6 @@ class _DoctorAccountPageState extends State<DoctorAccountPage> {
           ),
         ),
       ),
-    );
-  }
-
-  Widget _buildTextField(String label, TextEditingController controller) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(label, style: const TextStyle(fontSize: 18)),
-        const SizedBox(height: 8),
-        TextField(
-          controller: controller,
-          decoration: InputDecoration(
-            hintText: 'Enter $label',
-            suffixIcon: const Icon(Icons.edit, color: Color(0xFF5E2A6F)),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(9),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

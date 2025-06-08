@@ -1,15 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:petzone_project/utils/app_theme.dart';
 import 'package:provider/provider.dart';
-
-import 'routes/routes.dart';
-import 'providers/auth_provider.dart';
-import 'providers/user_notification_provider.dart';
 import 'providers/doctor_provider.dart';
-import 'providers/favorite_provider.dart';
-import 'providers/sale_details_provider.dart';
-import 'providers/adopt_pet_provider.dart';
+import 'routes/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,22 +12,16 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => AuthProvider()),
-        ChangeNotifierProvider(create: (_) => UserNotificationProvider()),
-        ChangeNotifierProvider(create: (_) => DoctorProvider()),
-        ChangeNotifierProvider(create: (_) => FavoriteProvider()),
-        ChangeNotifierProvider(create: (_) => SalePetProvider()),
-        ChangeNotifierProvider(create: (_) => AdoptPetProvider()),
-
-      ],
+    return ChangeNotifierProvider<DoctorProvider>(
+      create: (_) {
+        final prov = DoctorProvider();
+        prov.loadDoctor(); // fetch initial data
+        return prov;
+      },
       child: MaterialApp(
-        title: 'Test',
-        theme: AppTheme.lightTheme,
+        title: 'PetZone',
         debugShowCheckedModeBanner: false,
         onGenerateRoute: AppRoutes.generateRoute,
         initialRoute: AppRoutes.splash,

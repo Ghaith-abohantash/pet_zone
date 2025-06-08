@@ -1,8 +1,6 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../providers/doctor_provider.dart';
 import '../widgets/doctor_app_bar.dart';
 
@@ -17,63 +15,41 @@ class DoctorProfilePage extends StatelessWidget {
       appBar: const DoctorAppBar(title: "Doctor Profile"),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Center(
-                child: Container(
-                  height: 200,
-                  width: 200,
-                  margin: const EdgeInsets.only(top: 40),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                      image: doctor.imagePath != null
-                          ? FileImage(File(doctor.imagePath!))
-                          : const AssetImage('assets/images/doctor_profile.png')
-                      as ImageProvider,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
+                child: CircleAvatar(
+                  radius: 100,
+                  backgroundImage: doctor.imagePath != null
+                      ? FileImage(File(doctor.imagePath!))
+                      : const AssetImage('assets/images/doctor_profile.png')
+                  as ImageProvider,
                 ),
               ),
               const SizedBox(height: 28),
-
-              Center(
-                child: Text(
-                  doctor.name.isNotEmpty ? 'Dr. ${doctor.name}' : '',
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
-                ),
-              ),
-              const SizedBox(height: 24),
-
-              const Text("Email", style: TextStyle(fontSize: 18)),
-              const SizedBox(height: 8),
-              _infoBox(doctor.email),
-
-              const SizedBox(height: 16),
-              const Text("Phone number", style: TextStyle(fontSize: 18)),
-              const SizedBox(height: 8),
-              _infoBox(doctor.phoneNumber),
-
-              const SizedBox(height: 16),
-              const Text("Clinic Address", style: TextStyle(fontSize: 18)),
-              const SizedBox(height: 8),
-              _infoBox(doctor.clinicAddress),
-
-              const SizedBox(height: 24),
               Text(
-                doctor.name.isNotEmpty ? "About Dr. ${doctor.name}" : "About Doctor",
-                style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(height: 8),
-              Text(
-                doctor.description,
-                style: const TextStyle(fontSize: 16, color: Colors.black87),
-                textAlign: TextAlign.justify,
+                doctor.name.isNotEmpty ? 'Dr. ${doctor.name}' : '',
+                style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 24),
+
+              _readOnlyField(label: "Email", value: doctor.email),
+              const SizedBox(height: 16),
+
+              _readOnlyField(label: "Phone number", value: doctor.phoneNumber),
+              const SizedBox(height: 16),
+
+              _readOnlyField(label: "Clinic Address", value: doctor.clinicAddress),
+              const SizedBox(height: 24),
+
+              _readOnlyField(
+                label: "About Dr. ${doctor.name}",
+                value: doctor.description,
+                maxLines: 5,
+                isMultiline: true,
+              ),
             ],
           ),
         ),
@@ -81,18 +57,29 @@ class DoctorProfilePage extends StatelessWidget {
     );
   }
 
-  Widget _infoBox(String value) {
-    return Container(
-      width: double.infinity,
-      padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 12),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black38),
-        borderRadius: BorderRadius.circular(9),
-      ),
-      child: Text(
-        value.isNotEmpty ? value : '-',
-        style: const TextStyle(fontSize: 16),
-      ),
+  Widget _readOnlyField({
+    required String label,
+    required String value,
+    int maxLines = 1,
+    bool isMultiline = false,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600)),
+        const SizedBox(height: 6),
+        TextField(
+          controller: TextEditingController(text: value),
+          readOnly: true,
+          maxLines: maxLines,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+            isDense: true,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+          ),
+          style: const TextStyle(fontSize: 16, color: Colors.black87),
+        ),
+      ],
     );
   }
 }
