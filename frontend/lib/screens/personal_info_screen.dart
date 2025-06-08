@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import '../routes/routes.dart';
 
 class PersonalInfoScreen extends StatefulWidget {
   final String doctor_name;
@@ -24,7 +24,15 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
   final emailController = TextEditingController();
   final phoneController = TextEditingController();
 
-  Future<void> submitAppointment() async {
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    super.dispose();
+  }
+
+  void _goToPetDetailsForm() {
     final name = nameController.text.trim();
     final email = emailController.text.trim();
     final phone = phoneController.text.trim();
@@ -36,8 +44,11 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
       return;
     }
 
-    try {
-      await FirebaseFirestore.instance.collection('appointments').add({
+    Navigator.pushNamed(
+      context,
+      AppRoutes.petsDetailsForm,
+
+      arguments: {
         'doctor_name': widget.doctor_name,
         'doctor_uid': widget.doctor_uid,
         'date': widget.date,
@@ -45,28 +56,8 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
         'user_name': name,
         'email': email,
         'phone': phone,
-        'timestamp': FieldValue.serverTimestamp(),
-        'status': "upcoming",
-      });
-
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Appointment booked successfully!')),
-      );
-
-      Navigator.popUntil(context, (route) => route.isFirst); // يرجع لأول صفحة
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
-    }
-  }
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    emailController.dispose();
-    phoneController.dispose();
-    super.dispose();
+      },
+    );
   }
 
   @override
@@ -93,7 +84,6 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
               ),
             ),
             const SizedBox(height: 24),
-
             Text("Doctor: ${widget.doctor_name}"),
             Text("Date: ${widget.date}"),
             Text("Time: ${widget.time}"),
@@ -104,7 +94,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
             TextField(
               controller: nameController,
               decoration: const InputDecoration(
-                hintText: "name",
+                hintText: "Your name",
                 border: OutlineInputBorder(),
                 filled: true,
                 fillColor: Color(0xFFF4F4F4),
@@ -143,7 +133,7 @@ class _PersonalInfoScreenState extends State<PersonalInfoScreen> {
             SizedBox(
               width: double.infinity,
               child: TextButton(
-                onPressed: submitAppointment,
+                onPressed: _goToPetDetailsForm,
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.deepPurple,
                   shape: RoundedRectangleBorder(
