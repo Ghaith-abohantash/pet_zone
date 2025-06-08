@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:petzone_project/providers/auth_provider.dart';
-import 'package:petzone_project/providers/home_provider.dart'; // عدلت هنا الاسم
-import 'package:provider/provider.dart';
-import 'routes/routes.dart';
 import 'package:firebase_core/firebase_core.dart';
-
-import 'utils/app_theme.dart' show AppTheme;
-import 'viewmodels/home_view_model.dart' show PetsViewModel;
+import 'package:provider/provider.dart';
+import 'providers/doctor_provider.dart';
+import 'routes/routes.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,20 +12,19 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => HomeProvider()),
-        ChangeNotifierProvider(create: (_) => AuthProvider()),
-      ],
+    return ChangeNotifierProvider<DoctorProvider>(
+      create: (_) {
+        final prov = DoctorProvider();
+        prov.loadDoctor(); // fetch initial data
+        return prov;
+      },
       child: MaterialApp(
-        title: 'Test',
-        theme: AppTheme.lightTheme,
+        title: 'PetZone',
         debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.splash,
         onGenerateRoute: AppRoutes.generateRoute,
+        initialRoute: AppRoutes.splash,
       ),
     );
   }

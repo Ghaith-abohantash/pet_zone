@@ -39,6 +39,7 @@ class BottomNav extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.settings_suggest_rounded),
           label: 'Settings',
+
         ),
       ],
     );

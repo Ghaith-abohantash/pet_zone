@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
+import '../providers/auth_provider.dart';
 import '../routes/routes.dart';
 
 class SignupPage extends StatefulWidget {
@@ -11,55 +11,20 @@ class SignupPage extends StatefulWidget {
 }
 
 class _SignupPageState extends State<SignupPage> {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
   String? selectedRole;
   final List<String> roles = ['Pet Owner', 'Veterinarian'];
   bool _obscurePassword = true;
 
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-
-  Future<void> signUp() async {
-    final String name = nameController.text.trim();
-    final String email = emailController.text.trim();
-    final String password = passwordController.text.trim();
-
-    if (name.isEmpty || email.isEmpty || password.isEmpty || selectedRole == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please fill all fields and select a role')),
-      );
-      return;
-    }
-
-    try {
-      // 1. Create user with Firebase Auth
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      String uid = userCredential.user!.uid;
-
-      // 2. Save user info to Firestore
-      await FirebaseFirestore.instance.collection('users').doc(uid).set({
-        'uid': uid,
-        'name': name,
-        'email': email,
-        'role': selectedRole,
-        'createdAt': Timestamp.now(),
-      });
-
-      // 3. Navigate based on role
-      if (selectedRole == 'Pet Owner') {
-        Navigator.pushReplacementNamed(context, AppRoutes.petZoneHome);
-      } else if (selectedRole == 'Veterinarian') {
-        Navigator.pushReplacementNamed(context, AppRoutes.home);
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Signup failed: ${e.toString()}')),
-      );
-    }
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -71,44 +36,39 @@ class _SignupPageState extends State<SignupPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
-                child: Text(
-                  "Sign up",
-                  style: TextStyle(fontSize: 35, fontWeight: FontWeight.w600),
-                ),
+              const Center(
+                child: Text("Sign up", style: TextStyle(fontSize: 35, fontWeight: FontWeight.w600)),
               ),
-              SizedBox(height: 40),
-              Text("Name", style: TextStyle(fontSize: 18)),
-              SizedBox(height: 8),
+              const SizedBox(height: 40),
+              const Text("Name", style: TextStyle(fontSize: 18)),
+              const SizedBox(height: 8),
               TextField(
-                controller: nameController,
+                controller: _nameController,
                 decoration: InputDecoration(
                   hintText: "name",
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
                 ),
               ),
-              SizedBox(height: 16),
-              Text("Email", style: TextStyle(fontSize: 18)),
-              SizedBox(height: 8),
+              const SizedBox(height: 16),
+              const Text("Email", style: TextStyle(fontSize: 18)),
+              const SizedBox(height: 8),
               TextField(
-                controller: emailController,
+                controller: _emailController,
                 decoration: InputDecoration(
                   hintText: "name@example.com",
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
                 ),
               ),
-              SizedBox(height: 16),
-              Text("Password", style: TextStyle(fontSize: 18)),
-              SizedBox(height: 8),
+              const SizedBox(height: 16),
+              const Text("Password", style: TextStyle(fontSize: 18)),
+              const SizedBox(height: 8),
               TextField(
-                controller: passwordController,
+                controller: _passwordController,
                 obscureText: _obscurePassword,
                 decoration: InputDecoration(
                   hintText: "Your password",
                   suffixIcon: IconButton(
-                    icon: Icon(
-                      _obscurePassword ? Icons.visibility_off : Icons.visibility,
-                    ),
+                    icon: Icon(_obscurePassword ? Icons.visibility_off : Icons.visibility),
                     onPressed: () {
                       setState(() {
                         _obscurePassword = !_obscurePassword;
@@ -116,15 +76,15 @@ class _SignupPageState extends State<SignupPage> {
                     },
                   ),
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 ),
               ),
-              SizedBox(height: 16),
-              Text("Join as", style: TextStyle(fontSize: 18)),
-              SizedBox(height: 8),
+              const SizedBox(height: 16),
+              const Text("Join as", style: TextStyle(fontSize: 18)),
+              const SizedBox(height: 8),
               DropdownButtonFormField<String>(
                 value: selectedRole,
-                hint: Text("Select a role"),
+                hint: const Text("Select a role"),
                 items: roles.map((String role) {
                   return DropdownMenuItem<String>(
                     value: role,
@@ -138,43 +98,56 @@ class _SignupPageState extends State<SignupPage> {
                 },
                 decoration: InputDecoration(
                   border: OutlineInputBorder(borderRadius: BorderRadius.circular(9)),
-                  contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 ),
               ),
-              SizedBox(height: 24),
+              const SizedBox(height: 24),
               Center(
                 child: Container(
                   width: 350,
                   height: 50,
-                  margin: EdgeInsets.only(top: 20),
+                  margin: const EdgeInsets.only(top: 20),
                   child: ElevatedButton(
-                    onPressed: signUp,
+                    onPressed: () async {
+                      final authProvider = Provider.of<AuthProvider>(context, listen: false);
+
+                      final roleValue = selectedRole == 'Pet Owner' ? 'petOwner' : 'veterinarian';
+
+                      final error = await authProvider.signUp(
+                        name: _nameController.text.trim(),
+                        email: _emailController.text.trim(),
+                        password: _passwordController.text,
+                        role: roleValue,
+                      );
+
+                      if (error != null) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(error)));
+                      } else {
+                        if (roleValue == 'petOwner') {
+                          Navigator.pushReplacementNamed(context, AppRoutes.petZoneHome);
+                        } else if (roleValue == 'veterinarian') {
+                          Navigator.pushReplacementNamed(context, AppRoutes.home);
+                        }
+                      }
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF5E2A6F),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(9),
-                      ),
+                      backgroundColor: const Color(0xFF5E2A6F),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(9)),
                     ),
-                    child: Text(
-                      "Sign Up",
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
+                    child: const Text("Sign Up", style: TextStyle(fontSize: 18, color: Colors.white)),
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text("Already have an account? ", style: TextStyle(fontSize: 16)),
+                  const Text("Already have an account? ", style: TextStyle(fontSize: 16)),
                   TextButton(
                     onPressed: () {
                       Navigator.pushReplacementNamed(context, AppRoutes.logIn);
                     },
-                    child: Text(
-                      "Login?",
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                    ),
+                    child: const Text("Login?", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                   ),
                 ],
               ),

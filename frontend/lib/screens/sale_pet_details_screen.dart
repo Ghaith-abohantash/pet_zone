@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import '../providers/sale_details_provider.dart';
 import '../widgets/buttom_nav.dart';
 
-class SaleDetailsPage extends StatefulWidget {
-  const SaleDetailsPage({super.key});
+class SalePetDetailsScreen extends StatefulWidget {
+  final String petId;
+  const SalePetDetailsScreen({super.key, required this.petId});
 
   @override
-  State<SaleDetailsPage> createState() => _SaleDetailsPage();
+  State<SalePetDetailsScreen> createState() => _SalePetDetailsScreenState();
 }
 
-class _SaleDetailsPage extends State<SaleDetailsPage> {
+class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
   int _selectedIndex = 2;
 
   void _onItemTapped(int index) {
@@ -18,20 +21,10 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
     });
   }
 
-  List<bool> _toggleSelected = [true, false];
-  int _currentToggleIndex = 0;
-
-  void _onTogglePressed(int index) {
-    setState(() {
-      for (int i = 0; i < _toggleSelected.length; i++) {
-        _toggleSelected[i] = i == index;
-      }
-      _currentToggleIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final pet = Provider.of<SalePetProvider>(context).getById(widget.petId);
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -72,7 +65,7 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
                 width: 354,
                 margin: const EdgeInsets.only(top: 20),
                 child: Image.asset(
-                  "assets/images/sale_details.png",
+                  pet.imageAsset,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -82,14 +75,14 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
-                    "Lucy",
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+                    pet.name,
+                    style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
                   ),
                   Text(
-                    "100\$",
-                    style: TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
+                    "\$${pet.price}",
+                    style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
                   ),
                 ],
               ),
@@ -99,14 +92,14 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
+                children: [
                   Column(
                     children: [
-                      Text("Age", style: TextStyle(fontSize: 15)),
-                      SizedBox(height: 8),
+                      const Text("Age", style: TextStyle(fontSize: 15)),
+                      const SizedBox(height: 8),
                       Text(
-                        "1 years",
-                        style: TextStyle(
+                        "${pet.age} years",
+                        style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFF5E2A6F),
@@ -116,11 +109,11 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
                   ),
                   Column(
                     children: [
-                      Text("Sex", style: TextStyle(fontSize: 15)),
-                      SizedBox(height: 8),
+                      const Text("Sex", style: TextStyle(fontSize: 15)),
+                      const SizedBox(height: 8),
                       Text(
-                        "Male",
-                        style: TextStyle(
+                        pet.sex,
+                        style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFF5E2A6F),
@@ -130,11 +123,11 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
                   ),
                   Column(
                     children: [
-                      Text("Weight", style: TextStyle(fontSize: 15)),
-                      SizedBox(height: 8),
+                      const Text("Breed", style: TextStyle(fontSize: 15)),
+                      const SizedBox(height: 8),
                       Text(
-                        "3 kg",
-                        style: TextStyle(
+                        pet.breed,
+                        style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFF5E2A6F),
@@ -146,8 +139,8 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
               ),
             ),
             const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
               child: Align(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -157,10 +150,10 @@ class _SaleDetailsPage extends State<SaleDetailsPage> {
               ),
             ),
             const SizedBox(height: 8),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
               child: Text(
-                "The British Shorthair is a breed version of the traditional British domestic cat, with a distinctively stocky build, thick coat and broad face. The most recognized color variant is British Blue, with a solid gray-blue coat, orange eyes, and a medium-sized tail..",
+                "The ${'Golden Retriever'} is a friendly and intelligent dog, making it an ideal family pet.",
                 style: TextStyle(fontSize: 16, color: Colors.black87),
                 textAlign: TextAlign.justify,
               ),

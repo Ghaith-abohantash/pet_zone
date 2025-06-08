@@ -16,6 +16,7 @@ import '../screens/signup_screen.dart';
 import '../screens/login_screen.dart';
 import '../screens/splash_screen.dart';
 import '../screens/home_doctor_screen.dart';
+import '../screens/user_account_screen.dart';
 import '../screens/user_notification_screen.dart';
 import '../screens/verification_screen.dart';
 import '../screens/welcome_screen.dart';
@@ -29,6 +30,8 @@ import '../screens/upcoming_appointments_screen.dart';
 import '../screens/cancelled_appointments_screen.dart';
 import '../screens/empty_cart_screen.dart';
 import '../screens/cart_screen.dart';
+import '../screens/adopt_pet_details_screen.dart';
+
 
 class AppRoutes {
   static const String splash = '/';
@@ -42,7 +45,7 @@ class AppRoutes {
   static const String userNotification= '/userNotification';
   static const String favorite= '/favorite';
   static const String saleDetails= '/saleDetails';
-  static const String adoptDetails= '/saleDetails';
+  static const String adoptDetails= '/adoptDetails';
   static const String petZoneHome= '/petZoneHome';
   static const String buyPets= '/buyPets';
   static const String addAnimalPage= '/addAnimalPage';
@@ -61,7 +64,7 @@ class AppRoutes {
   static const String cancelled = '/cancelled';
   static const String emptyCart = '/cart';
   static const String cart = '/full-cart';
-
+  static const String userAccountPage = '/userAccountPage';
 
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -84,14 +87,28 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_)=> const DoctorProfilePage() );
       case doctorAccountPage:
         return MaterialPageRoute(builder: (_)=> const DoctorAccountPage() );
+      case userAccountPage:
+        return MaterialPageRoute(builder: (_)=> const UserAccountPage() );
       case userNotification:
         return MaterialPageRoute(builder: (_)=> const UserNotificationPage() );
       case favorite:
         return MaterialPageRoute(builder: (_)=> const FavoritePage() );
       case saleDetails:
-        return MaterialPageRoute(builder: (_)=> const SaleDetailsPage() );
+        {
+          // Expecting the pet ID as a String argument
+          final petId = settings.arguments as String;
+          return MaterialPageRoute(
+            builder: (_) => SalePetDetailsScreen(petId: petId),
+          );
+        }
       case adoptDetails:
-        return MaterialPageRoute(builder: (_)=> const AdoptDetailsPage() );
+        {
+          // Expecting the adopt pet ID as a String argument
+          final adoptPetId = settings.arguments as String;
+          return MaterialPageRoute(
+            builder: (_) => AdoptPetDetailsScreen(adoptPetId: adoptPetId),
+          );
+        }
       case buyPets:
         return MaterialPageRoute(builder: (_)=> const BuyPets() );
       case addAnimalPage:
