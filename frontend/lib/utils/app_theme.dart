@@ -13,7 +13,6 @@ class AppTheme {
       titleTextStyle: GoogleFonts.poppins(
         color: Color(0xFF5E2A6F),
         fontSize: 24,
-        fontWeight: FontWeight.bold,
       ),
     ),
     textTheme: TextTheme(
@@ -31,7 +30,12 @@ class AppTheme {
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color(0xFF5E2A6F),
         foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        textStyle: const TextStyle(
+          fontSize: 18,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
       ),
     ),
   );

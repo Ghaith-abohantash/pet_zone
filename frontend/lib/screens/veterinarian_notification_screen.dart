@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
 import '../viewmodels/notification_view_model.dart';
 import '../models/notification_model.dart';
 import '../widgets/notification_Card.dart';
+import '../providers/auth_provider.dart';
 
 class VeterinarianNotificationScreen extends StatefulWidget {
   const VeterinarianNotificationScreen({super.key});
@@ -12,12 +15,21 @@ class VeterinarianNotificationScreen extends StatefulWidget {
       _VeterinarianNotificationScreenState();
 }
 
-class _VeterinarianNotificationScreenState extends State<VeterinarianNotificationScreen> {
-  final String doctorId = "doctor_test_id";
+class _VeterinarianNotificationScreenState
+    extends State<VeterinarianNotificationScreen> {
   final NotificationViewModel viewModel = NotificationViewModel();
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+    final doctorId = authProvider.user?.uid;
+
+    if (doctorId == null) {
+      return const Scaffold(
+        body: Center(child: Text("User not logged in.")),
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -94,7 +106,6 @@ class _VeterinarianNotificationScreenState extends State<VeterinarianNotificatio
                   },
                 ),
               ),
-
             ],
           );
         },

@@ -1,103 +1,40 @@
-com.example.petzone_project.app-jetified-foundation-layout-release-0 C:\Users\Hp\.gradle\caches\8.10.2\transforms\0387c69342651291e53ea9dc21761dc2\transformed\jetified-foundation-layout-release\res
-com.example.petzone_project.app-jetified-payments-model-20.34.4-1 C:\Users\Hp\.gradle\caches\8.10.2\transforms\076d03184532b21b586282c9beb1146c\transformed\jetified-payments-model-20.34.4\res
-com.example.petzone_project.app-jetified-lifecycle-livedata-ktx-2.7.0-2 C:\Users\Hp\.gradle\caches\8.10.2\transforms\0d4829c0ea97b2dc481d412b4bf0cbcc\transformed\jetified-lifecycle-livedata-ktx-2.7.0\res
-com.example.petzone_project.app-jetified-ui-tooling-preview-release-3 C:\Users\Hp\.gradle\caches\8.10.2\transforms\18c5e0a2e0cb34d8ad68675b2db37508\transformed\jetified-ui-tooling-preview-release\res
-com.example.petzone_project.app-lifecycle-viewmodel-2.7.0-4 C:\Users\Hp\.gradle\caches\8.10.2\transforms\1b91be3af319ede480d7185430690ee1\transformed\lifecycle-viewmodel-2.7.0\res
-com.example.petzone_project.app-jetified-lifecycle-runtime-ktx-2.7.0-5 C:\Users\Hp\.gradle\caches\8.10.2\transforms\1da3d52bf544e2149dd46ce2061a20cf\transformed\jetified-lifecycle-runtime-ktx-2.7.0\res
-com.example.petzone_project.app-navigation-runtime-ktx-2.5.3-6 C:\Users\Hp\.gradle\caches\8.10.2\transforms\27c02f247947470e38156bbaadb7ca35\transformed\navigation-runtime-ktx-2.5.3\res
-com.example.petzone_project.app-jetified-tracing-1.2.0-7 C:\Users\Hp\.gradle\caches\8.10.2\transforms\285b6d6abe2dd4ba9515886e610a7341\transformed\jetified-tracing-1.2.0\res
-com.example.petzone_project.app-jetified-emoji2-views-helper-1.2.0-8 C:\Users\Hp\.gradle\caches\8.10.2\transforms\2899c534f3de5608a8a60403e44e6ec5\transformed\jetified-emoji2-views-helper-1.2.0\res
-com.example.petzone_project.app-jetified-animation-release-9 C:\Users\Hp\.gradle\caches\8.10.2\transforms\2babf4d0c38ff98c01f936b7bca6fd0d\transformed\jetified-animation-release\res
-com.example.petzone_project.app-jetified-fragment-ktx-1.7.1-10 C:\Users\Hp\.gradle\caches\8.10.2\transforms\2e4c2e4e231b6a1dd462fb9cdc4ff977\transformed\jetified-fragment-ktx-1.7.1\res
-com.example.petzone_project.app-jetified-accompanist-themeadapter-core-0.32.0-11 C:\Users\Hp\.gradle\caches\8.10.2\transforms\334e303115159b6eb7cd675299b4fd97\transformed\jetified-accompanist-themeadapter-core-0.32.0\res
-com.example.petzone_project.app-jetified-ui-util-release-12 C:\Users\Hp\.gradle\caches\8.10.2\transforms\38af5674c662a8254ab0b64fcc5f54b2\transformed\jetified-ui-util-release\res
-com.example.petzone_project.app-jetified-navigation-compose-2.5.3-13 C:\Users\Hp\.gradle\caches\8.10.2\transforms\42b79df44d66aef4fde49b2dbf44b562\transformed\jetified-navigation-compose-2.5.3\res
-com.example.petzone_project.app-browser-1.5.0-14 C:\Users\Hp\.gradle\caches\8.10.2\transforms\443b6fa322bfd9782be7660d68f101f2\transformed\browser-1.5.0\res
-com.example.petzone_project.app-media-1.0.0-15 C:\Users\Hp\.gradle\caches\8.10.2\transforms\46567eeb5dd96eb1eece9970999eba2d\transformed\media-1.0.0\res
-com.example.petzone_project.app-jetified-core-1.0.0-16 C:\Users\Hp\.gradle\caches\8.10.2\transforms\47506b70b93177473c53f4d5d7e77c91\transformed\jetified-core-1.0.0\res
-com.example.petzone_project.app-transition-1.2.0-17 C:\Users\Hp\.gradle\caches\8.10.2\transforms\4b173e52a1b053eab8a239f9d528c636\transformed\transition-1.2.0\res
-com.example.petzone_project.app-jetified-window-1.2.0-18 C:\Users\Hp\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\res
-com.example.petzone_project.app-jetified-accompanist-themeadapter-material-0.32.0-19 C:\Users\Hp\.gradle\caches\8.10.2\transforms\510c1b1846ac8ac80518c74a5881808f\transformed\jetified-accompanist-themeadapter-material-0.32.0\res
-com.example.petzone_project.app-jetified-foundation-release-20 C:\Users\Hp\.gradle\caches\8.10.2\transforms\5465ffee7da686d83ab1b6055a3f1001\transformed\jetified-foundation-release\res
-com.example.petzone_project.app-navigation-common-2.5.3-21 C:\Users\Hp\.gradle\caches\8.10.2\transforms\54dc35c8b5ca17149c5107e30217a350\transformed\navigation-common-2.5.3\res
-com.example.petzone_project.app-fragment-1.7.1-22 C:\Users\Hp\.gradle\caches\8.10.2\transforms\55520e4df2220e27f13f0bbb7467d11a\transformed\fragment-1.7.1\res
-com.example.petzone_project.app-jetified-activity-ktx-1.9.3-23 C:\Users\Hp\.gradle\caches\8.10.2\transforms\5cf1d9716b9650d5a0a992711d623bf8\transformed\jetified-activity-ktx-1.9.3\res
-com.example.petzone_project.app-jetified-stripe-3ds2-android-6.1.7-24 C:\Users\Hp\.gradle\caches\8.10.2\transforms\5f779a58ef2338aeb71ccad028cde32d\transformed\jetified-stripe-3ds2-android-6.1.7\res
-com.example.petzone_project.app-jetified-profileinstaller-1.3.1-25 C:\Users\Hp\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\res
-com.example.petzone_project.app-jetified-ui-text-release-26 C:\Users\Hp\.gradle\caches\8.10.2\transforms\605f4588aad7b2c53fc57fae0ba0dfb6\transformed\jetified-ui-text-release\res
-com.example.petzone_project.app-navigation-common-ktx-2.5.3-27 C:\Users\Hp\.gradle\caches\8.10.2\transforms\61205cc64faedf027b2676cf3c4053ad\transformed\navigation-common-ktx-2.5.3\res
-com.example.petzone_project.app-jetified-payments-core-20.34.4-28 C:\Users\Hp\.gradle\caches\8.10.2\transforms\635aae3c1d96b84c5b5820d0f3468bfb\transformed\jetified-payments-core-20.34.4\res
-com.example.petzone_project.app-jetified-runtime-saveable-release-29 C:\Users\Hp\.gradle\caches\8.10.2\transforms\6664aceacdccd783782bad68db906706\transformed\jetified-runtime-saveable-release\res
-com.example.petzone_project.app-appcompat-1.6.1-30 C:\Users\Hp\.gradle\caches\8.10.2\transforms\67e431d42222568371fff0afd22bbdc6\transformed\appcompat-1.6.1\res
-com.example.petzone_project.app-jetified-core-ktx-1.13.1-31 C:\Users\Hp\.gradle\caches\8.10.2\transforms\6ec70d4eb0351866340efe37c2014fef\transformed\jetified-core-ktx-1.13.1\res
-com.example.petzone_project.app-navigation-runtime-2.5.3-32 C:\Users\Hp\.gradle\caches\8.10.2\transforms\6eeb050bd6fc3e1083901e2dd46f80f3\transformed\navigation-runtime-2.5.3\res
-com.example.petzone_project.app-jetified-customview-poolingcontainer-1.0.0-33 C:\Users\Hp\.gradle\caches\8.10.2\transforms\7133f88ce0019484b20b8b2d5cf67e46\transformed\jetified-customview-poolingcontainer-1.0.0\res
-com.example.petzone_project.app-jetified-stripe-ui-core-20.34.4-34 C:\Users\Hp\.gradle\caches\8.10.2\transforms\763651434abe5bd823dd14f089cde7f1\transformed\jetified-stripe-ui-core-20.34.4\res
-com.example.petzone_project.app-jetified-firebase-common-20.4.3-35 C:\Users\Hp\.gradle\caches\8.10.2\transforms\7753fbb9eb20d93e79e4caf23f22802c\transformed\jetified-firebase-common-20.4.3\res
-com.example.petzone_project.app-jetified-activity-compose-1.9.3-36 C:\Users\Hp\.gradle\caches\8.10.2\transforms\8590304036058164d77706b75a8a64b8\transformed\jetified-activity-compose-1.9.3\res
-com.example.petzone_project.app-jetified-ui-unit-release-37 C:\Users\Hp\.gradle\caches\8.10.2\transforms\86ac0661c3356e2940d4c91b800347ce\transformed\jetified-ui-unit-release\res
-com.example.petzone_project.app-core-1.13.1-38 C:\Users\Hp\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\res
-com.example.petzone_project.app-jetified-material3-1.0.1-39 C:\Users\Hp\.gradle\caches\8.10.2\transforms\8e71e7c08b297cb32539b89f832f53d8\transformed\jetified-material3-1.0.1\res
-com.example.petzone_project.app-jetified-ui-geometry-release-40 C:\Users\Hp\.gradle\caches\8.10.2\transforms\980aaf4ad149217c5e8bae20daa207b3\transformed\jetified-ui-geometry-release\res
-com.example.petzone_project.app-jetified-lifecycle-viewmodel-compose-2.7.0-41 C:\Users\Hp\.gradle\caches\8.10.2\transforms\983b4314de8db92c25187d40edca61a7\transformed\jetified-lifecycle-viewmodel-compose-2.7.0\res
-com.example.petzone_project.app-drawerlayout-1.1.1-42 C:\Users\Hp\.gradle\caches\8.10.2\transforms\9967797afdd90cde852a608be4a71bf1\transformed\drawerlayout-1.1.1\res
-com.example.petzone_project.app-recyclerview-1.2.1-43 C:\Users\Hp\.gradle\caches\8.10.2\transforms\9a1acc868064c8376f128f567c1ff152\transformed\recyclerview-1.2.1\res
-com.example.petzone_project.app-jetified-appcompat-resources-1.6.1-44 C:\Users\Hp\.gradle\caches\8.10.2\transforms\a12a090674da1baef97900c09c2e9654\transformed\jetified-appcompat-resources-1.6.1\res
-com.example.petzone_project.app-jetified-lifecycle-viewmodel-ktx-2.7.0-45 C:\Users\Hp\.gradle\caches\8.10.2\transforms\a1682fe25d19efcf6ed57ec9bfdc01f5\transformed\jetified-lifecycle-viewmodel-ktx-2.7.0\res
-com.example.petzone_project.app-material-1.8.0-46 C:\Users\Hp\.gradle\caches\8.10.2\transforms\a502440b69382cbb13af31a1d5985f9f\transformed\material-1.8.0\res
-com.example.petzone_project.app-jetified-stripe-core-20.34.4-47 C:\Users\Hp\.gradle\caches\8.10.2\transforms\a65dd303e606b58b58269b42f69e5f89\transformed\jetified-stripe-core-20.34.4\res
-com.example.petzone_project.app-jetified-activity-1.9.3-48 C:\Users\Hp\.gradle\caches\8.10.2\transforms\a70ddd560199940b45ffc1a1c4db7f79\transformed\jetified-activity-1.9.3\res
-com.example.petzone_project.app-jetified-ui-viewbinding-1.5.1-49 C:\Users\Hp\.gradle\caches\8.10.2\transforms\a71e50aac52223caf55ece1cdf0747cf\transformed\jetified-ui-viewbinding-1.5.1\res
-com.example.petzone_project.app-jetified-play-services-basement-18.3.0-50 C:\Users\Hp\.gradle\caches\8.10.2\transforms\abeed4f47a72eff8f5b4e9bf7f2f3c91\transformed\jetified-play-services-basement-18.3.0\res
-com.example.petzone_project.app-jetified-savedstate-1.2.1-51 C:\Users\Hp\.gradle\caches\8.10.2\transforms\b3d51a44ab6b56289d4858158a1ad6dd\transformed\jetified-savedstate-1.2.1\res
-com.example.petzone_project.app-jetified-material-release-52 C:\Users\Hp\.gradle\caches\8.10.2\transforms\b9a1cd1398dbf9519fff1a9e166615bd\transformed\jetified-material-release\res
-com.example.petzone_project.app-jetified-play-services-wallet-19.2.1-53 C:\Users\Hp\.gradle\caches\8.10.2\transforms\ba2bbf823ab5a18be680588e75f7e6ba\transformed\jetified-play-services-wallet-19.2.1\res
-com.example.petzone_project.app-jetified-ui-release-54 C:\Users\Hp\.gradle\caches\8.10.2\transforms\be80f888898887bb71616e48bf7874ba\transformed\jetified-ui-release\res
-com.example.petzone_project.app-lifecycle-runtime-2.7.0-55 C:\Users\Hp\.gradle\caches\8.10.2\transforms\c092edbccc16347970ed4f22e8da111a\transformed\lifecycle-runtime-2.7.0\res
-com.example.petzone_project.app-jetified-window-java-1.2.0-56 C:\Users\Hp\.gradle\caches\8.10.2\transforms\c1f85211ae6978d0218d51595a7f7e62\transformed\jetified-window-java-1.2.0\res
-com.example.petzone_project.app-jetified-material-icons-core-release-57 C:\Users\Hp\.gradle\caches\8.10.2\transforms\c4b751b72a34bc9e3da91e1e412bff11\transformed\jetified-material-icons-core-release\res
-com.example.petzone_project.app-jetified-lifecycle-viewmodel-savedstate-2.7.0-58 C:\Users\Hp\.gradle\caches\8.10.2\transforms\c7156a54e8f0502a1f8f57797d8b3e6e\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\res
-com.example.petzone_project.app-jetified-security-crypto-1.1.0-alpha05-59 C:\Users\Hp\.gradle\caches\8.10.2\transforms\c7ee4e4528c2e9eca52358a7f1f4f251\transformed\jetified-security-crypto-1.1.0-alpha05\res
-com.example.petzone_project.app-coordinatorlayout-1.1.0-60 C:\Users\Hp\.gradle\caches\8.10.2\transforms\c9ca8a45334a59e7b1dab4e619a1512f\transformed\coordinatorlayout-1.1.0\res
-com.example.petzone_project.app-jetified-ui-graphics-release-61 C:\Users\Hp\.gradle\caches\8.10.2\transforms\ccef0688f87d578873e67a3539ff2138\transformed\jetified-ui-graphics-release\res
-com.example.petzone_project.app-jetified-emoji2-1.2.0-62 C:\Users\Hp\.gradle\caches\8.10.2\transforms\d221757f531c672c2df2db4ebaa2cbf1\transformed\jetified-emoji2-1.2.0\res
-com.example.petzone_project.app-jetified-play-services-base-18.0.1-63 C:\Users\Hp\.gradle\caches\8.10.2\transforms\d4003e89e11d20e7aac223715520d9d9\transformed\jetified-play-services-base-18.0.1\res
-com.example.petzone_project.app-jetified-runtime-release-64 C:\Users\Hp\.gradle\caches\8.10.2\transforms\d50338da90c3ee890cbadb3017b53ff1\transformed\jetified-runtime-release\res
-com.example.petzone_project.app-jetified-viewpager2-1.0.0-65 C:\Users\Hp\.gradle\caches\8.10.2\transforms\d8d2fedd17fffc12839dcc9cce6d60ff\transformed\jetified-viewpager2-1.0.0\res
-com.example.petzone_project.app-jetified-play-services-maps-18.0.2-66 C:\Users\Hp\.gradle\caches\8.10.2\transforms\db26a6a14b37d76dd687e7a530aa9f7f\transformed\jetified-play-services-maps-18.0.2\res
-com.example.petzone_project.app-jetified-link-20.34.4-67 C:\Users\Hp\.gradle\caches\8.10.2\transforms\dd497b801a534c8e6518183be54f249b\transformed\jetified-link-20.34.4\res
-com.example.petzone_project.app-jetified-payments-ui-core-20.34.4-68 C:\Users\Hp\.gradle\caches\8.10.2\transforms\de6d39d460bdc21c935fb84db93695ba\transformed\jetified-payments-ui-core-20.34.4\res
-com.example.petzone_project.app-jetified-startup-runtime-1.1.1-69 C:\Users\Hp\.gradle\caches\8.10.2\transforms\e0d9d3675465ff69d847e2f781f20c61\transformed\jetified-startup-runtime-1.1.1\res
-com.example.petzone_project.app-lifecycle-livedata-2.7.0-70 C:\Users\Hp\.gradle\caches\8.10.2\transforms\e0eede8414d1ee0e5f236daeb1a2e59a\transformed\lifecycle-livedata-2.7.0\res
-com.example.petzone_project.app-jetified-animation-core-release-71 C:\Users\Hp\.gradle\caches\8.10.2\transforms\e226888d50d4673fded04fc88b484e05\transformed\jetified-animation-core-release\res
-com.example.petzone_project.app-lifecycle-livedata-core-2.7.0-72 C:\Users\Hp\.gradle\caches\8.10.2\transforms\e2e21678784b3eef6b33f576b1691a56\transformed\lifecycle-livedata-core-2.7.0\res
-com.example.petzone_project.app-jetified-paymentsheet-20.34.4-73 C:\Users\Hp\.gradle\caches\8.10.2\transforms\e71634029c28cc8731cc9cadb4b93d05\transformed\jetified-paymentsheet-20.34.4\res
-com.example.petzone_project.app-jetified-lifecycle-process-2.7.0-74 C:\Users\Hp\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\res
-com.example.petzone_project.app-jetified-savedstate-ktx-1.2.1-75 C:\Users\Hp\.gradle\caches\8.10.2\transforms\ebca0abd79b4e189ce4efe6f41f957a4\transformed\jetified-savedstate-ktx-1.2.1\res
-com.example.petzone_project.app-jetified-material-ripple-release-76 C:\Users\Hp\.gradle\caches\8.10.2\transforms\ebcaea7133da8a36b22dd854f08947c8\transformed\jetified-material-ripple-release\res
-com.example.petzone_project.app-jetified-lifecycle-livedata-core-ktx-2.7.0-77 C:\Users\Hp\.gradle\caches\8.10.2\transforms\ebeb29d7113d60e59d5e0acf92f847f3\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\res
-com.example.petzone_project.app-cardview-1.0.0-78 C:\Users\Hp\.gradle\caches\8.10.2\transforms\eea6bc447011882d6b95909c5f8bbb72\transformed\cardview-1.0.0\res
-com.example.petzone_project.app-jetified-annotation-experimental-1.4.0-79 C:\Users\Hp\.gradle\caches\8.10.2\transforms\f09a22cdd213028a38958888c7d16e20\transformed\jetified-annotation-experimental-1.4.0\res
-com.example.petzone_project.app-jetified-financial-connections-20.34.4-80 C:\Users\Hp\.gradle\caches\8.10.2\transforms\f1c725f179bcf118f2edcb2b18ab0533\transformed\jetified-financial-connections-20.34.4\res
-com.example.petzone_project.app-jetified-accompanist-themeadapter-material3-0.32.0-81 C:\Users\Hp\.gradle\caches\8.10.2\transforms\f2f3d919f461c7bcc761eab4a203b746\transformed\jetified-accompanist-themeadapter-material3-0.32.0\res
-com.example.petzone_project.app-jetified-glide-4.12.0-82 C:\Users\Hp\.gradle\caches\8.10.2\transforms\f49fc03636d627520fed5aa58991a429\transformed\jetified-glide-4.12.0\res
-com.example.petzone_project.app-constraintlayout-2.1.4-83 C:\Users\Hp\.gradle\caches\8.10.2\transforms\fafc57e46ce6619de1b1da19701dac46\transformed\constraintlayout-2.1.4\res
-com.example.petzone_project.app-jetified-runtime-livedata-1.5.1-84 C:\Users\Hp\.gradle\caches\8.10.2\transforms\fda2936b75f4fec5aaecc64d9e78d913\transformed\jetified-runtime-livedata-1.5.1\res
-com.example.petzone_project.app-jetified-accompanist-themeadapter-appcompat-0.32.0-85 C:\Users\Hp\.gradle\caches\8.10.2\transforms\fe848174fd521be4f0c6a7a151f83da0\transformed\jetified-accompanist-themeadapter-appcompat-0.32.0\res
-com.example.petzone_project.app-core-runtime-2.2.0-86 C:\Users\Hp\.gradle\caches\8.10.2\transforms\ff849810dfe34a0ab790c402787c149e\transformed\core-runtime-2.2.0\res
-com.example.petzone_project.app-debug-87 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\debug\res
-com.example.petzone_project.app-main-88 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\main\res
-com.example.petzone_project.app-google-services-89 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\generated\res\google-services\debug
-com.example.petzone_project.app-pngs-90 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\generated\res\pngs\debug
-com.example.petzone_project.app-resValues-91 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\generated\res\resValues\debug
-com.example.petzone_project.app-packageDebugResources-92 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.example.petzone_project.app-packageDebugResources-93 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.example.petzone_project.app-debug-94 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\intermediates\merged_res\debug\mergeDebugResources
-com.example.petzone_project.app-debug-95 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\cloud_firestore\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-96 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_auth\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-97 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_core\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-98 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\flutter_native_splash\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-99 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-100 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-101 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\path_provider_android\intermediates\packaged_res\debug\packageDebugResources
-com.example.petzone_project.app-debug-102 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\stripe_android\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-lifecycle-viewmodel-2.7.0-0 C:\Users\Hp\.gradle\caches\8.10.2\transforms\1b91be3af319ede480d7185430690ee1\transformed\lifecycle-viewmodel-2.7.0\res
+com.example.petzone_project.app-jetified-tracing-1.2.0-1 C:\Users\Hp\.gradle\caches\8.10.2\transforms\285b6d6abe2dd4ba9515886e610a7341\transformed\jetified-tracing-1.2.0\res
+com.example.petzone_project.app-jetified-core-1.0.0-2 C:\Users\Hp\.gradle\caches\8.10.2\transforms\47506b70b93177473c53f4d5d7e77c91\transformed\jetified-core-1.0.0\res
+com.example.petzone_project.app-jetified-window-1.2.0-3 C:\Users\Hp\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\res
+com.example.petzone_project.app-fragment-1.7.1-4 C:\Users\Hp\.gradle\caches\8.10.2\transforms\55520e4df2220e27f13f0bbb7467d11a\transformed\fragment-1.7.1\res
+com.example.petzone_project.app-jetified-profileinstaller-1.3.1-5 C:\Users\Hp\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\res
+com.example.petzone_project.app-jetified-core-ktx-1.13.1-6 C:\Users\Hp\.gradle\caches\8.10.2\transforms\6ec70d4eb0351866340efe37c2014fef\transformed\jetified-core-ktx-1.13.1\res
+com.example.petzone_project.app-jetified-firebase-common-20.4.3-7 C:\Users\Hp\.gradle\caches\8.10.2\transforms\7753fbb9eb20d93e79e4caf23f22802c\transformed\jetified-firebase-common-20.4.3\res
+com.example.petzone_project.app-jetified-play-services-base-18.1.0-8 C:\Users\Hp\.gradle\caches\8.10.2\transforms\80d381bf084c21e18706da6716588126\transformed\jetified-play-services-base-18.1.0\res
+com.example.petzone_project.app-core-1.13.1-9 C:\Users\Hp\.gradle\caches\8.10.2\transforms\8cf478dec41eed746328fa8046755ba2\transformed\core-1.13.1\res
+com.example.petzone_project.app-jetified-activity-1.9.3-10 C:\Users\Hp\.gradle\caches\8.10.2\transforms\a70ddd560199940b45ffc1a1c4db7f79\transformed\jetified-activity-1.9.3\res
+com.example.petzone_project.app-jetified-play-services-basement-18.3.0-11 C:\Users\Hp\.gradle\caches\8.10.2\transforms\abeed4f47a72eff8f5b4e9bf7f2f3c91\transformed\jetified-play-services-basement-18.3.0\res
+com.example.petzone_project.app-jetified-savedstate-1.2.1-12 C:\Users\Hp\.gradle\caches\8.10.2\transforms\b3d51a44ab6b56289d4858158a1ad6dd\transformed\jetified-savedstate-1.2.1\res
+com.example.petzone_project.app-lifecycle-runtime-2.7.0-13 C:\Users\Hp\.gradle\caches\8.10.2\transforms\c092edbccc16347970ed4f22e8da111a\transformed\lifecycle-runtime-2.7.0\res
+com.example.petzone_project.app-jetified-window-java-1.2.0-14 C:\Users\Hp\.gradle\caches\8.10.2\transforms\c1f85211ae6978d0218d51595a7f7e62\transformed\jetified-window-java-1.2.0\res
+com.example.petzone_project.app-jetified-lifecycle-viewmodel-savedstate-2.7.0-15 C:\Users\Hp\.gradle\caches\8.10.2\transforms\c7156a54e8f0502a1f8f57797d8b3e6e\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\res
+com.example.petzone_project.app-jetified-startup-runtime-1.1.1-16 C:\Users\Hp\.gradle\caches\8.10.2\transforms\e0d9d3675465ff69d847e2f781f20c61\transformed\jetified-startup-runtime-1.1.1\res
+com.example.petzone_project.app-lifecycle-livedata-2.7.0-17 C:\Users\Hp\.gradle\caches\8.10.2\transforms\e0eede8414d1ee0e5f236daeb1a2e59a\transformed\lifecycle-livedata-2.7.0\res
+com.example.petzone_project.app-lifecycle-livedata-core-2.7.0-18 C:\Users\Hp\.gradle\caches\8.10.2\transforms\e2e21678784b3eef6b33f576b1691a56\transformed\lifecycle-livedata-core-2.7.0\res
+com.example.petzone_project.app-jetified-lifecycle-process-2.7.0-19 C:\Users\Hp\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\res
+com.example.petzone_project.app-jetified-lifecycle-livedata-core-ktx-2.7.0-20 C:\Users\Hp\.gradle\caches\8.10.2\transforms\ebeb29d7113d60e59d5e0acf92f847f3\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\res
+com.example.petzone_project.app-jetified-annotation-experimental-1.4.0-21 C:\Users\Hp\.gradle\caches\8.10.2\transforms\f09a22cdd213028a38958888c7d16e20\transformed\jetified-annotation-experimental-1.4.0\res
+com.example.petzone_project.app-browser-1.4.0-22 C:\Users\Hp\.gradle\caches\8.10.2\transforms\f8742dbdd8ad548bbf5dde49a0ea9a7d\transformed\browser-1.4.0\res
+com.example.petzone_project.app-core-runtime-2.2.0-23 C:\Users\Hp\.gradle\caches\8.10.2\transforms\ff849810dfe34a0ab790c402787c149e\transformed\core-runtime-2.2.0\res
+com.example.petzone_project.app-debug-24 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\debug\res
+com.example.petzone_project.app-main-25 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\android\app\src\main\res
+com.example.petzone_project.app-google-services-26 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\generated\res\google-services\debug
+com.example.petzone_project.app-pngs-27 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\generated\res\pngs\debug
+com.example.petzone_project.app-resValues-28 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\generated\res\resValues\debug
+com.example.petzone_project.app-packageDebugResources-29 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.petzone_project.app-packageDebugResources-30 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.petzone_project.app-debug-31 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\app\intermediates\merged_res\debug\mergeDebugResources
+com.example.petzone_project.app-debug-32 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\cloud_firestore\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-33 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_auth\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-34 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_core\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-35 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\firebase_storage\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-36 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\flutter_native_splash\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-37 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-38 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\image_picker_android\intermediates\packaged_res\debug\packageDebugResources
+com.example.petzone_project.app-debug-39 C:\Users\Hp\Desktop\Mobile project\pet_zone\frontend\build\path_provider_android\intermediates\packaged_res\debug\packageDebugResources

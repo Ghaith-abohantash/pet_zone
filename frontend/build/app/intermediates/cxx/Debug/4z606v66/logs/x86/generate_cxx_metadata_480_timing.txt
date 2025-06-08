@@ -1,6 +1,11 @@
 # C/C++ build system timings
 generate_cxx_metadata
+<<<<<<<< HEAD:frontend/build/app/intermediates/cxx/Debug/4z606v66/logs/x86/generate_cxx_metadata_480_timing.txt
   create-invalidation-state 13ms
   [gap of 11ms]
+========
+  create-invalidation-state 11ms
+  [gap of 14ms]
+>>>>>>>> e161c9e9b8505b7c40cd56c01e0e8a9a9d537930:frontend/build/app/intermediates/cxx/Debug/v4c3j1q6/logs/x86_64/generate_cxx_metadata_1387_timing.txt
 generate_cxx_metadata completed in 27ms
 

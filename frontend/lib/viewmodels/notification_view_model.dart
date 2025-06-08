@@ -7,7 +7,6 @@ class NotificationViewModel {
   Stream<List<NotificationModel>> getNotificationsStream(String doctorId) {
     return _firestore
         .collection('notifications')
-
         .where('doctorId', isEqualTo: doctorId)
         .orderBy('timestamp', descending: true)
         .snapshots()
@@ -26,8 +25,10 @@ class NotificationViewModel {
   Future<void> markAllAsRead(List<NotificationModel> notifications) async {
     final batch = _firestore.batch();
     for (var notif in notifications) {
-      batch.update(_firestore.collection('notifications').doc(notif.id), {'seen': true});
+      batch.update(
+          _firestore.collection('notifications').doc(notif.id),
+          {'seen': true});
     }
     await batch.commit();
-  }
+    }
 }

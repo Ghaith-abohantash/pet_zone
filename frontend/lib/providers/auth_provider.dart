@@ -1,7 +1,8 @@
-/*import 'package:firebase_auth/firebase_auth.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import '/models/user_model.dart';
+import '../models/user_model.dart';
 
 class AuthProvider with ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -22,7 +23,6 @@ class AuthProvider with ChangeNotifier {
       );
       final uid = result.user!.uid;
 
-      // Use UserRoles from the model file
       String roleToSave = (role == UserRoles.petOwner) ? UserRoles.petOwner : UserRoles.veterinarian;
 
       await FirebaseFirestore.instance.collection('users').doc(uid).set({
@@ -76,5 +76,5 @@ class AuthProvider with ChangeNotifier {
     }
 
     return null;
-   }
-}*/
+  }
+}
