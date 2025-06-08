@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 
 import 'routes/routes.dart';
-import 'viewmodel/appointment_viewmodel.dart';
+import 'viewmodels/appointment_viewmodel.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

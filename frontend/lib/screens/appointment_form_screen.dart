@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 import '../routes/routes.dart';
-import '../viewmodel/appointment_viewmodel.dart';
+import '../viewmodels/appointment_viewmodel.dart';
 import '../models/doctor.dart';
 import 'package:provider/provider.dart';
 
