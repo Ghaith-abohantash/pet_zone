@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:google_fonts/google_fonts.dart';
 import '../routes/routes.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,11 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacementNamed(
-        context,
-        AppRoutes.doctorProfilePage,
-        arguments: '1',
-      );
+      Navigator.pushReplacementNamed(context, AppRoutes.signUp);
     });
   }
 
@@ -28,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -42,12 +37,10 @@ class _SplashScreenState extends State<SplashScreen> {
             SizedBox(height: screenHeight * 0.01),
             Text(
               'Pet Zone',
-              style: GoogleFonts.poppins(
+              style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                 fontSize: screenWidth * 0.07,
-                fontWeight: FontWeight.bold,
-                color: const Color(0xFF5E2A6F),
               ),
-            )
+            ),
           ],
         ),
       ),

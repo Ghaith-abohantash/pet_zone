@@ -1,51 +1,41 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../routes/routes.dart';
+import 'package:provider/provider.dart';
+import '../viewmodels/forget_password_view_model.dart';
 
-
-class ForgetPasswordScreen extends StatefulWidget {
+class ForgetPasswordScreen extends StatelessWidget {
   const ForgetPasswordScreen({super.key});
 
   @override
-  State<ForgetPasswordScreen> createState() => _ForgetPasswordScreenState();
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => ForgetPasswordViewModel(),
+      child: const _ForgetPasswordBody(),
+    );
+  }
 }
 
-class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController _controller = TextEditingController();
-
-  void _submitForm() {
-    if (_formKey.currentState!.validate()) {
-      Navigator.pushNamed(context, AppRoutes.verificationscreen);
-    }
-  }
-
-
-  bool _isValidEmail(String input) {
-    return input.contains('@') && input.contains('.');
-  }
-
-  bool _isValidPhone(String input) {
-    return RegExp(r'^[0-9]{10,}$').hasMatch(input);
-  }
+class _ForgetPasswordBody extends StatelessWidget {
+  const _ForgetPasswordBody();
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = Provider.of<ForgetPasswordViewModel>(context);
+    final textTheme = Theme.of(context).textTheme;
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () => Navigator.pop(context),
         ),
-        elevation: 0,
-        backgroundColor: Colors.white,
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
         child: SingleChildScrollView(
           child: Form(
-            key: _formKey,
+            key: viewModel.formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -59,63 +49,85 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                 Center(
                   child: Text(
                     'Forget Password',
-                    style: GoogleFonts.poppins(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: textTheme.headlineLarge,
                   ),
                 ),
                 const SizedBox(height: 12),
                 Center(
                   child: Text(
-                    'Please enter your phone or email address to send verification code',
+                    'Please enter your email address to receive a password reset link',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
+                    style: textTheme.bodyMedium?.copyWith(
                       color: Colors.grey[600],
-                      fontSize: 15,
                     ),
                   ),
                 ),
                 const SizedBox(height: 32),
                 TextFormField(
-                  controller: _controller,
-                  style: GoogleFonts.poppins(),
+                  controller: viewModel.emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  style: textTheme.bodyMedium,
                   decoration: InputDecoration(
-                    hintText: 'Enter your phone or email',
-                    hintStyle: GoogleFonts.poppins(),
+                    hintText: 'Enter your email',
+                    hintStyle: textTheme.bodyMedium?.copyWith(
+                      color: Colors.grey,
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
                   ),
-                  validator: (value) {
-                    final input = value?.trim() ?? '';
-                    if (input.isEmpty) {
-                      return 'This field is required.';
-                    } else if (!_isValidEmail(input) && !_isValidPhone(input)) {
-                      return 'Enter a valid phone number or email.';
-                    }
-                    return null;
-                  },
+                  validator: viewModel.validateEmail,
                 ),
                 const SizedBox(height: 24),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: _submitForm,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF5E2A6F),
-                      shape: RoundedRectangleBorder(),
-                      foregroundColor: Colors.white,
-                    ),
+                    onPressed: viewModel.submit,
                     child: Text(
-                      'Send Code',
-                      style: GoogleFonts.poppins(
+                      'Send Reset Link',
+                      style: textTheme.bodyMedium?.copyWith(
+                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 16,
                       ),
                     ),
                   ),
                 ),
+                const SizedBox(height: 24),
+                if (viewModel.successMessage != null) ...[
+                  Text(
+                    viewModel.successMessage!,
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: Colors.green,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 12),
+                  Center(
+                    child: ElevatedButton(
+                      onPressed: () => Navigator.pop(context),
+                      child: Text(
+                        'Go to Login',
+                        style: textTheme.bodyMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 16,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+                if (viewModel.errorMessage != null) ...[
+                  Text(
+                    viewModel.errorMessage!,
+                    style: textTheme.bodyMedium?.copyWith(
+                      color: Colors.red,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ],
             ),
           ),
@@ -124,5 +136,3 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
     );
   }
 }
-
-

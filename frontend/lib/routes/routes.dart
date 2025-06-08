@@ -30,6 +30,8 @@ import '../screens/upcoming_appointments_screen.dart';
 import '../screens/cancelled_appointments_screen.dart';
 import '../screens/empty_cart_screen.dart';
 import '../screens/cart_screen.dart';
+import '../screens/veterinarian_notification_screen.dart';
+
 import '../screens/adopt_pet_details_screen.dart';
 
 
@@ -56,6 +58,8 @@ class AppRoutes {
   static const String verificationscreen= '/verificationscreen';
   static const String resetpasswordscreen= '/resetpasswordscreen';
   static const String forgetpasswordscreen= '/forgetpasswordscreen';
+  static const String doctornotification= '/doctornotification';
+
   static const String appointmentForm = '/form';
   static const String confirm = '/confirm';
   static const String personalInfo = '/personal-info';
@@ -78,7 +82,7 @@ class AppRoutes {
       case petZoneHome:
         return MaterialPageRoute(builder: (_)=> const HomePage() );
       case appointmentScreen:
-        return MaterialPageRoute(builder: (_)=> const AppointmentScreen() );
+        return MaterialPageRoute(builder: (_)=>  AppointmentScreen() );
       case logIn:
         return MaterialPageRoute(builder: (_)=> const LogInPage() );
       case signUp:
@@ -93,6 +97,8 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_)=> const UserNotificationPage() );
       case favorite:
         return MaterialPageRoute(builder: (_)=> const FavoritePage() );
+      case doctornotification:
+        return MaterialPageRoute(builder: (_)=> const VeterinarianNotificationScreen() );
       case saleDetails:
         {
           // Expecting the pet ID as a String argument
