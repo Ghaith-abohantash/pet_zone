@@ -203,6 +203,7 @@ class UpcomingAppointmentsScreen extends StatelessWidget {
         ),
       ),
     );
+
   }
 }
 

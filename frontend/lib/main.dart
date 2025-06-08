@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Test',
       debugShowCheckedModeBanner: false,
-      initialRoute: AppRoutes.cart,
+      initialRoute: AppRoutes.empty,
       onGenerateRoute: AppRoutes.generateRoute,
     );
   }
