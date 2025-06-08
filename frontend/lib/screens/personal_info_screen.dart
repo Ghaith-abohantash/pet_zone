@@ -1,7 +1,18 @@
 import 'package:flutter/material.dart';
 
 class PersonalInfoScreen extends StatelessWidget {
-  const PersonalInfoScreen({super.key});
+  final String doctor_name;
+  final String date;
+  final String time;
+  final String doctor_uid;
+
+  const PersonalInfoScreen({
+    super.key,
+    required this.doctor_name,
+    required this.date,
+    required this.time,
+  required this.doctor_uid,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +37,14 @@ class PersonalInfoScreen extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 24),
+
+
+            Text("Doctor: $doctor_name"),
+            Text("Date: $date"),
+            Text("Time: $time"),
+
+
             const SizedBox(height: 24),
             const Text("Full Name"),
             const SizedBox(height: 8),
@@ -65,7 +84,7 @@ class PersonalInfoScreen extends StatelessWidget {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
-                  // يمكن توصيل هذه الشاشة بالتي بعدها لاحقًا
+                  // حفظ الموعد أو التنقل للخطوة التالية
                 },
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.deepPurple,
