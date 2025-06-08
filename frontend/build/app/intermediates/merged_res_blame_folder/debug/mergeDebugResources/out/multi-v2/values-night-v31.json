@@ -4,14 +4,14 @@
             "outputFile": "com.example.petzone_project.app-mergeDebugResources-29:/values-night-v31/values-night-v31.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Asus\\Desktop\\code\\pet_zone\\frontend\\android\\app\\src\\main\\res\\values-night-v31\\styles.xml",
+                    "source": "C:\\Users\\Hp\\Desktop\\Mobile project\\pet_zone\\frontend\\android\\app\\src\\main\\res\\values-night-v31\\styles.xml",
                     "from": {
                         "startLines": "3,17",
                         "startColumns": "4,4",
-                        "startOffsets": "175,1063",
+                        "startOffsets": "172,1051",
                         "endLines": "10,19",
                         "endColumns": "12,12",
-                        "endOffsets": "705,1229"
+                        "endOffsets": "695,1215"
                     },
                     "to": {
                         "startLines": "2,10",
