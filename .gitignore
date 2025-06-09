@@ -6,8 +6,10 @@
 .DS_Store
 .atom/
 .build/
+/frontend/build
 .buildlog/
 .history
+build/
 .svn/
 .swiftpm/
 migrate_working_dir/
@@ -47,4 +49,5 @@ app.*.map.json
 
 *.apk
 /outputs/
+/frontend/build/
 /frontend/build/

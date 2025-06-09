@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';  // لو تستخدم Firebase Auth
 import '../routes/routes.dart';
 import '../widgets/app_bar.dart';
-import '../widgets/buttom_nav.dart';
 
 class UserAccountPage extends StatefulWidget {
   const UserAccountPage({super.key});
@@ -21,11 +21,49 @@ class _UserAccountPage extends State<UserAccountPage> {
     });
 
     if (index == 4) {
+      // ممكن تحط منطق هنا اذا حبيت
     }
+  }
+
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext ctx) {
+        return AlertDialog(
+          title: const Text("Logout"),
+          content: const Text("Are you sure you want to logout?"),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(ctx).pop(); // إغلاق الحوار
+              },
+              child: const Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(ctx).pop();
+                _logout(context);
+              },
+              child: const Text("Yes"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _logout(BuildContext context) async {
+    // لو تستخدم Firebase Auth
+    await FirebaseAuth.instance.signOut();
+
+    // تحويل إلى صفحة تسجيل الدخول مع مسح الصفحة الحالية
+    Navigator.pushReplacementNamed(context, AppRoutes.logIn);
   }
 
   @override
   Widget build(BuildContext context) {
+    const fieldSpacing = 12.0;
+
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       appBar: const CustomAppBar(title: "Account"),
@@ -36,7 +74,8 @@ class _UserAccountPage extends State<UserAccountPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(height: 40),
+                // قللت المسافة بين الاب بار والصورة (مثلاً 20 بدل 40)
+                const SizedBox(height: 20),
 
                 Center(
                   child: Stack(
@@ -44,7 +83,7 @@ class _UserAccountPage extends State<UserAccountPage> {
                       Container(
                         height: 200,
                         width: 200,
-                        margin: const EdgeInsets.only(top: 40),
+                        margin: const EdgeInsets.only(top: 20),
                         child: ClipOval(
                           child: Image.asset(
                             'assets/images/doctor_profile.png',
@@ -78,8 +117,6 @@ class _UserAccountPage extends State<UserAccountPage> {
                   ),
                 ),
 
-                const SizedBox(height: 28),
-
                 const Text("Name", style: TextStyle(fontSize: 18)),
                 const SizedBox(height: 8),
                 TextField(
@@ -93,7 +130,7 @@ class _UserAccountPage extends State<UserAccountPage> {
                   ),
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: fieldSpacing),
 
                 const Text("Email", style: TextStyle(fontSize: 18)),
                 const SizedBox(height: 8),
@@ -108,7 +145,7 @@ class _UserAccountPage extends State<UserAccountPage> {
                   ),
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: fieldSpacing),
 
                 const Text("Phone number", style: TextStyle(fontSize: 18)),
                 const SizedBox(height: 8),
@@ -123,7 +160,22 @@ class _UserAccountPage extends State<UserAccountPage> {
                   ),
                 ),
 
-                const SizedBox(height: 16),
+                const SizedBox(height: 12),
+
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton.icon(
+                    icon: const Icon(Icons.logout, color: Color(0xFF5E2A6F)),
+                    label: const Text(
+                      "Logout",
+                      style: TextStyle(color: Color(0xFF5E2A6F)),
+                    ),
+                    onPressed: () {
+                      _showLogoutDialog(context);
+                    },
+                  ),
+                ),
+
 
                 if (_selectedIndex == 4)
                   Padding(
@@ -146,9 +198,10 @@ class _UserAccountPage extends State<UserAccountPage> {
                             }
                           });
                           if (index == 0) {
-                            Navigator.pushReplacementNamed(context, AppRoutes.userAccountPage);
+                            Navigator.pushReplacementNamed(
+                                context, AppRoutes.userAccountPage);
                           } else {
-                            Navigator.pushReplacementNamed(context, AppRoutes.favorite);
+                            Navigator.pushNamed(context, AppRoutes.favorite);
                           }
                         },
                         children: const [
@@ -176,10 +229,6 @@ class _UserAccountPage extends State<UserAccountPage> {
             ),
           ),
         ),
-      ),
-      bottomNavigationBar: BottomNav(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
       ),
     );
   }

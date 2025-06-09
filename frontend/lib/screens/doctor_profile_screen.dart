@@ -34,21 +34,16 @@ class DoctorProfilePage extends StatelessWidget {
                 style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 24),
-
               _readOnlyField(label: "Email", value: doctor.email),
               const SizedBox(height: 16),
-
               _readOnlyField(label: "Phone number", value: doctor.phoneNumber),
               const SizedBox(height: 16),
-
               _readOnlyField(label: "Clinic Address", value: doctor.clinicAddress),
               const SizedBox(height: 24),
-
               _readOnlyField(
                 label: "About Dr. ${doctor.name}",
                 value: doctor.description,
                 maxLines: 5,
-                isMultiline: true,
               ),
             ],
           ),
@@ -61,7 +56,6 @@ class DoctorProfilePage extends StatelessWidget {
     required String label,
     required String value,
     int maxLines = 1,
-    bool isMultiline = false,
   }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

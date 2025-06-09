@@ -24,7 +24,7 @@ class AnimalShopScreen extends StatelessWidget {
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
+                        Navigator.pushNamed(
                             context, AppRoutes.addAnimalPage);
                       },
                       child: const Text("Add New Pet"),

@@ -37,8 +37,8 @@ class AppointmentCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(
-                    height: 80,
-                    width: 100,
+                    height: 60,
+                    width: 80,
                     child: petPhoto != null && petPhoto!.isNotEmpty
                         ? Image.network(petPhoto!, fit: BoxFit.cover)
                         : const Icon(Icons.pets, size: 80, color: Colors.grey),

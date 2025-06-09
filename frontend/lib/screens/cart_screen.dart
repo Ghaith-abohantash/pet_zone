@@ -1,17 +1,32 @@
-
 import 'package:flutter/material.dart';
 
-class CartScreen extends StatelessWidget {
-  const CartScreen({super.key});
+import '../routes/routes.dart';
+
+class CartScreen extends StatefulWidget {
+  final List<Map<String, dynamic>> initialItems;
+  const CartScreen({super.key, this.initialItems = const []});
+
+  @override
+  State<CartScreen> createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  late List<Map<String, dynamic>> cartItems;
+
+  @override
+  void initState() {
+    super.initState();
+    cartItems = List.from(widget.initialItems); // ننسخ العناصر المبدئية
+  }
+
+  void removeItem(int index) {
+    setState(() {
+      cartItems.removeAt(index);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final List<Map<String, dynamic>> cartItems = [
-      {'image': 'assets/images/rozi.png', 'name': 'Rozi', 'price': 200},
-      {'image': 'assets/images/lucycat.png', 'name': 'Lucy', 'price': 100},
-      {'image': 'assets/images/leodog.png', 'name': 'leo', 'price': 500},
-    ];
-
     final totalPrice = cartItems.fold(0, (sum, item) => sum + (item['price'] as int));
 
     return Scaffold(
@@ -28,7 +43,9 @@ class CartScreen extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: ListView.builder(
+              child: cartItems.isEmpty
+                  ? const Center(child: Text('Your cart is empty'))
+                  : ListView.builder(
                 itemCount: cartItems.length,
                 itemBuilder: (context, index) {
                   final item = cartItems[index];
@@ -44,7 +61,14 @@ class CartScreen extends StatelessWidget {
                       children: [
                         ClipRRect(
                           borderRadius: BorderRadius.circular(6),
-                          child: Image.asset(
+                          child: item['image'].startsWith('http')
+                              ? Image.network(
+                            item['image'] as String,
+                            width: 60,
+                            height: 60,
+                            fit: BoxFit.cover,
+                          )
+                              : Image.asset(
                             item['image'] as String,
                             width: 60,
                             height: 60,
@@ -64,7 +88,9 @@ class CartScreen extends StatelessWidget {
                             width: 20,
                             height: 20,
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            removeItem(index);
+                          },
                         ),
                         Text(
                           '${item['price']}\$',
@@ -97,9 +123,13 @@ class CartScreen extends StatelessWidget {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: cartItems.isEmpty
+                    ? null
+                    : () {
+                  Navigator.pushNamed(context, AppRoutes.payment);
+                },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.deepPurple,
+                  backgroundColor: cartItems.isEmpty ? Colors.grey : Colors.deepPurple,
                   padding: const EdgeInsets.symmetric(vertical: 14),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),

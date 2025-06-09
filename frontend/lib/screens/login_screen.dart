@@ -1,10 +1,9 @@
-// lib/screens/login_screen.dart
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../routes/routes.dart';
 import '../providers/auth_provider.dart';
-import '../models/user_model.dart'; // Import UserRoles and AppUser here
+import '../models/user_model.dart';
 
 class LogInPage extends StatefulWidget {
   const LogInPage({super.key});

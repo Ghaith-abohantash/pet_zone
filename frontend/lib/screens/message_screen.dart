@@ -29,15 +29,15 @@ class MessagePage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                 foregroundColor: Colors.black,
-                backgroundColor: const Color(0xFFEFEFEF), // background #EFEFEF
+                backgroundColor: const Color(0xFFEFEFEF),
                 elevation: 0, // no shadow
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(9),
-                  side: BorderSide(color: Colors.grey.shade400), // natural border
+                  side: BorderSide(color: Colors.grey.shade400),
                 ),
               ),
               onPressed: () {
-                Navigator.pushReplacementNamed(context, AppRoutes.chatPage);
+                Navigator.pushNamed(context, AppRoutes.chatPage);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -70,11 +70,11 @@ class MessagePage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                 foregroundColor: Colors.black,
-                backgroundColor: const Color(0xFFEFEFEF), // background #EFEFEF
+                backgroundColor: const Color(0xFFEFEFEF),
                 elevation: 0, // no shadow
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(9),
-                  side: BorderSide(color: Colors.grey.shade400), // natural border
+                  side: BorderSide(color: Colors.grey.shade400),
                 ),
               ),
               onPressed: () {
@@ -111,11 +111,11 @@ class MessagePage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                 foregroundColor: Colors.black,
-                backgroundColor: const Color(0xFFEFEFEF), // background #EFEFEF
+                backgroundColor: const Color(0xFFEFEFEF),
                 elevation: 0, // no shadow
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(9),
-                  side: BorderSide(color: Colors.grey.shade400), // natural border
+                  side: BorderSide(color: Colors.grey.shade400),
                 ),
               ),
               onPressed: () {
@@ -150,11 +150,11 @@ class MessagePage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                 foregroundColor: Colors.black,
-                backgroundColor: const Color(0xFFEFEFEF), // background #EFEFEF
+                backgroundColor: const Color(0xFFEFEFEF),
                 elevation: 0, // no shadow
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(9),
-                  side: BorderSide(color: Colors.grey.shade400), // natural border
+                  side: BorderSide(color: Colors.grey.shade400),
                 ),
               ),
               onPressed: () {
@@ -189,11 +189,11 @@ class MessagePage extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                 foregroundColor: Colors.black,
-                backgroundColor: const Color(0xFFEFEFEF), // background #EFEFEF
+                backgroundColor: const Color(0xFFEFEFEF),
                 elevation: 0, // no shadow
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(9),
-                  side: BorderSide(color: Colors.grey.shade400), // natural border
+                  side: BorderSide(color: Colors.grey.shade400),
                 ),
               ),
               onPressed: () {

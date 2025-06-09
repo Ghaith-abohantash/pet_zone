@@ -7,7 +7,7 @@ class NotificationViewModel {
   Stream<List<NotificationModel>> getNotificationsStream(String doctorId) {
     return _firestore
         .collection('notifications')
-        .where('doctorId', isEqualTo: doctorId)
+        .where('doctor_uid', isEqualTo: doctorId)
         .orderBy('timestamp', descending: true)
         .snapshots()
         .map((snapshot) => snapshot.docs

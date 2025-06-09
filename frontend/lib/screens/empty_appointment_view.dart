@@ -24,7 +24,6 @@ class _EmptyAppointmentViewState extends State<EmptyAppointmentView>
         } else if (_tabController.index == 2) {
           Navigator.pushNamed(context, AppRoutes.cancelled);
         }
-        // Note: Tab index 1 (Past) is left empty for now.
       }
     });
   }

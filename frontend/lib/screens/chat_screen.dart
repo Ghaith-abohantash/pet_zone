@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-
+import '../routes/routes.dart';
+import 'package:flutter/material.dart';
 import '../routes/routes.dart';
 class ChatPage extends StatelessWidget {
   const ChatPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    const double spacingBetweenMessages = 24.0; // Bigger spacing
+    const double spacingBetweenMessages = 24.0;
 
     return Scaffold(
       appBar: AppBar(
@@ -15,7 +16,7 @@ class ChatPage extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         iconTheme: const IconThemeData(
-          color: Color(0xFF5E2A6F), // Back button color
+          color: Color(0xFF5E2A6F),
         ),
         title: const Text(
           'Dr.Noor Kusa',
@@ -45,11 +46,11 @@ class ChatPage extends StatelessWidget {
             ),
 
             Row(
-              crossAxisAlignment: CrossAxisAlignment.center, // Align icon and text vertically
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.pushReplacementNamed(context, AppRoutes.doctorProfilePage);
+                    Navigator.pushNamed(context, AppRoutes.doctorProfilePage);
                   },
                 child:Image.asset(
                   'assets/images/doctor_profile.png',

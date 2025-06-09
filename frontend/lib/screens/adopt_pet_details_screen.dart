@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../providers/adopt_pet_provider.dart';
-import '../widgets/buttom_nav.dart'; // Your existing bottom nav widget
+import '../viewmodels/adopt_pet_view_model.dart';
+import '../widgets/buttom_nav.dart';
 
 class AdoptPetDetailsScreen extends StatefulWidget {
   final String adoptPetId;
-  const AdoptPetDetailsScreen({super.key, required this.adoptPetId});
+  const AdoptPetDetailsScreen({Key? key, required this.adoptPetId}) : super(key: key);
 
   @override
   State<AdoptPetDetailsScreen> createState() => _AdoptPetDetailsScreenState();
@@ -15,15 +14,20 @@ class AdoptPetDetailsScreen extends StatefulWidget {
 class _AdoptPetDetailsScreenState extends State<AdoptPetDetailsScreen> {
   int _selectedIndex = 2;
 
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<AdoptPetViewModel>(context, listen: false).fetchPetById(widget.adoptPetId);
+  }
+
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    setState(() => _selectedIndex = index);
   }
 
   @override
   Widget build(BuildContext context) {
-    final pet = Provider.of<AdoptPetProvider>(context).getById(widget.adoptPetId);
+    final viewModel = Provider.of<AdoptPetViewModel>(context);
+    final pet = viewModel.pet;
 
     return Scaffold(
       appBar: AppBar(
@@ -31,13 +35,14 @@ class _AdoptPetDetailsScreenState extends State<AdoptPetDetailsScreen> {
           icon: const Icon(Icons.arrow_back_ios_new_sharp),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: const Text(
-          'Adopt Pet Details',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+        title: const Text('Adopt Pet Details', style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
       ),
-      body: SingleChildScrollView(
+      body: viewModel.isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : pet == null
+          ? const Center(child: Text("Pet not found."))
+          : SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -46,8 +51,8 @@ class _AdoptPetDetailsScreenState extends State<AdoptPetDetailsScreen> {
                 height: 315,
                 width: 354,
                 margin: const EdgeInsets.only(top: 20),
-                child: Image.asset(
-                  pet.imageAsset,
+                child: Image.network(
+                  pet.imageUrl,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -66,72 +71,18 @@ class _AdoptPetDetailsScreenState extends State<AdoptPetDetailsScreen> {
               ),
             ),
             const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      const Text("Age", style: TextStyle(fontSize: 15)),
-                      const SizedBox(height: 8),
-                      Text(
-                        "${pet.age} years",
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF5E2A6F),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      const Text("Sex", style: TextStyle(fontSize: 15)),
-                      const SizedBox(height: 8),
-                      Text(
-                        pet.sex,
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF5E2A6F),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      const Text("Breed", style: TextStyle(fontSize: 15)),
-                      const SizedBox(height: 8),
-                      Text(
-                        pet.breed,
-                        style: const TextStyle(
-                          fontSize: 15,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF5E2A6F),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(height: 30),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: Text(
-                  "Description",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                ),
+                child: Text("Description", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               ),
             ),
             const SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Text(
-                "The ${pet.breed} is a loving and loyal companion, perfect for adoption.",
+                "This adorable pet is looking for a loving home. Perfect for companionship!",
                 style: const TextStyle(fontSize: 16, color: Colors.black87),
                 textAlign: TextAlign.justify,
               ),
@@ -143,7 +94,7 @@ class _AdoptPetDetailsScreenState extends State<AdoptPetDetailsScreen> {
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Add adoption action here
+                    // Adoption action
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF5E2A6F),
@@ -151,10 +102,7 @@ class _AdoptPetDetailsScreenState extends State<AdoptPetDetailsScreen> {
                       borderRadius: BorderRadius.circular(9),
                     ),
                   ),
-                  child: const Text(
-                    "Adopt Now",
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
+                  child: const Text("Adopt Now", style: TextStyle(fontSize: 18, color: Colors.white)),
                 ),
               ),
             ),
