@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import '../widgets/app_bar.dart'; // لو عندك CustomAppBar خاص
+import 'package:provider/provider.dart';
+import '../models/pet_model.dart';
+import '../providers/favorite_provider.dart';
+import '../widgets/app_bar.dart';
 
 class BuyPets extends StatefulWidget {
   const BuyPets({super.key});
@@ -22,78 +25,78 @@ class _BuyPetsState extends State<BuyPets> {
     });
   }
 
-  Future<List<Map<String, dynamic>>> getPetsByStatus(String status) async {
+  Future<List<PetModel>> getPetsByStatus(String status) async {
     try {
       final querySnapshot = await FirebaseFirestore.instance
           .collection('pets')
           .where('status', isEqualTo: status)
           .get();
 
-      return querySnapshot.docs.map((doc) {
-        final data = doc.data();
-        data['id'] = doc.id;
-        return data;
-      }).toList();
+      return querySnapshot.docs.map((doc) => PetModel.fromMap(doc.data(), doc.id)).toList();
     } catch (e) {
-      print('Error fetching pets: $e');
+      print('Error fetching pets: \$e');
       return [];
     }
   }
 
-  Widget _buildPetCard(Map<String, dynamic> pet) {
-    return Container(
-      width: 160,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          pet['imageUrl'] != null && pet['imageUrl'].toString().isNotEmpty
-              ? Image.network(
-            pet['imageUrl'],
-            height: 122,
-            width: 150,
-            fit: BoxFit.cover,
-            errorBuilder: (context, error, stackTrace) =>
-            const Icon(Icons.broken_image, size: 122),
-          )
-              : Container(
-            height: 122,
-            width: 150,
-            color: Colors.grey[300],
-            child: const Icon(Icons.pets, size: 80, color: Colors.white),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: Text(
-                  pet['name'] ?? "No Name",
-                  style: const TextStyle(fontSize: 15),
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              IconButton(
-                onPressed: () {
-                  print("favorite icon clicked");
-                },
-                icon: const Icon(
-                  Icons.favorite_border,
-                  color: Color(0xFF5E2A6F),
-                ),
-              ),
-            ],
-          ),
-          if (pet['status'] == "For Sale")
-            Padding(
-              padding: const EdgeInsets.only(left: 0),
-              child: Text(
-                "\$${pet['price'] ?? '0'}",
-                style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+  Widget _buildPetCard(PetModel pet) {
+    final provider = Provider.of<FavoriteProvider>(context);
+    final isFavorite = provider.isFavorite(pet.id);
+
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          pet.status == 'For Sale' ? '/saleDetails' : '/adoptDetails',
+          arguments: pet.id,
+        );
+      },
+      child: Container(
+        width: 160,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            pet.imageUrl.isNotEmpty
+                ? Image.network(
+              pet.imageUrl,
+              height: 122,
+              width: 150,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) =>
+              const Icon(Icons.broken_image, size: 122),
+            )
+                : Container(
+              height: 122,
+              width: 150,
+              color: Colors.grey[300],
+              child: const Icon(Icons.pets, size: 80, color: Colors.white),
             ),
-        ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Text(
+                    pet.name,
+                    style: const TextStyle(fontSize: 15),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                IconButton(
+                  onPressed: () => provider.toggleFavorite(pet),
+                  icon: Icon(
+                    isFavorite ? Icons.favorite : Icons.favorite_border,
+                    color: Color(0xFF5E2A6F),
+                  ),
+                ),
+              ],
+            ),
+            if (pet.status == "For Sale" && pet.price != null)
+              Text(
+                "\$${pet.price!.toStringAsFixed(0)}",
+                style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -119,23 +122,18 @@ class _BuyPetsState extends State<BuyPets> {
               borderWidth: 1.5,
               constraints: const BoxConstraints(minWidth: 170, minHeight: 32),
               children: const [
-                Text("Sale",
-                    style:
-                    TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
-                Text("Adoption",
-                    style:
-                    TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+                Text("Sale", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
+                Text("Adoption", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600)),
               ],
             ),
             const SizedBox(height: 24),
             Expanded(
-              child: FutureBuilder<List<Map<String, dynamic>>>(
+              child: FutureBuilder<List<PetModel>>(
                 future: getPetsByStatus(status),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Center(child: CircularProgressIndicator());
                   }
-
                   if (!snapshot.hasData || snapshot.data!.isEmpty) {
                     return const Center(child: Text("No pets found"));
                   }
@@ -146,8 +144,7 @@ class _BuyPetsState extends State<BuyPets> {
                     itemCount: (pets.length / 2).ceil(),
                     itemBuilder: (context, index) {
                       final first = pets[index * 2];
-                      final second =
-                      (index * 2 + 1 < pets.length) ? pets[index * 2 + 1] : null;
+                      final second = (index * 2 + 1 < pets.length) ? pets[index * 2 + 1] : null;
 
                       return Padding(
                         padding: const EdgeInsets.only(bottom: 24),
@@ -155,8 +152,7 @@ class _BuyPetsState extends State<BuyPets> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             _buildPetCard(first),
-                            if (second != null) _buildPetCard(second),
-                            if (second == null) const SizedBox(width: 160),
+                            if (second != null) _buildPetCard(second) else const SizedBox(width: 160),
                           ],
                         ),
                       );

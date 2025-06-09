@@ -5,8 +5,8 @@ class PetModel {
   final String status;
   final double? price;
   final int? age;
-  final String? sex;
-  final String? breed;
+  final String? gender;
+  final String? weight;
 
   PetModel({
     required this.id,
@@ -15,8 +15,8 @@ class PetModel {
     required this.status,
     this.price,
     this.age,
-    this.sex,
-    this.breed,
+    this.gender,
+    this.weight,
   });
 
   factory PetModel.fromMap(Map<String, dynamic> data, String documentId) {
@@ -27,8 +27,8 @@ class PetModel {
         status: data['status'] ?? '',
         price: data['price'] != null ? double.tryParse(data['price'].toString()) : null,
         age: data['age'] != null ? int.tryParse(data['age'].toString()) : null,
-        sex: data['sex'] ?? '',
-        breed: data['breed'] ?? '',
+        gender: data['gender'],
+      weight: data['weight'] ,
        );
     }
 }

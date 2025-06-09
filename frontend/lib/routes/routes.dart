@@ -102,7 +102,7 @@ class AppRoutes {
       case userNotification:
         return MaterialPageRoute(builder: (_)=> const UserNotificationPage() );
       case favorite:
-        return MaterialPageRoute(builder: (_)=> const FavoritePage() );
+        return MaterialPageRoute(builder: (_)=> const FavoritesScreen() );
       case doctornotification:
         return MaterialPageRoute(builder: (_)=> const VeterinarianNotificationScreen() );
       case saleDetails:
