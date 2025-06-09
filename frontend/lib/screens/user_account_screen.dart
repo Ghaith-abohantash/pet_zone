@@ -21,7 +21,6 @@ class _UserAccountPage extends State<UserAccountPage> {
     });
 
     if (index == 4) {
-      // ممكن تحط منطق هنا اذا حبيت
     }
   }
 
@@ -35,7 +34,7 @@ class _UserAccountPage extends State<UserAccountPage> {
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.of(ctx).pop(); // إغلاق الحوار
+                Navigator.of(ctx).pop();
               },
               child: const Text("Cancel"),
             ),
@@ -53,10 +52,8 @@ class _UserAccountPage extends State<UserAccountPage> {
   }
 
   void _logout(BuildContext context) async {
-    // لو تستخدم Firebase Auth
     await FirebaseAuth.instance.signOut();
 
-    // تحويل إلى صفحة تسجيل الدخول مع مسح الصفحة الحالية
     Navigator.pushReplacementNamed(context, AppRoutes.logIn);
   }
 
@@ -74,7 +71,6 @@ class _UserAccountPage extends State<UserAccountPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // قللت المسافة بين الاب بار والصورة (مثلاً 20 بدل 40)
                 const SizedBox(height: 20),
 
                 Center(

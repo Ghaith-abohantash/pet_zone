@@ -16,7 +16,7 @@ class _CartScreenState extends State<CartScreen> {
   @override
   void initState() {
     super.initState();
-    cartItems = List.from(widget.initialItems); // ننسخ العناصر المبدئية
+    cartItems = List.from(widget.initialItems);
   }
 
   void removeItem(int index) {
