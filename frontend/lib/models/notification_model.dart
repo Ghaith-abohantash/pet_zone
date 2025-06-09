@@ -27,7 +27,7 @@ class NotificationModel {
           ? (data['timestamp'] as Timestamp).toDate()
           : null,
       seen: data['seen'] ?? false,
-      doctorId: data['doctorId'] ?? '',
+      doctorId: data['doctor_uid'] ?? '',
     );
   }
 }

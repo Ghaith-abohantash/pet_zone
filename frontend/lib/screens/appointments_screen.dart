@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../viewmodels/appointment_view_model.dart';
 import '../models/appointment_model.dart';
 import '../widgets/AppointmentCard.dart';
-import '../providers/auth_provider.dart'; // تأكد من استيراده
+import '../providers/auth_provider.dart';
 
 class AppointmentScreen extends StatelessWidget {
   const AppointmentScreen({super.key});
@@ -12,7 +12,7 @@ class AppointmentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
-    final viewModel = AppointmentViewModel(authProvider);
+    final viewModel = AppointmentViewModels(authProvider);
 
     return Scaffold(
       appBar: AppBar(

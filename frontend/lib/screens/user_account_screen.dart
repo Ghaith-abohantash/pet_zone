@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../routes/routes.dart';
 import '../widgets/app_bar.dart';
-import '../widgets/buttom_nav.dart';
 
 class UserAccountPage extends StatefulWidget {
   const UserAccountPage({super.key});
@@ -177,10 +176,7 @@ class _UserAccountPage extends State<UserAccountPage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNav(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
-      ),
+
     );
   }
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/user_notification_provider.dart';
 import '../widgets/app_bar.dart';
-import '../widgets/buttom_nav.dart';
 
 class UserNotificationPage extends StatelessWidget {
   const UserNotificationPage({super.key});

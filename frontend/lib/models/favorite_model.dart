@@ -1,7 +1,7 @@
 class PetModel {
   final String name;
   final String imageAsset;
-  final int? price; // null for adoption pets
+  final int? price;
   final bool isForAdoption;
 
   PetModel({

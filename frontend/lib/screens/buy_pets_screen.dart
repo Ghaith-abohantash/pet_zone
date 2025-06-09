@@ -103,7 +103,7 @@ class _BuyPetsState extends State<BuyPets> {
     String status = _currentToggleIndex == 0 ? 'For Sale' : 'For Adopt';
 
     return Scaffold(
-      appBar: const CustomAppBar(title: "Pets Shop"),  // AppBar هنا
+      appBar: const CustomAppBar(title: "Pets Shop"),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: Column(

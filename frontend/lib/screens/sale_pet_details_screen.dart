@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:petzone_project/viewmodels/sale_details_view_model.dart';
 import 'package:provider/provider.dart';
-import '../providers/sale_details_provider.dart';
 import '../widgets/buttom_nav.dart';
 
 class SalePetDetailsScreen extends StatefulWidget {
@@ -15,6 +15,13 @@ class SalePetDetailsScreen extends StatefulWidget {
 class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
   int _selectedIndex = 2;
 
+  @override
+  void initState() {
+    super.initState();
+    final viewModel = Provider.of<SaleDetailsViewModel>(context, listen: false);
+    viewModel.fetchPetById(widget.petId);
+  }
+
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -23,7 +30,8 @@ class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final pet = Provider.of<SalePetProvider>(context).getById(widget.petId);
+    final viewModel = Provider.of<SaleDetailsViewModel>(context);
+    final pet = viewModel.pet;
 
     return Scaffold(
       appBar: AppBar(
@@ -64,8 +72,8 @@ class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
                 height: 315,
                 width: 354,
                 margin: const EdgeInsets.only(top: 20),
-                child: Image.asset(
-                  pet.imageAsset,
+                child: Image.network(
+                  pet.imageUrl,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -112,7 +120,7 @@ class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
                       const Text("Sex", style: TextStyle(fontSize: 15)),
                       const SizedBox(height: 8),
                       Text(
-                        pet.sex,
+                        pet.sex!,
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -126,7 +134,7 @@ class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
                       const Text("Breed", style: TextStyle(fontSize: 15)),
                       const SizedBox(height: 8),
                       Text(
-                        pet.breed,
+                        pet.breed!,
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,

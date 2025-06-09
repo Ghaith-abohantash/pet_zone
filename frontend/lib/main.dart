@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:petzone_project/utils/app_theme.dart';
+import 'package:petzone_project/viewmodels/adopt_pet_view_model.dart';
+import 'package:petzone_project/viewmodels/appointment_viewmodel.dart';
+import 'package:petzone_project/viewmodels/sale_details_view_model.dart';
 import 'package:provider/provider.dart';
 import 'routes/routes.dart';
 import 'providers/auth_provider.dart';
 import 'providers/user_notification_provider.dart';
 import 'providers/doctor_provider.dart';
 import 'providers/favorite_provider.dart';
-import 'providers/sale_details_provider.dart';
-import 'providers/adopt_pet_provider.dart';
 import 'providers/home_provider.dart';
 
 void main() async {
@@ -28,10 +29,15 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => UserNotificationProvider()),
         ChangeNotifierProvider(create: (_) => DoctorProvider()),
         ChangeNotifierProvider(create: (_) => FavoriteProvider()),
-        ChangeNotifierProvider(create: (_) => SalePetProvider()),
-        ChangeNotifierProvider(create: (_) => AdoptPetProvider()),
         ChangeNotifierProvider(create: (_) => HomeProvider()),
+        ChangeNotifierProvider(create: (_) => AdoptPetViewModel()),
+        ChangeNotifierProvider(create: (_) => SaleDetailsViewModel()),
+
+
+
+        ChangeNotifierProvider(create: (_) => AppointmentViewModel()),
       ],
+
       child: MaterialApp(
         title: 'Test',
         theme: AppTheme.lightTheme,

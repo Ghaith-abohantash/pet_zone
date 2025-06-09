@@ -104,7 +104,6 @@ class CartScreen extends StatelessWidget {
                   Navigator.pushNamed(
                       context, AppRoutes.payment);
 
-
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.deepPurple,

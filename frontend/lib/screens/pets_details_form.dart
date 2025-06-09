@@ -64,8 +64,17 @@ class _PetsDetailsFormState extends State<PetsDetailsForm> {
         'status': "upcoming",
       });
 
+      await FirebaseFirestore.instance.collection('notifications').add({
+        'user_uid': 'USER_PLACEHOLDER_123',
+        'title': 'Appointment Reminder',
+        'message':
+        'You have an appointment with Dr. ${widget.doctor_name} on ${widget.date} at ${widget.time}.',
+        'seen': false,
+        'timestamp': FieldValue.serverTimestamp(),
+      });
+
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Appointment confirmed!')),
+        const SnackBar(content: Text('Appointment confirmed! Reminder set.')),
       );
 
       Navigator.popUntil(context, (route) => route.isFirst);

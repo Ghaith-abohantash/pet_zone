@@ -16,11 +16,9 @@ class FavoritePage extends StatefulWidget {
 class _FavoritePageState extends State<FavoritePage> {
   int _selectedIndex = 4;
 
-  // Default toggle to "Favorite" selected (index 1)
   int _currentToggleIndex = 1;
   List<bool> _toggleSelection = [false, true];
 
-  // New toggle for Sale/Adopt at top (default Sale = 0)
   int _saleOrAdoptIndex = 0;
 
   void _onItemTapped(int index) {
@@ -177,10 +175,7 @@ class _FavoritePageState extends State<FavoritePage> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNav(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
-      ),
+
     );
   }
 }

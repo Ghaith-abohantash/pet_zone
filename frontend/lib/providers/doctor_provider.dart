@@ -4,7 +4,7 @@ import '../models/doctor_model.dart';
 
 class DoctorProvider with ChangeNotifier {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
-  Doctor _doctor = Doctor(id: 'doctor'); // single-document id
+  Doctor _doctor = Doctor(id: 'doctor');
 
   Doctor get doctor => _doctor;
 

@@ -32,8 +32,6 @@ import '../screens/empty_cart_screen.dart';
 import '../screens/cart_screen.dart';
 import '../screens/veterinarian_notification_screen.dart';
 import '../screens/payment_screen.dart';
-
-
 import '../screens/adopt_pet_details_screen.dart';
 
 
@@ -44,6 +42,8 @@ class AppRoutes {
   static const String payment = '/payment';
 
   static const String appointmentScreen= '/appointmentScreen';
+  static const String useraccount= '/useraccount';
+
   static const String logIn= '/logIn';
   static const String signUp= '/signUp';
   static const String doctorProfilePage= '/doctorProfilePage';
@@ -63,7 +63,6 @@ class AppRoutes {
   static const String resetpasswordscreen= '/resetpasswordscreen';
   static const String forgetpasswordscreen= '/forgetpasswordscreen';
   static const String doctornotification= '/doctornotification';
-
   static const String appointmentForm = '/form';
   static const String confirm = '/confirm';
   static const String personalInfo = '/personal-info';
@@ -99,6 +98,7 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_)=> const DoctorAccountPage() );
       case userAccountPage:
         return MaterialPageRoute(builder: (_)=> const UserAccountPage() );
+
       case userNotification:
         return MaterialPageRoute(builder: (_)=> const UserNotificationPage() );
       case favorite:
@@ -107,7 +107,6 @@ class AppRoutes {
         return MaterialPageRoute(builder: (_)=> const VeterinarianNotificationScreen() );
       case saleDetails:
         {
-          // Expecting the pet ID as a String argument
           final petId = settings.arguments as String;
           return MaterialPageRoute(
             builder: (_) => SalePetDetailsScreen(petId: petId),
@@ -115,12 +114,12 @@ class AppRoutes {
         }
       case adoptDetails:
         {
-          // Expecting the adopt pet ID as a String argument
           final adoptPetId = settings.arguments as String;
           return MaterialPageRoute(
             builder: (_) => AdoptPetDetailsScreen(adoptPetId: adoptPetId),
           );
         }
+
       case buyPets:
         return MaterialPageRoute(builder: (_)=> const BuyPets() );
       case addAnimalPage:
@@ -132,13 +131,25 @@ class AppRoutes {
       case messagePage:
         return MaterialPageRoute(builder: (_)=> const MessagePage() );
       case petsDetailsForm:
-        return MaterialPageRoute(builder: (_)=> const PetsDetailsForm (doctor_name: '', doctor_uid: '', date: '', time: '', user_name: '', email: '', phone: '',) );
+        final args = settings.arguments as Map<String, dynamic>;
+        return MaterialPageRoute(
+          builder: (_) => PetsDetailsForm(
+            doctor_name: args['doctor_name'],
+            doctor_uid: args['doctor_uid'],
+            date: args['date'],
+            time: args['time'],
+            user_name: args['user_name'],
+            email: args['email'],
+            phone: args['phone'],
+          ),
+        );
       case verificationscreen:
         return MaterialPageRoute(builder: (_)=> const VerificationScreen () );
       case resetpasswordscreen:
         return MaterialPageRoute(builder: (_)=> const ResetPasswordScreen() );
       case forgetpasswordscreen:
         return MaterialPageRoute(builder: (_)=> const ForgetPasswordScreen() );
+
       case appointmentForm:
         return MaterialPageRoute(
           builder: (_) => const AppointmentFormScreen(),
@@ -147,18 +158,24 @@ class AppRoutes {
       case confirm:
         final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (_) => ConfirmAppointmentScreen(
-            doctor_name: args['doctor_name'],
-            date: args['date'],
-            time: args['time'], doctor_uid: '',
-          ),
-        );
+            builder: (_) => ConfirmAppointmentScreen(
+                doctor_name: args['doctor_name'],
+                date: args['date'],
+                time: args['time'],
+                doctor_uid: args['doctor_uid'],
+                ),
+            );
 
       case personalInfo:
+        final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (_) => const PersonalInfoScreen(doctor_name: '', date: '', doctor_uid: '', time: '',),
-        );
-
+            builder: (_) => PersonalInfoScreen(
+                doctor_name: args['doctor_name'],
+                date: args['date'],
+                time: args['time'],
+                doctor_uid: args['doctor_uid'],
+               ),
+           );
       case empty:
         return MaterialPageRoute(
           builder: (_) => const EmptyAppointmentView(),

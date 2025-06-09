@@ -24,7 +24,7 @@ class AppointmentViewModel extends ChangeNotifier {
     try {
       final snapshot = await FirebaseFirestore.instance
           .collection('users')
-          .where('role', isEqualTo: 'dr')
+          .where('role', isEqualTo: 'Veterinarian')
           .get();
 
       doctors = snapshot.docs.map((doc) {

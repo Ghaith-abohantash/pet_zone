@@ -39,7 +39,6 @@ class ConfirmAppointmentScreen extends StatelessWidget {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {
-                  // Replace this with the next step
                   Navigator.pushNamed(
                     context,
                     AppRoutes.personalInfo,
