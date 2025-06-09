@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:petzone_project/viewmodels/sale_details_view_model.dart';
 import 'package:provider/provider.dart';
-import '../widgets/buttom_nav.dart';
+import 'cart_screen.dart';
 
 class SalePetDetailsScreen extends StatefulWidget {
   final String petId;
@@ -63,7 +63,9 @@ class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
           ),
         ],
       ),
-      body: SingleChildScrollView(
+      body: viewModel.isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -89,7 +91,7 @@ class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
                     style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
                   ),
                   Text(
-                    "\$${pet.price}",
+                    "\$${pet.price?.toStringAsFixed(2) ?? '0'}",
                     style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 24),
                   ),
                 ],
@@ -106,7 +108,7 @@ class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
                       const Text("Age", style: TextStyle(fontSize: 15)),
                       const SizedBox(height: 8),
                       Text(
-                        "${pet.age} years",
+                        pet.age != null ? "${pet.age} years" : 'Unknown',
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -120,7 +122,7 @@ class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
                       const Text("Sex", style: TextStyle(fontSize: 15)),
                       const SizedBox(height: 8),
                       Text(
-                        pet.sex!,
+                        pet.gender != null && pet.gender!.isNotEmpty ? pet.gender! : 'Unknown',
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -131,10 +133,10 @@ class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
                   ),
                   Column(
                     children: [
-                      const Text("Breed", style: TextStyle(fontSize: 15)),
+                      const Text("Weight", style: TextStyle(fontSize: 15)),
                       const SizedBox(height: 8),
                       Text(
-                        pet.breed!,
+                        pet.weight != null && pet.weight!.isNotEmpty ? pet.weight! : 'Unknown',
                         style: const TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
@@ -158,11 +160,11 @@ class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
               ),
             ),
             const SizedBox(height: 8),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Text(
-                "The ${'Golden Retriever'} is a friendly and intelligent dog, making it an ideal family pet.",
-                style: TextStyle(fontSize: 16, color: Colors.black87),
+                "The ${pet.name} is a friendly and intelligent animal, making it an ideal family pet.",
+                style: const TextStyle(fontSize: 16, color: Colors.black87),
                 textAlign: TextAlign.justify,
               ),
             ),
@@ -172,7 +174,24 @@ class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
                 width: 350,
                 height: 50,
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    final price = pet.price?.toInt() ?? 0;
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CartScreen(
+                          initialItems: [
+                            {
+                              'image': pet.imageUrl,
+                              'name': pet.name,
+                              'price': price,
+                            }
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF5E2A6F),
                     shape: RoundedRectangleBorder(
@@ -189,10 +208,6 @@ class _SalePetDetailsScreenState extends State<SalePetDetailsScreen> {
             const SizedBox(height: 20),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNav(
-        selectedIndex: _selectedIndex,
-        onItemTapped: _onItemTapped,
       ),
     );
   }
