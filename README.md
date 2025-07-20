@@ -2,12 +2,15 @@
 
 *Pet_Zone* is a mobile application built with Flutter to help users conveniently book veterinary appointments remotely, adopt pets, and access pet-related services such as buying and selling. The app aims to improve the connection between pet owners and veterinary clinics, and to provide a reliable space for pet adoption and services.
 
+---
 
-### 👥 Team & Contributors : 
--Ghaith Abu Hantash
--Karam Abu Ghosh
--Bayan AbdAlhaq
--Noorhan Alkusa
+## 👥 Team & Contributors
+
+- **Ghaith Abu Hantash**
+- **Karam Abu Ghosh**
+- **Bayan AbdAlhaq**
+- **Noorhan Alkusa**
+
 ---
 
 ## 📱 Features
@@ -41,23 +44,11 @@
 
 ### Installation Steps
 
-`bash
+```bash
 git clone https://github.com/Ghaith-abohantash/pet_zone.git
 cd pet_zone
 flutter pub get
 flutter run
 
-📸 Screenshots :
-
-https://github.com/Ghaith-abohantash/pet_zone/blob/main/Log%20in.jpg
 
 
-https://github.com/Ghaith-abohantash/pet_zone/blob/main/splash.jpg
-
-
-https://github.com/Ghaith-abohantash/pet_zone/blob/main/Sign%20up.jpg
-
-
-https://github.com/Ghaith-abohantash/pet_zone/blob/main/image%202.jpg
-
-https://github.com/Ghaith-abohantash/pet_zone/blob/main/image%201.jpg
